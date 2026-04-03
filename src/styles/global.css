@@ -13,18 +13,17 @@
 }
 
 :root {
-  /* بروتوكول أورا الملكي (الكحلي والأزرق كأساس، والتيل كلمسة) */
-  --primary: #1D4ED8;       /* أزرق أساسي ملكي (أزرار وعناوين) */
-  --primary-dk: #1E3A8A;    /* أزرق داكن (تدرجات وزوايا) */
-  --primary-soft: #EFF6FF;  /* أزرق ثلجي ناعم جداً للراحة البصرية */
-  --accent: #1ABDA8;        /* الأخضر المزرق (Teal) كلمسات فنية *فقط* */
-  --dark: #0B1727;          /* كحلي عميق جداً للنصوص الرئيسية والبطاقات الداكنة */
-  --text: #334155;
-  --muted: #64748b;
-  --bg: transparent;
+  /* ألوان أورا الرسمية */
+  --aura-primary: #58A8B4;    /* التركواز/التيل الأساسي */
+  --aura-secondary: #438FB3;  /* الأزرق الهادئ */
+  --aura-silver: #B3B7C1;     /* الفضي للخطوط والملاحظات */
+  
+  /* ألوان مساعدة للتباين */
+  --dark: #121A23;            /* كحلي شديد السواد لضمان وضوح النصوص فوق الخلفيات الفاتحة */
+  --bg-light: #FDFDFD;        /* أبيض نقي */
+  --bg-alt: #F4F8F9;          /* أبيض مزرق خفيف جداً للتناوب */
 }
 
-/* تناوب الخلفيات السلس */
-section:nth-child(odd)  { background: #FDFDFD; }
-section:nth-child(even) { background: #F8FAFC; }
-.section-dark { background: var(--dark) !important; color: #fff; }
+body > main > section:nth-child(odd) { background: var(--bg-light); }
+body > main > section:nth-child(even) { background: var(--bg-alt); }
+body > main > section.section-dark { background: var(--dark) !important; color: #fff; }
