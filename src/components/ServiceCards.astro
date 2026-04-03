@@ -1,48 +1,110 @@
 ---
+// src/components/ServiceCards.astro
+
 const services = [
-  { num: '01', icon: '✦', title: 'الهوية البصرية', desc: 'بناء هوية متكاملة تعبر عن قيمك وتثبت وجودك في السوق.', cta: 'ابدأ هويتك' },
-  { num: '02', icon: '◎', title: 'تحسين محركات البحث', desc: 'تصدر النتائج الأولى على جوجل وزد زياراتك العضوية.', cta: 'تصدر الآن' },
-  { num: '03', icon: '⬡', title: 'الحملات الإعلانية', desc: 'إدارة حملات Google وMeta بذكاء وعائد استثمار مقاس.', cta: 'أطلق حملتك' },
-  { num: '04', icon: '◈', title: 'صناعة المحتوى', desc: 'محتوى يبني علامتك ويجذب جمهورك بلغة تلامس القلوب.', cta: 'ابدأ بمحتوى' },
+  {
+    id: "branding",
+    colSpan: "md:col-span-8",
+    bgClass: "bg-[#0D1B2A] text-white",
+    titleClass: "text-white",
+    descClass: "text-[#94a3b8]",
+    icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1ABDA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="#1ABDA8"/><circle cx="17.5" cy="10.5" r=".5" fill="#1ABDA8"/><circle cx="8.5" cy="7.5" r=".5" fill="#1ABDA8"/><circle cx="6.5" cy="12.5" r=".5" fill="#1ABDA8"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`,
+    title: 'تصميم الهوية البصرية',
+    desc: 'بناء هوية متكاملة تعكس قيمك، تروي قصتك، وتترك انطباعاً لا يُنسى في ذهن عميلك.',
+    pattern: `<svg class="absolute left-0 bottom-0 opacity-10 pointer-events-none" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="#1ABDA8" d="M45.7,-76.3C58.9,-69.3,69.1,-55.3,77.5,-40.5C85.9,-25.8,92.5,-10.3,90.4,4.2C88.3,18.7,77.5,32.3,66.6,44.2C55.8,56.1,44.9,66.4,31.7,73.4C18.5,80.4,2.9,84.1,-12.3,82.4C-27.5,80.7,-42.4,73.6,-54.8,63.1C-67.2,52.6,-77.2,38.7,-82.9,23.3C-88.6,7.8,-90,-9.2,-84.5,-23.8C-79,-38.3,-66.6,-50.3,-52.7,-57.4C-38.8,-64.5,-23.4,-66.7,-7,-58.5C9.4,-50.2,18.8,-31.6,32.5,-83.4L45.7,-76.3Z" transform="translate(100 100)" /></svg>`
+  },
+  {
+    id: "ads",
+    colSpan: "md:col-span-4",
+    bgClass: "bg-white border border-[#1ABDA8]/15",
+    titleClass: "text-[#0D1B2A]",
+    descClass: "text-[#64748b]",
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1ABDA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>`,
+    title: 'الحملات الإعلانية',
+    desc: 'إدارة حملات (Google, Meta, Snap) لاستهداف دقيق ورفع فوري للمبيعات.',
+    pattern: ''
+  },
+  {
+    id: "content",
+    colSpan: "md:col-span-4",
+    bgClass: "bg-white border border-[#1ABDA8]/15",
+    titleClass: "text-[#0D1B2A]",
+    descClass: "text-[#64748b]",
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1ABDA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15-2 2 2 2"/><path d="m15 19 2-2-2-2"/></svg>`,
+    title: 'صناعة المحتوى',
+    desc: 'كتابة إبداعية وتصوير إنتاجي يبرز هوية علامتك ويتحدث بلسان جمهورك.',
+    pattern: ''
+  },
+  {
+    id: "social",
+    colSpan: "md:col-span-4",
+    bgClass: "bg-white border border-[#1ABDA8]/15",
+    titleClass: "text-[#0D1B2A]",
+    descClass: "text-[#64748b]",
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1ABDA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    title: 'إدارة التواصل',
+    desc: 'تفاعل مستمر وجدولة احترافية لبناء مجتمع ولاء حقيقي حول علامتك.',
+    pattern: ''
+  },
+  {
+    id: "seo",
+    colSpan: "md:col-span-4",
+    bgClass: "bg-white border border-[#1ABDA8]/15",
+    titleClass: "text-[#0D1B2A]",
+    descClass: "text-[#64748b]",
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1ABDA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m11 8 3 3-3 3"/></svg>`,
+    title: 'تحسين محركات (SEO)',
+    desc: 'تصدر نتائج البحث الأولى في جوجل لزيادة الزيارات العضوية والمجانية لموقعك.',
+    pattern: ''
+  },
+  {
+    id: "ecommerce",
+    colSpan: "md:col-span-8",
+    bgClass: "bg-gradient-to-r from-[#1ABDA8] to-[#0F6E56] text-white",
+    titleClass: "text-white",
+    descClass: "text-white/80",
+    icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+    title: 'إدارة المتاجر الإلكترونية',
+    desc: 'تحسين شامل لتجربة المستخدم (UX)، تبسيط رحلة العميل، وزيادة معدلات التحويل وإغلاق الصفقات لمتجرك.',
+    pattern: `<svg class="absolute left-0 top-0 opacity-10 pointer-events-none" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/></svg>`
+  }
 ];
 ---
-<section id="services" class="services" dir="rtl">
-  <div class="services-inner">
-    <div class="section-header">
-      <span class="section-eyebrow">ما نقدمه</span>
-      <h2 class="section-title">خدمات <span class="hl">تصنع الفارق</span></h2>
-      <p class="section-desc">كل ما تحتاجه لتعزيز تواجدك الرقمي تحت سقف واحد وبيد خبراء متخصصين</p>
+
+<section id="services" class="py-24 relative z-10" dir="rtl">
+  <div class="container mx-auto px-4 max-w-[1200px]">
+    
+    <div class="text-center mb-16">
+      <span class="inline-block text-[#1ABDA8] font-bold tracking-widest uppercase text-sm mb-3">قدراتنا الرقمية</span>
+      <h2 class="text-4xl md:text-5xl font-black text-[#0D1B2A] mb-4">خدمات <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#1ABDA8] to-[#0F6E56]">تصنع الفارق</span></h2>
+      <p class="text-[#64748b] font-medium text-lg max-w-2xl mx-auto">نقدم حلولاً تسويقية 360 درجة، مدمجة بلمسة فنية واستراتيجيات مبنية على الأرقام.</p>
     </div>
-    <div class="services-grid">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px]">
       {services.map((s) => (
-        <article class="service-card">
-          <div class="card-num">{s.num}</div>
-          <div class="card-icon">{s.icon}</div>
-          <h3 class="card-title">{s.title}</h3>
-          <p class="card-desc">{s.desc}</p>
-          <a href="#contact" class="card-cta">{s.cta} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          <div class="card-glow" aria-hidden="true"></div>
+        <article class={`group relative overflow-hidden rounded-[2rem] p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#1ABDA8]/10 ${s.colSpan} ${s.bgClass}`}>
+          
+          {s.pattern && <div set:html={s.pattern} />}
+          
+          <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+          <div class="relative z-10 flex justify-between items-start">
+            <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 w-fit transform group-hover:scale-110 transition-transform duration-500">
+              <Fragment set:html={s.icon} />
+            </div>
+            <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={s.titleClass} stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+          <div class="relative z-10 mt-auto">
+            <h3 class={`text-2xl font-black mb-3 ${s.titleClass}`}>{s.title}</h3>
+            <p class={`text-base font-medium leading-relaxed max-w-md ${s.descClass}`}>{s.desc}</p>
+          </div>
+
         </article>
       ))}
     </div>
+
   </div>
 </section>
-<style>
-.services { padding: 100px 5%; position: relative; z-index: 10; }
-.services-inner { max-width: 1200px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 60px; }
-.section-eyebrow { display: inline-block; color: var(--primary); font-size: 0.9rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
-.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--dark); margin-bottom: 16px; }
-.section-desc { color: var(--muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto; font-weight: 500; line-height: 1.6;}
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-.service-card { position: relative; overflow: hidden; background: #fff; border: 1px solid rgba(26, 189, 168, 0.15); border-radius: 20px; padding: 40px 30px; display: flex; flex-direction: column; gap: 16px; transition: all .3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-.service-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 20px 40px color-mix(in srgb, var(--primary) 15%, transparent); z-index: 2; }
-.service-card:hover .card-glow { opacity: 1; }
-.service-card:hover .card-cta { color: var(--primary-dk); gap: 12px; }
-.card-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--primary) 6%, transparent) 0%, transparent 70%); opacity: 0; transition: opacity .4s; pointer-events: none; }
-.card-num { position: absolute; top: 24px; left: 24px; font-size: 0.8rem; font-weight: 900; color: rgba(26,189,168,.2); letter-spacing: .1em; }
-.card-icon { font-size: 2.5rem; color: var(--primary); line-height: 1; }
-.card-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-top: 8px;}
-.card-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.7; flex: 1; font-weight: 500;}
-.card-cta { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.95rem; font-weight: 700; text-decoration: none; margin-top: 8px; transition: all .3s; position: relative; z-index: 10;}
-</style>
