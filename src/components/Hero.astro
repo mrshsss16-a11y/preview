@@ -1,0 +1,104 @@
+---
+// src/components/Hero.astro
+---
+<section class="hero" dir="rtl">
+  <div class="hero-bg" aria-hidden="true">
+    <svg class="geo-svg" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1.2" fill="var(--color-primary)" opacity="0.15"/></pattern></defs>
+      <rect width="1200" height="700" fill="url(#dots)"/><circle cx="900" cy="120" r="320" fill="var(--color-primary)" opacity="0.04"/><circle cx="950" cy="80" r="180" fill="var(--color-primary)" opacity="0.05"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="badge"><span class="badge-pulse"></span>الوكالة الرقمية الأسرع نموًا في مكة المكرمة</div>
+      <h1 class="hero-h1">وكالة <span class="hl">أورا</span> للتسويق<br/><span class="h1-sub">هالتك الفارقة في عالم التسويق</span></h1>
+      <p class="hero-body">شريكك الاستراتيجي بالسعودية. نهندس تجارب رقمية استثنائية ونطبق استراتيجيات SEO متقدمة لتتصدر علامتك محلياً وعالمياً.</p>
+      <div class="hero-ctas"><a href="#contact" class="cta-primary">طلب استشارة مجانية <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="#portfolio" class="cta-text">أعمالنا السابقة <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="stats-row">
+        <div class="stat-item"><div class="stat-top"><span class="stat-num" data-target="50">0</span><span class="stat-plus">+</span></div><span class="stat-label">عميل سعيد</span></div><div class="stat-sep"></div>
+        <div class="stat-item"><div class="stat-top"><span class="stat-num" data-target="85">0</span><span class="stat-plus">+</span></div><span class="stat-label">مشروع ناجح</span></div><div class="stat-sep"></div>
+        <div class="stat-item"><div class="stat-top"><span class="stat-num" data-target="5">0</span><span class="stat-plus">+</span></div><span class="stat-label">سنوات خبرة</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="mockup-card">
+        <div class="mockup-header"><div class="mh-dots"><span></span><span></span><span></span></div><div class="mh-bar">لوحة تحكم النمو</div></div>
+        <div class="mockup-body">
+          <div class="chart-row"><div class="chart-label">SEO</div><div class="chart-track"><div class="chart-fill" style="--w:88%"></div></div><span class="chart-val">88%</span></div>
+          <div class="chart-row"><div class="chart-label">إعلانات</div><div class="chart-track"><div class="chart-fill" style="--w:73%"></div></div><span class="chart-val">73%</span></div>
+          <div class="chart-row"><div class="chart-label">محتوى</div><div class="chart-track"><div class="chart-fill" style="--w:94%"></div></div><span class="chart-val">94%</span></div>
+          <div class="chart-row"><div class="chart-label">هوية</div><div class="chart-track"><div class="chart-fill" style="--w:61%"></div></div><span class="chart-val">61%</span></div>
+          <div class="mockup-metric"><div class="metric-box"><span class="metric-num">+240%</span><span class="metric-lbl">نمو العضوي</span></div><div class="metric-box accent"><span class="metric-num">3.2×</span><span class="metric-lbl">عائد الاستثمار</span></div></div>
+        </div>
+      </div>
+      <div class="float-badge"><span class="fb-dot"></span>نتائج حقيقية لعملاء حقيقيين</div>
+    </div>
+  </div>
+</section>
+<style>
+:root { --primary: #1ABDA8; --primary-dk: #0F6E56; --primary-soft: #E1F5EE; --dark: #0D1B2A; --text: #1e293b; --muted: #64748b; --bg: transparent; }
+.hero { position: relative; overflow: hidden; padding: 160px 5% 100px; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.geo-svg { width: 100%; height: 100%; object-fit: cover; }
+.hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: var(--primary-soft); border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent); color: var(--primary-dk); padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; margin-bottom: 24px; }
+.badge-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(.75); } }
+.hero-h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: var(--dark); line-height: 1.2; margin-bottom: 24px; }
+.hl { background: linear-gradient(135deg, var(--primary), var(--primary-dk)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.h1-sub { font-size: 0.55em; font-weight: 700; color: var(--muted); display: block; margin-top: 8px; }
+.hero-body { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px; max-width: 480px; font-weight: 500; }
+.hero-ctas { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 48px; }
+.cta-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 1.05rem; text-decoration: none; box-shadow: 0 4px 20px color-mix(in srgb, var(--primary) 40%, transparent); transition: all .2s; }
+.cta-primary:hover { background: var(--primary-dk); transform: translateY(-2px); box-shadow: 0 6px 28px color-mix(in srgb, var(--primary) 50%, transparent); }
+.cta-text { display: inline-flex; align-items: center; gap: 6px; color: var(--primary-dk); font-weight: 700; font-size: 1rem; text-decoration: none; transition: gap .2s; }
+.cta-text:hover { gap: 10px; }
+.stats-row { display: flex; align-items: center; gap: 30px; }
+.stat-item { display: flex; flex-direction: column; gap: 4px; }
+.stat-top { display: flex; align-items: baseline; gap: 2px; }
+.stat-num { font-size: 2.5rem; font-weight: 900; color: var(--dark); line-height: 1; }
+.stat-plus { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+.stat-label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+.stat-sep { width: 1px; height: 50px; background: linear-gradient(to bottom, transparent, var(--primary-soft), transparent); }
+.hero-visual { position: relative; display: flex; justify-content: center; }
+.mockup-card { width: 100%; max-width: 420px; background: #fff; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.08); overflow: hidden; }
+.mockup-header { background: var(--dark); padding: 14px 20px; display: flex; align-items: center; gap: 12px; }
+.mh-dots { display: flex; gap: 6px; }
+.mh-dots span { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.mh-bar { flex: 1; text-align: center; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,.6); }
+.mockup-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.chart-row { display: flex; align-items: center; gap: 12px; font-size: 0.85rem; font-weight: 600;}
+.chart-label { width: 50px; color: var(--muted); text-align: right; }
+.chart-track { flex: 1; height: 10px; background: var(--primary-soft); border-radius: 99px; overflow: hidden; }
+.chart-fill { height: 100%; width: var(--w); background: linear-gradient(90deg, var(--primary), var(--primary-dk)); border-radius: 99px; animation: grow 1.2s ease-out forwards; transform-origin: right; }
+@keyframes grow { from { width: 0; } to { width: var(--w); } }
+.chart-val { width: 36px; color: var(--primary-dk); }
+.mockup-metric { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+.metric-box { background: var(--bg); border-radius: 12px; padding: 16px; text-align: center; display: flex; flex-direction: column; gap: 4px; border: 1px solid rgba(0,0,0,0.03); }
+.metric-box.accent { background: var(--primary-soft); border-color: transparent; }
+.metric-num { font-size: 1.6rem; font-weight: 900; color: var(--dark); }
+.metric-box.accent .metric-num { color: var(--primary-dk); }
+.metric-lbl { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+.float-badge { position: absolute; bottom: -20px; right: -20px; background: #fff; border: 1px solid var(--primary-soft); border-radius: 999px; padding: 10px 20px; font-size: 0.85rem; font-weight: 700; color: var(--primary-dk); display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); z-index: 10;}
+.fb-dot { width: 10px; height: 10px; border-radius: 50%; background: #10b981; animation: pulse 1.5s ease-in-out infinite; }
+@media (max-width: 992px) { .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; } .hero { padding-top: 120px; } }
+</style>
+<script>
+document.querySelectorAll('.stat-num').forEach(el => {
+  const target = parseInt(el.getAttribute('data-target') || '0');
+  const obs = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+    obs.disconnect();
+    let start = performance.now();
+    const dur = 2000;
+    const tick = (now) => {
+      const t = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 4);
+      el.textContent = Math.round(ease * target).toString();
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, { threshold: 0.5 });
+  obs.observe(el);
+});
+</script>

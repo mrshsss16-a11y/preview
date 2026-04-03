@@ -1,0 +1,48 @@
+---
+const services = [
+  { num: '01', icon: '✦', title: 'الهوية البصرية', desc: 'بناء هوية متكاملة تعبر عن قيمك وتثبت وجودك في السوق.', cta: 'ابدأ هويتك' },
+  { num: '02', icon: '◎', title: 'تحسين محركات البحث', desc: 'تصدر النتائج الأولى على جوجل وزد زياراتك العضوية.', cta: 'تصدر الآن' },
+  { num: '03', icon: '⬡', title: 'الحملات الإعلانية', desc: 'إدارة حملات Google وMeta بذكاء وعائد استثمار مقاس.', cta: 'أطلق حملتك' },
+  { num: '04', icon: '◈', title: 'صناعة المحتوى', desc: 'محتوى يبني علامتك ويجذب جمهورك بلغة تلامس القلوب.', cta: 'ابدأ بمحتوى' },
+];
+---
+<section id="services" class="services" dir="rtl">
+  <div class="services-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">ما نقدمه</span>
+      <h2 class="section-title">خدمات <span class="hl">تصنع الفارق</span></h2>
+      <p class="section-desc">كل ما تحتاجه لتعزيز تواجدك الرقمي تحت سقف واحد وبيد خبراء متخصصين</p>
+    </div>
+    <div class="services-grid">
+      {services.map((s) => (
+        <article class="service-card">
+          <div class="card-num">{s.num}</div>
+          <div class="card-icon">{s.icon}</div>
+          <h3 class="card-title">{s.title}</h3>
+          <p class="card-desc">{s.desc}</p>
+          <a href="#contact" class="card-cta">{s.cta} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <div class="card-glow" aria-hidden="true"></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+.services { padding: 100px 5%; position: relative; z-index: 10; }
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-eyebrow { display: inline-block; color: var(--primary); font-size: 0.9rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--dark); margin-bottom: 16px; }
+.section-desc { color: var(--muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto; font-weight: 500; line-height: 1.6;}
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.service-card { position: relative; overflow: hidden; background: #fff; border: 1px solid rgba(26, 189, 168, 0.15); border-radius: 20px; padding: 40px 30px; display: flex; flex-direction: column; gap: 16px; transition: all .3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+.service-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 20px 40px color-mix(in srgb, var(--primary) 15%, transparent); z-index: 2; }
+.service-card:hover .card-glow { opacity: 1; }
+.service-card:hover .card-cta { color: var(--primary-dk); gap: 12px; }
+.card-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--primary) 6%, transparent) 0%, transparent 70%); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.card-num { position: absolute; top: 24px; left: 24px; font-size: 0.8rem; font-weight: 900; color: rgba(26,189,168,.2); letter-spacing: .1em; }
+.card-icon { font-size: 2.5rem; color: var(--primary); line-height: 1; }
+.card-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-top: 8px;}
+.card-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.7; flex: 1; font-weight: 500;}
+.card-cta { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.95rem; font-weight: 700; text-decoration: none; margin-top: 8px; transition: all .3s; position: relative; z-index: 10;}
+</style>

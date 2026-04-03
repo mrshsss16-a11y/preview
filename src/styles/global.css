@@ -63,3 +63,26 @@
     transform: translateZ(0);
   }
 }
+
+/* Section Backgrounds — كسر الأبيض */
+section:nth-child(odd)  { background: var(--bg, #F8FAFB); }       /* أبيض/رمادي فاتح */
+section:nth-child(even) { background: #F0FDFB; }       /* تيل خفيف جداً */
+
+/* للقسم الداكن (من نحن أو الشهادات) */
+.section-dark {
+  background: var(--dark, #0D1B2A);
+  color: #fff;
+}
+
+/* Section Backgrounds — التناوب اللوني الذي يكسر الأبيض */
+body > main > section:nth-child(odd) { background: #FDFDFD; } /* أبيض نقي */
+body > main > section:nth-child(even) { background: #F2FBF9; } /* تيل خفيف جداً للاستراحة البصرية */
+body > main > section.section-dark { background: #0D1B2A !important; } /* قفل لون الأقسام الداكنة */
+
+/* Section Backgrounds — التناوب اللوني الذي يكسر الأبيض */
+body > main > section:nth-child(odd) { background: #FDFDFD; } /* أبيض نقي */
+body > main > section:nth-child(even) { background: #F2FBF9; } /* تيل خفيف جداً للاستراحة البصرية */
+body > main > section.section-dark { background: #0D1B2A !important; } /* قفل لون الأقسام الداكنة */
+body > main > section:nth-child(odd) { background: #FDFDFD; }
+body > main > section:nth-child(even) { background: #F2FBF9; }
+body > main > section.section-dark { background: #0D1B2A !important; }
