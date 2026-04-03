@@ -1,0 +1,106 @@
+---
+const CLIENT_LOGOS = [
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D9%88%D8%A7%D8%B1%D9%82%D8%A9%20(1).webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%AD%D8%AF%D8%A7%D8%A6%D9%82%20%D8%A7%D9%84%D9%81%D8%B1%D8%A7%D8%AA.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D9%86%D8%A7%D8%AF%D9%8A%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%82%D9%8A.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D9%85%D8%AD%D9%85%D8%AF%20%D8%B7%D9%87%20%D8%A7%D9%84%D8%B3%D9%82%D8%A7%D9%81.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%B9%D9%85%D8%B1%D8%A7%D9%86.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%B3%D9%82%D9%86%D8%AA%D8%B4%D8%B1.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%AC%D8%A7%D9%85%D8%B9%D8%A9%20%D8%A7%D9%85%20%D8%A7%D9%84%D9%82%D8%B1%D9%89.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%A7%D9%84%D9%87%D9%8A%D8%A6%D8%A9%20%D8%A7%D9%84%D9%85%D9%84%D9%83%D9%8A%D8%A9.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%84%D9%87%D9%84%D8%A7%D9%84-%D8%A7%D9%84%D8%A7%D8%AD%D9%85%D8%B1%20(1).webp"
+];
+
+// تكرار الشعارات 3 مرات لضمان استمرار الحركة السلسة
+const SCROLLING_LOGOS = [...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS];
+---
+
+<section class="marquee-section border-y border-[#B3B7C1]/10 py-10 overflow-hidden relative z-10" dir="ltr">
+  <div class="container mx-auto px-4 mb-6 text-center">
+    <p class="text-sm font-bold text-[#B3B7C1] tracking-widest uppercase" dir="rtl">شركاء النجاح</p>
+  </div>
+  
+  <div class="marquee-container">
+    <div class="fade-left"></div>
+    <div class="fade-right"></div>
+    
+    <div class="marquee-track">
+      {SCROLLING_LOGOS.map((logo) => (
+        <img src={logo} alt="عميل أورا" loading="lazy" width="140" height="60" class="client-logo" />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-section {
+    background: #FDFDFD; /* نفس خلفية الهيرو لكي يندمج معه بسلاسة */
+  }
+
+  .marquee-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  /* تدرجات التلاشي لإخفاء دخول وخروج الشعارات */
+  .fade-left, .fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .fade-left {
+    left: 0;
+    background: linear-gradient(to right, #FDFDFD 0%, transparent 100%);
+  }
+  .fade-right {
+    right: 0;
+    background: linear-gradient(to left, #FDFDFD 0%, transparent 100%);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 4rem; /* مسافة متوازنة بين الشعارات */
+    padding: 0 2rem;
+    align-items: center;
+    width: max-content;
+    animation: scroll 45s linear infinite;
+  }
+
+  /* إيقاف الحركة عند تمرير الماوس للمساعدة في القراءة */
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .client-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    /* تحويل الشعارات إلى لون #B3B7C1 (الرمادي الخاص بالبروتوكول) كحالة افتراضية */
+    filter: grayscale(100%) opacity(0.5) contrast(0.8) brightness(1.2);
+    transition: all 0.4s ease;
+  }
+
+  /* تلوين الشعار بألوانه الأصلية عند التمرير (Hover) أو إعطائه بروتوكول أورا */
+  .client-logo:hover {
+    filter: grayscale(0%) opacity(1) contrast(1) brightness(1);
+    transform: scale(1.05);
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100% / 3)); } /* الحركة تعتمد على التكرار الثلاثي */
+  }
+
+  @media (max-width: 768px) {
+    .client-logo { height: 40px; }
+    .marquee-track { gap: 2.5rem; animation-duration: 30s; } /* حركة أسرع قليلاً في الجوال */
+  }
+</style>
