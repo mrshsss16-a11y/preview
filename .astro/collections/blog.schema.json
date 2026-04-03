@@ -1,29 +1,29 @@
 {
-  "$ref": "#/definitions/portfolio",
+  "$ref": "#/definitions/blog",
   "definitions": {
-    "portfolio": {
+    "blog": {
       "type": "object",
       "properties": {
         "title": {
           "type": "string"
         },
-        "client": {
-          "type": "string"
+        "author": {
+          "type": "string",
+          "default": "فريق أورا"
         },
-        "category": {
-          "type": "string"
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
         },
         "publishDate": {
           "type": "string"
         },
-        "description": {
-          "type": "string"
-        },
-        "colSpan": {
-          "type": "string"
-        },
-        "gradient": {
-          "type": "string"
+        "summary": {
+          "type": "string",
+          "default": ""
         },
         "$schema": {
           "type": "string"
@@ -31,10 +31,7 @@
       },
       "required": [
         "title",
-        "client",
-        "category",
-        "publishDate",
-        "description"
+        "publishDate"
       ],
       "additionalProperties": false
     }

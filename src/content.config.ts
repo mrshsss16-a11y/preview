@@ -1,22 +1,28 @@
 import { defineCollection, z } from 'astro:content';
-// في حال ربطك بـ CMS مثل Sanity، يتم استيراد المحمل المخصص
-// import { sanityLoader } from '@sanity/astro';
+import { glob } from 'astro/loaders';
 
 const portfolio = defineCollection({
-  // نوع المحتوى يدعم Content Layer API في Astro 5
-  type: 'content', 
-  // loader: sanityLoader({ ... }), // يتم تفعيله عند ربط CMS فعلي
-  
-  // مخطط التحقق الصارم (Zod Schema for strict type safety)
-  schema: ({ image }) => z.object({
-    title: z.string().min(3, "يجب أن يتجاوز العنوان 3 أحرف"),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/portfolio" }),
+  schema: z.object({
+    title: z.string(),
     client: z.string(),
+    category: z.string(),
+    publishDate: z.string(),
     description: z.string(),
-    services: z.array(z.string()),
-    imageUrl: z.string().url("يجب توفير رابط صالح للصورة").optional(),
-    coverImage: image().optional(), // يدعم مكون Astro <Image /> الآلي
-    isFeatured: z.boolean().default(false),
-  })
+    colSpan: z.string().optional(),
+    gradient: z.string().optional(),
+  }),
 });
 
-export const collections = { portfolio };
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    author: z.string().default('فريق أورا'),
+    tags: z.array(z.string()).default([]),
+    publishDate: z.string(),
+    summary: z.string().default(''),
+  }),
+});
+
+export const collections = { portfolio, blog };
