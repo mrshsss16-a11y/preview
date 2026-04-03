@@ -86,3 +86,6 @@ body > main > section.section-dark { background: #0D1B2A !important; } /* قفل
 body > main > section:nth-child(odd) { background: #FDFDFD; }
 body > main > section:nth-child(even) { background: #F2FBF9; }
 body > main > section.section-dark { background: #0D1B2A !important; }
+body > main > section:nth-child(odd) { background: #FDFDFD; }
+body > main > section:nth-child(even) { background: #F2FBF9; }
+body > main > section.section-dark { background: #0D1B2A !important; }
