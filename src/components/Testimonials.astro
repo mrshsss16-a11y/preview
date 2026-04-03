@@ -44,9 +44,10 @@ const testimonials = [
 .text-muted-light { color: var(--aura-silver); max-width: 500px; margin: 0 auto; line-height: 1.6; font-size: 1.1rem; }
 .testi-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; padding: 40px; position: relative; backdrop-filter: blur(10px); transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
 .testi-card:hover { transform: translateY(-4px); border-color: rgba(88,168,180,0.3); }
-.quote-icon { position: absolute; top: 30px; left: 30px; transform: scaleX(-1); /* عكس الرمز ليلائم العربية */ }
+.quote-icon { position: absolute; top: 30px; left: 30px; transform: scaleX(-1); }
 .quote-text { color: #e2e8f0; font-size: 1.1rem; line-height: 1.8; margin-top: 10px; margin-bottom: 30px; font-weight: 500; }
-.testi-author { display: flex; align-items: center; gap: 16px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; mt-auto;}
+/* هنا تم إصلاح الخطأ من mt-auto إلى margin-top: auto; */
+.testi-author { display: flex; align-items: center; gap: 16px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: auto; }
 .author-avatar { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.05); color: var(--aura-primary); border: 1px solid rgba(88,168,180,0.2); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.4rem; }
 .author-name { color: #fff; font-weight: 800; font-size: 1.1rem; margin-bottom: 4px; }
 .author-title { color: var(--aura-silver); font-size: 0.85rem; font-weight: 500;}
