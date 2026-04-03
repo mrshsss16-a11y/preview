@@ -5,19 +5,24 @@
       "type": "object",
       "properties": {
         "title": {
-          "type": "string"
+          "type": "string",
+          "default": "مشروع أورا"
         },
         "client": {
-          "type": "string"
+          "type": "string",
+          "default": "عميل"
         },
         "category": {
-          "type": "string"
+          "type": "string",
+          "default": "عام"
         },
         "publishDate": {
-          "type": "string"
+          "type": "string",
+          "default": "2026-04-03"
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "default": ""
         },
         "colSpan": {
           "type": "string"
@@ -25,17 +30,13 @@
         "gradient": {
           "type": "string"
         },
+        "services": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }
       },
-      "required": [
-        "title",
-        "client",
-        "category",
-        "publishDate",
-        "description"
-      ],
       "additionalProperties": false
     }
   },

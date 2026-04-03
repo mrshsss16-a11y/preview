@@ -5,7 +5,8 @@
       "type": "object",
       "properties": {
         "title": {
-          "type": "string"
+          "type": "string",
+          "default": "مقال أورا"
         },
         "author": {
           "type": "string",
@@ -19,7 +20,8 @@
           "default": []
         },
         "publishDate": {
-          "type": "string"
+          "type": "string",
+          "default": "2026-04-03"
         },
         "summary": {
           "type": "string",
@@ -29,10 +31,6 @@
           "type": "string"
         }
       },
-      "required": [
-        "title",
-        "publishDate"
-      ],
       "additionalProperties": false
     }
   },
