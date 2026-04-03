@@ -5,9 +5,9 @@ const services = [
     colSpan: "col-span-1 md:col-span-2 lg:col-span-8",
     bgClass: "bg-[var(--dark)]",
     titleClass: "text-white",
-    descClass: "text-[var(--aura-silver)]",
+    descClass: "text-white/80", /* تباين قوي */
     iconColor: "var(--aura-primary)",
-    iconBg: "bg-white/10 border-white/5",
+    iconBg: "bg-white/10 border border-white/10",
     arrowBg: "bg-white/10 text-white",
     icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`,
     title: 'تصميم الهوية البصرية',
@@ -17,12 +17,12 @@ const services = [
   {
     id: "ads",
     colSpan: "col-span-1 lg:col-span-4",
-    bgClass: "bg-white",
+    bgClass: "bg-white border border-[var(--aura-silver)]/20",
     titleClass: "text-[var(--dark)]",
-    descClass: "text-[var(--dark)]/70",
+    descClass: "text-[var(--dark)]/70", /* تباين قوي ومريح */
     iconColor: "var(--aura-secondary)",
-    iconBg: "bg-[var(--aura-secondary)]/10 border-[var(--aura-secondary)]/10",
-    arrowBg: "bg-black/5 text-[var(--dark)]",
+    iconBg: "bg-[var(--aura-secondary)]/10 border border-[var(--aura-secondary)]/10",
+    arrowBg: "bg-[var(--aura-secondary)]/10 text-[var(--aura-secondary)]",
     icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>`,
     title: 'الحملات الإعلانية',
     desc: 'إدارة حملات (Google, Meta) لاستهداف دقيق ورفع فوري للمبيعات.',
@@ -31,26 +31,26 @@ const services = [
   {
     id: "content",
     colSpan: "col-span-1 lg:col-span-4",
-    bgClass: "bg-white",
+    bgClass: "bg-white border border-[var(--aura-silver)]/20",
     titleClass: "text-[var(--dark)]",
     descClass: "text-[var(--dark)]/70",
     iconColor: "var(--aura-primary)",
-    iconBg: "bg-[var(--aura-primary)]/10 border-[var(--aura-primary)]/10",
-    arrowBg: "bg-black/5 text-[var(--dark)]",
+    iconBg: "bg-[var(--aura-primary)]/10 border border-[var(--aura-primary)]/10",
+    arrowBg: "bg-[var(--aura-primary)]/10 text-[var(--aura-primary)]",
     icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15-2 2 2 2"/><path d="m15 19 2-2-2-2"/></svg>`,
     title: 'صناعة المحتوى',
-    desc: 'كتابة إبداعية وتصوير إنتاجي يبرز هوية علامتك.',
+    desc: 'كتابة إبداعية وتصوير إنتاجي يبرز هوية علامتك ويتحدث بلسان جمهورك.',
     pattern: ''
   },
   {
     id: "social",
     colSpan: "col-span-1 lg:col-span-4",
-    bgClass: "bg-[var(--aura-secondary)]",
-    titleClass: "text-white",
-    descClass: "text-white/90",
-    iconColor: "#ffffff",
-    iconBg: "bg-white/20 border-white/10",
-    arrowBg: "bg-white/20 text-white",
+    bgClass: "bg-white border border-[var(--aura-silver)]/20",
+    titleClass: "text-[var(--dark)]",
+    descClass: "text-[var(--dark)]/70",
+    iconColor: "var(--aura-secondary)",
+    iconBg: "bg-[var(--aura-secondary)]/10 border border-[var(--aura-secondary)]/10",
+    arrowBg: "bg-[var(--aura-secondary)]/10 text-[var(--aura-secondary)]",
     icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
     title: 'إدارة التواصل',
     desc: 'تفاعل مستمر وجدولة احترافية لبناء مجتمع حول علامتك.',
@@ -59,12 +59,12 @@ const services = [
   {
     id: "seo",
     colSpan: "col-span-1 lg:col-span-4",
-    bgClass: "bg-[var(--dark)]",
-    titleClass: "text-white",
-    descClass: "text-[var(--aura-silver)]",
+    bgClass: "bg-white border border-[var(--aura-silver)]/20",
+    titleClass: "text-[var(--dark)]",
+    descClass: "text-[var(--dark)]/70",
     iconColor: "var(--aura-primary)",
-    iconBg: "bg-white/10 border-white/5",
-    arrowBg: "bg-white/10 text-white",
+    iconBg: "bg-[var(--aura-primary)]/10 border border-[var(--aura-primary)]/10",
+    arrowBg: "bg-[var(--aura-primary)]/10 text-[var(--aura-primary)]",
     icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m11 8 3 3-3 3"/></svg>`,
     title: 'تحسين محركات (SEO)',
     desc: 'تصدر نتائج البحث الأولى في جوجل لزيادة الزيارات العضوية.',
@@ -73,16 +73,16 @@ const services = [
   {
     id: "ecommerce",
     colSpan: "col-span-1 md:col-span-2 lg:col-span-12",
-    bgClass: "bg-[var(--aura-primary)]",
-    titleClass: "text-[var(--dark)]",
-    descClass: "text-[var(--dark)]/80",
-    iconColor: "var(--dark)",
-    iconBg: "bg-[var(--dark)]/10 border-[var(--dark)]/10",
-    arrowBg: "bg-[var(--dark)]/10 text-[var(--dark)]",
+    bgClass: "bg-gradient-to-r from-[var(--aura-primary)] to-[var(--aura-secondary)]",
+    titleClass: "text-white",
+    descClass: "text-white/90", /* تباين قوي فوق التدرج */
+    iconColor: "#ffffff",
+    iconBg: "bg-white/20 border border-white/20",
+    arrowBg: "bg-white/20 text-white",
     icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
     title: 'إدارة المتاجر الإلكترونية',
     desc: 'تحسين شامل لتجربة المستخدم (UX)، تبسيط رحلة العميل، وزيادة معدلات التحويل وإغلاق الصفقات لمتجرك.',
-    pattern: `<svg class="absolute left-0 top-0 opacity-[0.05] pointer-events-none" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)" class="text-[var(--dark)]"/></svg>`
+    pattern: `<svg class="absolute left-0 top-0 opacity-10 pointer-events-none" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/></svg>`
   }
 ];
 ---
@@ -94,37 +94,33 @@ const services = [
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4.1 12 6M5.1 8l-2.9 2M21.2 16l-2.2-2M15 22H9c-1.1 0-2-.9-2-2V9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11c0 1.1-.9 2-2 2Z"/></svg>
         منظومة متكاملة
       </span>
-      <h2 class="text-4xl md:text-5xl font-black text-[var(--dark)] mb-4">نجمع قطع <span class="text-transparent bg-clip-text bg-gradient-to-l from-[var(--aura-primary)] to-[var(--aura-secondary)]">الأحجية</span> لتكتمل هالتك</h2>
-      <p class="text-[var(--aura-silver)] font-medium text-lg max-w-2xl mx-auto">خدمات تسويقية متفرقة لا تصنع نجاحاً. في أورا، نصمم لك منظومة تعمل كقطعة واحدة متناغمة ومترابطة.</p>
+      <h2 class="text-4xl md:text-5xl font-black text-[var(--dark)] mb-4">خدمات <span class="text-transparent bg-clip-text bg-gradient-to-l from-[var(--aura-primary)] to-[var(--aura-secondary)]">تصنع الفارق</span></h2>
+      <p class="text-[var(--aura-silver)] font-medium text-lg max-w-2xl mx-auto">نقدم حلولاً تسويقية 360 درجة، مدمجة بلمسة فنية واستراتيجيات مبنية على الأرقام.</p>
     </div>
 
-    <div class="bg-[var(--aura-silver)]/20 p-[1px] rounded-[2.5rem] md:rounded-[3rem] shadow-2xl shadow-[var(--dark)]/5">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-[1px] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden bg-[var(--aura-silver)]/20">
-        
-        {services.map((s) => (
-          <article class={`group relative p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:z-20 hover:scale-[1.01] hover:shadow-2xl hover:rounded-[2rem] ${s.colSpan} ${s.bgClass}`}>
-            
-            {s.pattern && <div set:html={s.pattern} />}
-            
-            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
-            <div class="relative z-10 flex justify-between items-start mb-8 lg:mb-0">
-              <div class={`p-4 rounded-2xl border backdrop-blur-sm w-fit transform group-hover:scale-110 transition-transform duration-500 ${s.iconBg}`} style={`color: ${s.iconColor}`}>
-                <Fragment set:html={s.icon} />
-              </div>
-              <div class={`w-10 h-10 rounded-full flex items-center justify-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ${s.arrowBg}`}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 auto-rows-auto lg:auto-rows-[280px]">
+      
+      {services.map((s) => (
+        <article class={`group relative p-8 md:p-10 flex flex-col justify-between rounded-[2rem] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] ${s.colSpan} ${s.bgClass}`}>
+          
+          {s.pattern && <div set:html={s.pattern} />}
+          
+          <div class="relative z-10 flex justify-between items-start mb-8 lg:mb-0">
+            <div class={`p-4 rounded-2xl w-fit transform group-hover:scale-110 transition-transform duration-300 ${s.iconBg}`} style={`color: ${s.iconColor}`}>
+              <Fragment set:html={s.icon} />
             </div>
-
-            <div class="relative z-10 mt-auto">
-              <h3 class={`text-xl md:text-2xl font-black mb-3 ${s.titleClass}`}>{s.title}</h3>
-              <p class={`text-base font-medium leading-relaxed max-w-md ${s.descClass}`}>{s.desc}</p>
+            <div class={`w-10 h-10 rounded-full flex items-center justify-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ${s.arrowBg}`}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
-          </article>
-        ))}
+          </div>
 
-      </div>
+          <div class="relative z-10 mt-auto">
+            <h3 class={`text-xl md:text-2xl font-black mb-3 ${s.titleClass}`}>{s.title}</h3>
+            <p class={`text-base font-medium leading-relaxed max-w-sm ${s.descClass}`}>{s.desc}</p>
+          </div>
+        </article>
+      ))}
+
     </div>
 
   </div>
