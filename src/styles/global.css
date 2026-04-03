@@ -3,89 +3,25 @@
 @tailwind utilities;
 
 @layer base {
-  /* استدعاء خط DIN Next LT Arabic - الوزن العادي */
-  @font-face {
-    font-family: 'DIN Next LT Arabic';
-    src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Regular-3%20(1).ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
+  @font-face { font-family: 'DIN Next LT Arabic'; src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Regular-3%20(1).ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'DIN Next LT Arabic'; src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.woff2') format('woff2'), url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'DIN Next LT Arabic'; src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
 
-  /* استدعاء خط DIN Next LT Arabic - الوزن العريض */
-  @font-face {
-    font-family: 'DIN Next LT Arabic';
-    src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.woff2') format('woff2'),
-         url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  /* تعيين الوزن العريض جداً ليقرأ نفس الملف العريض (لأننا نستخدم font-black بكثرة) */
-  @font-face {
-    font-family: 'DIN Next LT Arabic';
-    src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    /* تطبيق الخط الجديد مع تجوال كاحتياطي */
-    font-family: 'DIN Next LT Arabic', 'Tajawal', sans-serif !important;
-    line-height: 1.8;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #FDFDFD;
-  }
-  
-  /* وسادة أمان لمنع قص الحروف العربية */
-  h1, h2, h3, h4, h5, h6, p, span, a, button {
-    padding-top: 0.1em;
-    padding-bottom: 0.1em;
-  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DIN Next LT Arabic', 'Tajawal', sans-serif !important; line-height: 1.8; -webkit-font-smoothing: antialiased; background-color: #FDFDFD; }
+  h1, h2, h3, h4, h5, h6, p, span, a, button { padding-top: 0.1em; padding-bottom: 0.1em; }
 }
 
-@layer utilities {
-  .leading-none { line-height: 1.3 !important; }
-  .leading-tight { line-height: 1.5 !important; }
-  .leading-snug { line-height: 1.6 !important; }
-  .leading-normal { line-height: 1.8 !important; }
-  .leading-relaxed { line-height: 2.0 !important; }
-
-  .gpu-accelerated {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
+:root {
+  --primary: #1D4ED8;       /* أزرق أساسي */
+  --primary-dk: #1E3A8A;    /* أزرق داكن */
+  --primary-soft: #EFF6FF;  /* أزرق ثلجي ناعم */
+  --accent: #1ABDA8;        /* الأخضر المزرق (Teal) للمسات */
+  --dark: #0B1727;          /* كحلي عميق جداً */
+  --text: #334155;
+  --muted: #64748b;
 }
 
-/* Section Backgrounds — كسر الأبيض */
-section:nth-child(odd)  { background: var(--bg, #F8FAFB); }       /* أبيض/رمادي فاتح */
-section:nth-child(even) { background: #F0FDFB; }       /* تيل خفيف جداً */
-
-/* للقسم الداكن (من نحن أو الشهادات) */
-.section-dark {
-  background: var(--dark, #0D1B2A);
-  color: #fff;
-}
-
-/* Section Backgrounds — التناوب اللوني الذي يكسر الأبيض */
-body > main > section:nth-child(odd) { background: #FDFDFD; } /* أبيض نقي */
-body > main > section:nth-child(even) { background: #F2FBF9; } /* تيل خفيف جداً للاستراحة البصرية */
-body > main > section.section-dark { background: #0D1B2A !important; } /* قفل لون الأقسام الداكنة */
-
-/* Section Backgrounds — التناوب اللوني الذي يكسر الأبيض */
-body > main > section:nth-child(odd) { background: #FDFDFD; } /* أبيض نقي */
-body > main > section:nth-child(even) { background: #F2FBF9; } /* تيل خفيف جداً للاستراحة البصرية */
-body > main > section.section-dark { background: #0D1B2A !important; } /* قفل لون الأقسام الداكنة */
 body > main > section:nth-child(odd) { background: #FDFDFD; }
-body > main > section:nth-child(even) { background: #F2FBF9; }
-body > main > section.section-dark { background: #0D1B2A !important; }
-body > main > section:nth-child(odd) { background: #FDFDFD; }
-body > main > section:nth-child(even) { background: #F2FBF9; }
-body > main > section.section-dark { background: #0D1B2A !important; }
+body > main > section:nth-child(even) { background: #F8FAFC; }
+body > main > section.section-dark { background: var(--dark) !important; }
