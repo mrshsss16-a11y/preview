@@ -3,17 +3,48 @@
 @tailwind utilities;
 
 @layer base {
+  /* استدعاء خط DIN Next LT Arabic - الوزن العادي */
+  @font-face {
+    font-family: 'DIN Next LT Arabic';
+    src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Regular-3%20(1).ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* استدعاء خط DIN Next LT Arabic - الوزن العريض */
+  @font-face {
+    font-family: 'DIN Next LT Arabic';
+    src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.woff2') format('woff2'),
+         url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* تعيين الوزن العريض جداً ليقرأ نفس الملف العريض (لأننا نستخدم font-black بكثرة) */
+  @font-face {
+    font-family: 'DIN Next LT Arabic';
+    src: url('https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/DINNextLTArabic-Bold-2.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   html {
     scroll-behavior: smooth;
   }
+  
   body {
-    /* الارتفاع الطبيعي والمريح للغة العربية */
+    /* تطبيق الخط الجديد مع تجوال كاحتياطي */
+    font-family: 'DIN Next LT Arabic', 'Tajawal', sans-serif !important;
     line-height: 1.8;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #FDFDFD;
   }
   
-  /* وسادة أمان (Padding) علوية وسفلية لكل النصوص لضمان عدم قص التشكيل والنقاط */
+  /* وسادة أمان لمنع قص الحروف العربية */
   h1, h2, h3, h4, h5, h6, p, span, a, button {
     padding-top: 0.1em;
     padding-bottom: 0.1em;
@@ -21,14 +52,12 @@
 }
 
 @layer utilities {
-  /* إجبار Tailwind على احترام مساحات خط تجوال */
   .leading-none { line-height: 1.3 !important; }
   .leading-tight { line-height: 1.5 !important; }
   .leading-snug { line-height: 1.6 !important; }
   .leading-normal { line-height: 1.8 !important; }
   .leading-relaxed { line-height: 2.0 !important; }
 
-  /* تسريع الأنيميشن ومنع التقطيع */
   .gpu-accelerated {
     will-change: transform, opacity;
     transform: translateZ(0);

@@ -1,44 +1,58 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Award } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="relative w-full pt-20 pb-10 mt-32 border-t border-gray-200/50 bg-gradient-to-b from-transparent to-gray-50/80 overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#58A8B4]/5 blur-[120px] rounded-full pointer-events-none" />
+    <footer className="bg-[#1A1D20] text-white pt-20 pb-10 border-t border-[#B3B7C1]/10 rounded-t-[3rem] mt-20 relative overflow-hidden">
+      {/* Subtle brand glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#58A8B4]/10 blur-[100px] pointer-events-none" />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2 space-y-6">
-            <h3 className="text-3xl font-extrabold text-[#58A8B4]">أورا للتسويق</h3>
-            <p className="text-gray-500 font-medium max-w-sm leading-relaxed">
-              وكالة تسويق رقمي سعودية متخصصة في صناعة الهوية والنمو الرقمي من قلب مكة المكرمة إلى العالم.
+          
+          <div className="col-span-1 md:col-span-2">
+            <img 
+              src="https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp" 
+              alt="أورا للتسويق" 
+              className="h-14 mb-6 brightness-0 invert opacity-90"
+            />
+            <h3 className="text-2xl font-extrabold text-white mb-2">هالتك الفارقة في عالم التسويق.</h3>
+            <p className="text-[#B3B7C1] max-w-sm leading-relaxed mt-4">
+              وكالة رقمية متكاملة تنطلق من مكة المكرمة لتهندس حضوراً رقمياً يليق بطموح علامتك التجارية.
             </p>
-            <div className="inline-flex items-center gap-2 bg-white/60 border border-[#58A8B4]/20 text-[#438FB3] px-4 py-2 rounded-full font-bold text-sm shadow-sm">
-              <Award size={18} /> شريك رقمي معتمد - منشآت
-            </div>
           </div>
-          <div className="space-y-6">
-            <h4 className="text-lg font-bold text-[#1A1D20]">روابط سريعة</h4>
-            <ul className="space-y-3 text-gray-500 font-medium">
-              {['الرئيسية', 'عن أورا', 'خدماتنا', 'أعمالنا', 'المدونة'].map((link) => (
-                <li key={link}><a href="#" className="hover:text-[#58A8B4] transition-colors">{link}</a></li>
-              ))}
+
+          <div>
+            <h4 className="text-[#58A8B4] font-bold mb-6 text-lg">روابط سريعة</h4>
+            <ul className="space-y-4 text-[#B3B7C1]">
+              <li><a href="/" className="hover:text-white transition-colors">الرئيسية</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">الخدمات</a></li>
+              <li><a href="#about" className="hover:text-white transition-colors">عن أورا</a></li>
+              <li><a href="#portfolio" className="hover:text-white transition-colors">أعمالنا</a></li>
             </ul>
           </div>
-          <div className="space-y-6">
-            <h4 className="text-lg font-bold text-[#1A1D20]">تواصل معنا</h4>
-            <ul className="space-y-4 text-gray-500 font-medium">
-              <li className="flex items-center gap-3"><MapPin size={20} className="text-[#58A8B4]"/> مكة المكرمة، الشوقية</li>
-              <li className="flex items-center gap-3"><Phone size={20} className="text-[#58A8B4]"/> +966 59 030 7863</li>
-              <li className="flex items-center gap-3"><Mail size={20} className="text-[#58A8B4]"/> info@aura-mkt.com</li>
+
+          <div>
+            <h4 className="text-[#58A8B4] font-bold mb-6 text-lg">التواصل الاجتماعي</h4>
+            <ul className="space-y-4 text-[#B3B7C1]">
+              <li><a href="#" className="hover:text-[#58A8B4] transition-colors font-sans">Twitter / X</a></li>
+              <li><a href="#" className="hover:text-[#58A8B4] transition-colors font-sans">LinkedIn</a></li>
+              <li><a href="#" className="hover:text-[#58A8B4] transition-colors font-sans">Instagram</a></li>
             </ul>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-gray-200/50 text-gray-400 text-sm font-medium">
-          <p>© 2026 أورا للتسويق. جميع الحقوق محفوظة.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-[#58A8B4]">الشروط والأحكام</a>
-            <a href="#" className="hover:text-[#58A8B4]">سياسة الخصوصية</a>
-          </div>
+
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-[#B3B7C1]/20">
+          <p className="text-[#B3B7C1] text-sm mb-4 md:mb-0">
+            © {new Date().getFullYear()} وكالة أورا للتسويق. جميع الحقوق محفوظة.
+          </p>
+          <button onClick={scrollToTop} className="w-12 h-12 rounded-full bg-white/5 hover:bg-[#58A8B4] border border-[#B3B7C1]/20 hover:border-transparent flex items-center justify-center transition-all group">
+            <ArrowUp className="text-white group-hover:-translate-y-1 transition-transform" size={20} />
+          </button>
         </div>
       </div>
     </footer>

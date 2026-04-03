@@ -15,8 +15,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -36,9 +38,9 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`relative flex items-center justify-between bg-white/70 backdrop-blur-2xl border border-white/50 px-6 py-4 rounded-full shadow-[0_8px_30px_rgb(179,183,193,0.15)] transition-all duration-300 ${scrolled ? 'bg-white/80 shadow-md' : ''}`}>
+        {/* Sticky + Blur Logic */}
+        <div className={`relative flex items-center justify-between px-6 py-4 rounded-full transition-all duration-300 ${scrolled ? 'bg-white/85 backdrop-blur-xl border border-[#B3B7C1]/30 shadow-sm' : 'bg-transparent'}`}>
           
-          {/* تم استبدال النص بالشعار الرسمي الذي أرسلته */}
           <a href="/" className="flex items-center">
             <img 
               src="https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp" 
@@ -58,7 +60,7 @@ export default function Navbar() {
 
           <button 
             onClick={scrollToContact}
-            className="hidden sm:flex items-center gap-2 bg-[#58A8B4] hover:bg-[#438FB3] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-sm hover:shadow-md group"
+            className="hidden sm:flex items-center gap-2 bg-[#58A8B4] hover:bg-[#438FB3] text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-all shadow-sm hover:shadow-md group"
           >
             ابدأ مشروعك <ArrowUpLeft size={16} className="group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 transition-transform" />
           </button>
@@ -73,7 +75,7 @@ export default function Navbar() {
         {isOpen && (
           <motion.div 
             initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ type: "spring", stiffness: 100 }}
-            className="absolute top-full left-4 right-4 mt-2 bg-white/95 backdrop-blur-3xl border border-gray-100 p-6 rounded-3xl shadow-2xl md:hidden flex flex-col gap-4"
+            className="absolute top-full left-4 right-4 mt-2 bg-white/95 backdrop-blur-3xl border border-[#B3B7C1]/30 p-6 rounded-3xl shadow-2xl md:hidden flex flex-col gap-4"
           >
             {NAV_LINKS.map((link) => (
               <a key={link.name} href={link.href} className="text-lg font-bold text-[#1A1D20] hover:text-[#58A8B4] border-b border-gray-100 pb-3" onClick={() => setIsOpen(false)}>
