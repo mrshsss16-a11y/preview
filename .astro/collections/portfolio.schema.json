@@ -1,0 +1,54 @@
+{
+  "$ref": "#/definitions/portfolio",
+  "definitions": {
+    "portfolio": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "errorMessage": {
+            "minLength": "يجب أن يتجاوز العنوان 3 أحرف"
+          }
+        },
+        "client": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imageUrl": {
+          "type": "string",
+          "format": "uri",
+          "errorMessage": {
+            "format": "يجب توفير رابط صالح للصورة"
+          }
+        },
+        "coverImage": {
+          "type": "string"
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "default": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "client",
+        "description",
+        "services"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

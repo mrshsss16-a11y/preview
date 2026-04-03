@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="صمم باقتك | باقات تسويقية مرنة">
+  <main class="relative overflow-hidden w-full pt-40 pb-32 min-h-screen">
+    
+    <div class="absolute top-[10%] right-[20%] w-[50vw] h-[50vh] bg-aura-primary/10 blur-[120px] rounded-full pointer-events-none" style="z-index: -20;"></div>
+
+    <section class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-7xl font-extrabold text-aura-text mb-6 tracking-tight drop-shadow-md">صمم <span class="text-transparent bg-clip-text bg-gradient-to-l from-aura-primary to-aura-accent">باقتك</span></h1>
+        <p class="text-xl md:text-2xl text-aura-text/85 max-w-2xl mx-auto leading-relaxed bg-white/40 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-sm">
+          استثمار ذكي يحقق نمواً مستداماً لعلامتك التجارية. اختر الباقة التي تلبي طموحاتك المليونية.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto items-center">
+        
+        <!-- Basic -->
+        <div class="bg-white/60 backdrop-blur-xl border border-white/80 shadow-liquid-glass rounded-[3rem] p-10 hover:border-aura-primary/30 transition-all duration-500">
+           <h3 class="text-3xl font-bold text-aura-text mb-2">الأساسية</h3>
+           <p class="text-aura-text/60 mb-8 font-medium">مثالية للمشاريع الناشئة</p>
+           <div class="text-5xl font-extrabold text-aura-primary mb-10">2,500 <span class="text-xl text-aura-text/50 font-medium tracking-tight">ر.س/شهر</span></div>
+           <ul class="space-y-4 mb-10 text-aura-text/80 font-medium">
+             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-aura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg> إدارة حسابين تواصل</li>
+             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-aura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg> 8 تصاميم إبداعية</li>
+             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-aura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg> تقرير أداء شهري</li>
+           </ul>
+           <button class="w-full py-4 rounded-2xl bg-white text-aura-primary border border-aura-primary/20 font-bold text-lg shadow-sm hover:shadow-md transition-all">اختر الباقة</button>
+        </div>
+
+        <!-- Pro (Highlighted) -->
+        <div class="bg-gradient-to-b from-aura-primary/10 to-aura-accent/5 backdrop-blur-2xl border border-aura-primary/40 shadow-2xl rounded-[3.5rem] p-12 transform md:-translate-y-6 relative isolate">
+           <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-aura-primary to-aura-accent text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg tracking-wider">الأكثر طلباً</div>
+           <h3 class="text-3xl font-bold text-aura-text mb-2">الاحترافية</h3>
+           <p class="text-aura-text/60 mb-8 font-medium">للشركات سريعة النمو</p>
+           <div class="text-5xl font-extrabold text-aura-primary mb-10">5,000 <span class="text-xl text-aura-text/50 font-medium tracking-tight">ر.س/شهر</span></div>
+           <ul class="space-y-4 mb-10 text-aura-text/80 font-bold">
+             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-aura-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg> إدارة 4 حسابات</li>
+             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-aura-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg> 15 تصميم ومحتوى</li>
+             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-aura-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg> إدارة الحملات الإعلانية</li>
+             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-aura-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg> تحسين محركات البحث SEO</li>
+           </ul>
+           <button class="w-full py-4 rounded-2xl bg-gradient-to-r from-aura-primary to-aura-accent text-white font-bold text-xl shadow-[0_10px_30px_-10px_rgba(88,168,180,0.6)] hover:shadow-xl transition-all transform hover:scale-[1.02]">اختر الباقة</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</Layout>

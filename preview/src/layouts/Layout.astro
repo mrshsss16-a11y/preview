@@ -1,0 +1,40 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="أورا للتسويق: وكالة رقمية رائدة في تحسين محركات البحث وبناء الهوية البصرية." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+		<ClientRouter />
+	</head>
+	<body class="bg-aura-bg text-aura-text min-h-screen relative overflow-x-hidden font-din selection:bg-aura-accent selection:text-white">
+		
+		<svg class="hidden" aria-hidden="true">
+			<filter id="liquid-glass-refraction" x="0" y="0" width="100%" height="100%">
+				<feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" result="noise" />
+				<feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+			</filter>
+		</svg>
+
+		<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+			<div class="absolute top-[-10%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-aura-accent/20 blur-[120px] mix-blend-multiply"></div>
+			<div class="absolute bottom-[-10%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-aura-primary/15 blur-[150px] mix-blend-multiply"></div>
+		</div>
+
+		<main class="relative z-10 w-full max-w-7xl mx-auto px-6 py-12">
+			<slot />
+		</main>
+	</body>
+</html>

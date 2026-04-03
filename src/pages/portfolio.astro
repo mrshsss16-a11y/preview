@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.jsx';
+import PortfolioPageContent from '../components/PortfolioPageContent.jsx';
+import ContactUsBento from '../components/ContactUsBento.jsx';
+import Footer from '../components/Footer.jsx';
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>أعمالنا | أورا للتسويق</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#FDFDFD] font-['Tajawal',sans-serif] text-[#1A1D20] antialiased overflow-x-hidden">
+    <Navbar client:load />
+    
+    <main class="min-h-screen pb-20">
+        <PortfolioPageContent client:load />
+        
+        <section class="container mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+            <ContactUsBento client:visible />
+        </section>
+    </main>
+
+    <Footer client:visible />
+</body>
+</html>

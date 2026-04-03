@@ -1,0 +1,61 @@
+---
+const { 
+  title = "أورا للتسويق | أفضل وكالة تسويق رقمي في مكة والسعودية", 
+  description = "وكالة أورا هي شريكك الرقمي في السعودية. نقدم خدمات احترافية في تحسين محركات البحث (SEO)، تصميم الهوية البصرية، وإدارة الحملات الإعلانية لتحقيق نمو مستدام.", 
+  image = "https://aura-mkt.com/og-image.jpg",
+  url = "https://aura-mkt.com"
+} = Astro.props;
+
+const keywords = "تسويق رقمي, وكالة تسويق في مكة, السعودية, تحسين محركات البحث, SEO, تصميم هوية بصرية, ادارة حسابات التواصل, حملات إعلانية, تسويق إلكتروني, شركات تسويق بالرياض ومكة";
+---
+
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="أورا للتسويق" />
+
+<link rel="canonical" href={url} />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "MarketingAgency",
+  "name": "أورا للتسويق",
+  "image": "https://aura-mkt.com/logo.png",
+  "description": description,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "الشوقية",
+    "addressLocality": "مكة المكرمة",
+    "addressRegion": "منطقة مكة المكرمة",
+    "postalCode": "24351",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 21.3891,
+    "longitude": 39.8579
+  },
+  "url": "https://aura-mkt.com",
+  "telephone": "+966590307863",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ]
+})} />
