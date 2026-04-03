@@ -9,7 +9,7 @@ import SEO from '../components/SEO.astro';
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.map(p => ({
   ...p.data,
-  slug: p.slug
+  slug: p.id
 })).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
 
 const title = "المدونة | وكالة أورا للتسويق";

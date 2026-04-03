@@ -17,7 +17,7 @@ const mappedProjects = allProjects.map(p => ({
   desc: p.data.description,
   colSpan: p.data.colSpan,
   gradient: p.data.gradient,
-  slug: p.slug
+  slug: p.id
 })).sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
 
 const title = "أعمالنا | وكالة أورا للتسويق";
