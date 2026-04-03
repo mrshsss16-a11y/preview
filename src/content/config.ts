@@ -5,7 +5,8 @@ const portfolioCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     client: z.string(),
-    category: z.string(),
+    category: z.string().optional(),
+    services: z.string().optional(), // جعلنا هذا اختيارياً لحل المشكلة فوراً
     publishDate: z.string(),
     description: z.string(),
     colSpan: z.string().optional(),
