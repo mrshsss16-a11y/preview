@@ -13,15 +13,18 @@
 }
 
 :root {
-  --primary: #1D4ED8;       /* أزرق أساسي */
-  --primary-dk: #1E3A8A;    /* أزرق داكن */
-  --primary-soft: #EFF6FF;  /* أزرق ثلجي ناعم */
-  --accent: #1ABDA8;        /* الأخضر المزرق (Teal) للمسات */
-  --dark: #0B1727;          /* كحلي عميق جداً */
+  /* بروتوكول أورا الملكي (الكحلي والأزرق كأساس، والتيل كلمسة) */
+  --primary: #1D4ED8;       /* أزرق أساسي ملكي (أزرار وعناوين) */
+  --primary-dk: #1E3A8A;    /* أزرق داكن (تدرجات وزوايا) */
+  --primary-soft: #EFF6FF;  /* أزرق ثلجي ناعم جداً للراحة البصرية */
+  --accent: #1ABDA8;        /* الأخضر المزرق (Teal) كلمسات فنية *فقط* */
+  --dark: #0B1727;          /* كحلي عميق جداً للنصوص الرئيسية والبطاقات الداكنة */
   --text: #334155;
   --muted: #64748b;
+  --bg: transparent;
 }
 
-body > main > section:nth-child(odd) { background: #FDFDFD; }
-body > main > section:nth-child(even) { background: #F8FAFC; }
-body > main > section.section-dark { background: var(--dark) !important; }
+/* تناوب الخلفيات السلس */
+section:nth-child(odd)  { background: #FDFDFD; }
+section:nth-child(even) { background: #F8FAFC; }
+.section-dark { background: var(--dark) !important; color: #fff; }
