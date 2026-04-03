@@ -3,12 +3,11 @@ import { defineCollection, z } from 'astro:content';
 const portfolioCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string().default('مشروع أورا'),
-    client: z.string().default('عميل'),
-    category: z.string().optional(),
-    services: z.string().optional(),
-    publishDate: z.string().default('2026-01-01'),
-    description: z.string().default(''),
+    title: z.string(),
+    client: z.string(),
+    category: z.string(),
+    publishDate: z.string(),
+    description: z.string(),
     colSpan: z.string().optional(),
     gradient: z.string().optional(),
   }),
@@ -17,10 +16,10 @@ const portfolioCollection = defineCollection({
 const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string().default('مقال أورا'),
+    title: z.string(),
     author: z.string().default('فريق أورا'),
     tags: z.array(z.string()).default([]),
-    publishDate: z.string().default('2026-01-01'),
+    publishDate: z.string(),
     summary: z.string().default(''),
   }),
 });
