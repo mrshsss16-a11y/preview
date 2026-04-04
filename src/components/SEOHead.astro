@@ -3,9 +3,14 @@ interface Props {
   title: string;
   description: string;
   canonical?: string;
+  image?: string;
 }
-const { title, description, canonical = Astro.url?.href || "" } = Astro.props;
-const ogImage = "/og-image.jpg"; // يمكن تغييرها لاحقاً
+const { 
+  title, 
+  description, 
+  canonical = Astro.url?.href || "",
+  image = "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp" 
+} = Astro.props;
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
@@ -14,11 +19,53 @@ const ogImage = "/og-image.jpg"; // يمكن تغييرها لاحقاً
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:image" content={image} />
 <meta property="og:site_name" content="آورا للتسويق" />
 <meta property="og:locale" content="ar_SA" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image" content={image} />
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "MarketingAgency",
+  "name": "وكالة آورا للتسويق",
+  "alternateName": "Aura Marketing",
+  "description": description,
+  "url": "https://aura-mkt.com",
+  "logo": "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "مكة المكرمة",
+    "addressRegion": "منطقة مكة المكرمة",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 21.3891,
+    "longitude": 39.8579
+  },
+  "areaServed": [
+    "مكة المكرمة",
+    "جدة",
+    "الطائف",
+    "المملكة العربية السعودية"
+  ],
+  "priceRange": "$$",
+  "sameAs": [
+    "https://twitter.com/aura_mkt",
+    "https://instagram.com/aura_mkt",
+    "https://linkedin.com/company/aura-mkt"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "خدمات التسويق الرقمي",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "تحسين محركات البحث SEO" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "تصميم الهوية البصرية" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "إدارة الحملات الإعلانية" } }
+    ]
+  }
+})} />
