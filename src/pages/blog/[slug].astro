@@ -6,7 +6,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
 import ContactUsBento from '../../components/ContactUsBento.jsx';
-import SEO from '../../components/SEO.astro';
+import SEOHead from '../../components/SEOHead.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -29,7 +29,10 @@ const formatDate = (date) => {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEO title={`${entry.data.title} | مدونة أورا`} description={entry.data.description || `اقرأ مقال ${entry.data.title} على مدونة أورا`} />
+    <SEOHead 
+      title={`${entry.data.title} | مدونة أورا`} 
+      description={entry.data.description || `اقرأ مقال ${entry.data.title} على مدونة أورا`} 
+    />
     <ViewTransitions />
 </head>
 <body class="font-['DIN_Next_LT_Arabic','Tajawal'] bg-[#FDFDFD] text-[#1e293b] antialiased selection:bg-[#58A8B4] selection:text-white overflow-x-hidden">
@@ -42,7 +45,7 @@ const formatDate = (date) => {
             
             <div class="container mx-auto px-4 max-w-[800px] relative z-10 text-center reveal">
                 <div class="flex items-center justify-center gap-4 mb-6">
-                    <span class="px-4 py-1.5 rounded-full bg-[#58A8B4]/20 text-[#58A8B4] font-bold text-sm">
+                    <span class="px-4 py-1.5 rounded-full bg-[#58A8B4]/20 text-[#58A8B4] font-bold text-sm border border-[#58A8B4]/30">
                         {entry.data.category || 'تسويق'}
                     </span>
                     <span class="text-[#B3B7C1] text-sm font-medium flex items-center gap-2">
@@ -56,7 +59,7 @@ const formatDate = (date) => {
             </div>
         </section>
 
-        <section class="py-20 bg-[#FDFDFD] relative -mt-8 rounded-t-[3rem] z-20">
+        <section class="py-20 bg-[#FDFDFD] relative -mt-8 rounded-t-[3rem] z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
             <div class="container mx-auto px-4 max-w-[800px]">
                 <article class="prose prose-lg md:prose-xl max-w-none 
                     prose-headings:font-black prose-headings:text-[#070F1A] prose-headings:mb-6 prose-headings:mt-12
@@ -70,7 +73,15 @@ const formatDate = (date) => {
                     <Content />
                 </article>
 
-                <div class="mt-20 pt-10 border-t border-[#B3B7C1]/20 text-center reveal" style="--d:300ms">
+                <div class="mt-20 p-8 bg-[#F4F8F9] border border-[#58A8B4]/20 rounded-3xl text-center reveal" style="--d:300ms">
+                    <h3 class="text-2xl font-black text-[#070F1A] mb-3">هالتك الرقمية تبدأ بخطوة.</h3>
+                    <p class="text-[#475569] font-medium mb-6">تواصل مع فريق أورا اليوم، ودعنا نبني لك حضوراً يتصدر السوق.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 bg-[#070F1A] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#58A8B4] transition-colors">
+                        ابنِ هالتك الآن
+                    </a>
+                </div>
+
+                <div class="mt-12 text-center reveal" style="--d:400ms">
                     <a href="/blog" class="inline-flex items-center gap-3 text-[#438FB3] font-bold text-lg hover:text-[#58A8B4] transition-colors">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                         العودة إلى المقالات
@@ -79,7 +90,7 @@ const formatDate = (date) => {
             </div>
         </section>
 
-        <section class="py-24 bg-[#F4F8F9] relative z-20">
+        <section class="py-24 bg-[#FDFDFD] relative z-20 border-t border-[#B3B7C1]/10">
             <div class="container mx-auto px-4 max-w-[1200px]">
                 <ContactUsBento client:load />
             </div>
@@ -87,6 +98,11 @@ const formatDate = (date) => {
     </main>
 
     <Footer client:load />
+
+    <style>
+        .reveal { --d: 0ms; opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease var(--d), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d); }
+        .reveal.in { opacity: 1; transform: none; }
+    </style>
 
     <script is:inline>
         document.addEventListener('astro:page-load', () => {
@@ -98,9 +114,5 @@ const formatDate = (date) => {
             document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
         });
     </script>
-    <style>
-        .reveal { --d: 0ms; opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease var(--d), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d); }
-        .reveal.in { opacity: 1; transform: none; }
-    </style>
 </body>
 </html>
