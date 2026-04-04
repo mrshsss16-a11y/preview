@@ -1,33 +1,52 @@
 ---
+// src/components/Hero.astro
 ---
-<section class="hero" dir="rtl">
-  <div class="hero-bg" aria-hidden="true">
-    <svg class="geo-svg" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1.2" fill="var(--aura-primary)" opacity="0.2"/></pattern></defs>
-      <rect width="1200" height="700" fill="url(#dots)"/><circle cx="900" cy="120" r="320" fill="var(--aura-primary)" opacity="0.04"/><circle cx="950" cy="80" r="180" fill="var(--aura-secondary)" opacity="0.05"/>
+<section class="hero section-dark" dir="rtl">
+
+  <div class="halo-backdrop" aria-hidden="true">
+    <svg viewBox="0 0 1400 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M -100 700 A 800 800 0 0 1 1500 700" fill="none" stroke="#1ABDA8" stroke-width="140" stroke-linecap="round" opacity="0.04" />
+      <path d="M 100 700 A 600 600 0 0 1 1300 700" fill="none" stroke="#1ABDA8" stroke-width="80" stroke-linecap="round" opacity="0.05" />
+      <path d="M 200 700 A 500 500 0 0 1 1200 700" fill="none" stroke="#22D8E8" stroke-width="1.5" stroke-linecap="round" opacity="0.25" />
+      <circle cx="1100" cy="200" r="350" fill="#1ABDA8" opacity="0.03"/>
     </svg>
   </div>
+
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="badge"><span class="badge-pulse"></span>الوكالة الرقمية الأسرع نموًا في مكة المكرمة</div>
-      <h1 class="hero-h1">وكالة <span class="hl">أورا</span> للتسويق<br/><span class="h1-sub">هالتك الفارقة في عالم التسويق</span></h1>
-      <p class="hero-body">شريكك الاستراتيجي بالسعودية. نهندس تجارب رقمية استثنائية ونطبق استراتيجيات مبنية على البيانات لتتصدر علامتك.</p>
-      <div class="hero-ctas"><a href="#contact" class="cta-primary">طلب استشارة مجانية <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="#portfolio" class="cta-text">أعمالنا السابقة <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="stats-row">
-        <div class="stat-item"><div class="stat-top"><span class="stat-num" data-target="50">0</span><span class="stat-plus">+</span></div><span class="stat-label">عميل سعيد</span></div><div class="stat-sep"></div>
-        <div class="stat-item"><div class="stat-top"><span class="stat-num" data-target="85">0</span><span class="stat-plus">+</span></div><span class="stat-label">مشروع ناجح</span></div><div class="stat-sep"></div>
-        <div class="stat-item"><div class="stat-top"><span class="stat-num" data-target="5">0</span><span class="stat-plus">+</span></div><span class="stat-label">سنوات خبرة</span></div>
+      <div class="badge">
+        <span class="badge-pulse"></span>
+        الوكالة الرقمية الأسرع نموًا في مكة المكرمة
+      </div>
+      <h1>وكالة <span class="grad-text">آورا</span><br/>للتسويق الرقمي</h1>
+      <p class="hero-desc">نبني هالتك الرقمية — هوية فارقة، محتوى يُشعل، وتسويق يتصدر. شريكك الاستراتيجي من الفكرة إلى النتيجة.</p>
+
+      <div class="cta-group">
+        <a href="#contact" class="btn-aura">طلب استشارة مجانية</a>
+        <a href="#services" class="btn-outline">تصدر البحث الآن</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-top"><span class="num" data-to="50">0</span><span class="plus">+</span></div><span class="lbl">عميل</span></div>
+        <span class="divider"></span>
+        <div class="stat"><div class="stat-top"><span class="num" data-to="85">0</span><span class="plus">+</span></div><span class="lbl">مشروع</span></div>
+        <span class="divider"></span>
+        <div class="stat"><div class="stat-top"><span class="num" data-to="5">0</span><span class="plus">+</span></div><span class="lbl">سنوات</span></div>
       </div>
     </div>
+
     <div class="hero-visual" aria-hidden="true">
       <div class="mockup-card">
-        <div class="mockup-header"><div class="mh-dots"><span></span><span></span><span></span></div><div class="mh-bar">لوحة تحكم النمو</div></div>
+        <div class="mockup-header"><div class="mh-dots"><span></span><span></span><span></span></div><div class="mh-bar">لوحة تحكم الهالة</div></div>
         <div class="mockup-body">
           <div class="chart-row"><div class="chart-label">SEO</div><div class="chart-track"><div class="chart-fill" style="--w:88%"></div></div><span class="chart-val">88%</span></div>
           <div class="chart-row"><div class="chart-label">إعلانات</div><div class="chart-track"><div class="chart-fill" style="--w:73%"></div></div><span class="chart-val">73%</span></div>
           <div class="chart-row"><div class="chart-label">محتوى</div><div class="chart-track"><div class="chart-fill" style="--w:94%"></div></div><span class="chart-val">94%</span></div>
           <div class="chart-row"><div class="chart-label">هوية</div><div class="chart-track"><div class="chart-fill" style="--w:61%"></div></div><span class="chart-val">61%</span></div>
-          <div class="mockup-metric"><div class="metric-box"><span class="metric-num">+240%</span><span class="metric-lbl">نمو العضوي</span></div><div class="metric-box accent"><span class="metric-num">3.2×</span><span class="metric-lbl">عائد الاستثمار</span></div></div>
+          <div class="mockup-metric">
+            <div class="metric-box"><span class="metric-num text-white">+240%</span><span class="metric-lbl">النمو العضوي</span></div>
+            <div class="metric-box accent"><span class="metric-num text-[var(--aura-cyan)]">3.2×</span><span class="metric-lbl">عائد الاستثمار</span></div>
+          </div>
         </div>
       </div>
       <div class="float-badge"><span class="fb-dot"></span>نتائج حقيقية لعملاء حقيقيين</div>
@@ -35,51 +54,77 @@
   </div>
 </section>
 
+<div class="halo-divider" aria-hidden="true">
+  <svg width="100%" height="48" viewBox="0 0 1400 48" preserveAspectRatio="none">
+    <path d="M0 24 Q350 0 700 24 Q1050 48 1400 24" fill="none" stroke="#1ABDA8" stroke-width="1" opacity="0.3"/>
+    <circle cx="700" cy="24" r="16" fill="#070F1A" stroke="#1ABDA8" stroke-width="1" opacity="0.8"/>
+    <path d="M691 30 A11 11 0 0 1 709 30" fill="none" stroke="#1ABDA8" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="709" y1="18" x2="709" y2="30" stroke="#0F6E7E" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</div>
+
 <style>
-.hero { position: relative; overflow: hidden; padding: clamp(100px, 15vw, 160px) 5% 100px; }
-.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-.geo-svg { width: 100%; height: 100%; object-fit: cover; }
+.hero { position: relative; overflow: hidden; padding: clamp(120px, 15vw, 160px) 5% 100px; }
+.halo-backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 0;}
+.halo-backdrop svg { width: 100%; height: 100%; }
 .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
 @media (min-width: 992px) { .hero-inner { grid-template-columns: 1fr 1fr; } }
-.badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(88,168,180,0.1); border: 1px solid rgba(88,168,180,0.2); color: var(--aura-secondary); padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; margin-bottom: 24px; }
-.badge-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--aura-primary); animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(.75); } }
-.hero-h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; color: var(--dark); line-height: 1.2; margin-bottom: 24px; }
-.hl { background: linear-gradient(135deg, var(--aura-primary), var(--aura-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.h1-sub { font-size: clamp(1.2rem, 3vw, 2.2rem); font-weight: 700; color: var(--aura-silver); display: block; margin-top: 8px; }
-.hero-body { color: var(--aura-silver); font-size: clamp(1rem, 2vw, 1.1rem); line-height: 1.8; margin-bottom: 40px; max-width: 480px; font-weight: 500; }
-.hero-ctas { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 48px; }
-.cta-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--aura-primary); color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 1.05rem; text-decoration: none; box-shadow: 0 4px 20px rgba(88,168,180,0.3); transition: all .2s; }
-.cta-primary:hover { background: var(--aura-secondary); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(67,143,179,0.4); }
-.cta-text { display: inline-flex; align-items: center; gap: 6px; color: var(--aura-secondary); font-weight: 700; font-size: 1rem; text-decoration: none; transition: gap .2s; }
-.cta-text:hover { gap: 10px; color: var(--aura-primary); }
-.stats-row { display: flex; align-items: center; gap: clamp(16px, 4vw, 30px); flex-wrap: wrap; }
-.stat-item { display: flex; flex-direction: column; gap: 4px; }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(26,189,168,0.1); border: 1px solid rgba(26,189,168,0.25); color: #5DCAA5; padding: 6px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; margin-bottom: 20px; }
+.badge-pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--aura-cyan); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+.grad-text { background: linear-gradient(135deg, var(--aura-cyan), var(--aura-cyan-bright)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc { color: rgba(255,255,255,0.65); font-size: 1.1rem; line-height: 1.8; margin-bottom: 32px; max-width: 480px; font-weight: 500;}
+.cta-group { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-outline { background: transparent; border: 1.5px solid rgba(26,189,168,0.35); color: rgba(255,255,255,0.8); padding: 13px 26px; border-radius: 12px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: border-color .2s, color .2s; display: inline-flex; align-items: center;}
+.btn-outline:hover { border-color: var(--aura-cyan); color: var(--aura-cyan); }
+.stats { display: flex; align-items: center; gap: clamp(16px, 4vw, 30px); }
+.stat { display: flex; flex-direction: column; }
 .stat-top { display: flex; align-items: baseline; gap: 2px; }
-.stat-num { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 900; color: var(--dark); line-height: 1; }
-.stat-plus { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 800; color: var(--aura-primary); }
-.stat-label { font-size: 0.85rem; font-weight: 600; color: var(--aura-silver); }
-.stat-sep { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--aura-silver), transparent); opacity: 0.3; }
+.stat .num { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 900; color: var(--aura-cyan); line-height: 1;}
+.stat .plus { color: var(--aura-cyan); font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 800; }
+.stat .lbl { color: rgba(255,255,255,0.5); font-size: 0.85rem; font-weight: 600;}
+.divider { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, rgba(26,189,168,0.3), transparent); }
+
+/* Mockup الثيم الليلي */
 .hero-visual { position: relative; display: flex; justify-content: center; }
-.mockup-card { width: 100%; max-width: 420px; background: #fff; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 20px 60px rgba(18,26,35,0.06); overflow: hidden; }
-.mockup-header { background: var(--dark); padding: 14px 20px; display: flex; align-items: center; gap: 12px; }
+.mockup-card { width: 100%; max-width: 420px; background: var(--aura-navy); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.4); overflow: hidden; }
+.mockup-header { background: var(--aura-dark); padding: 14px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.02);}
 .mh-dots { display: flex; gap: 6px; }
-.mh-dots span { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,.2); }
-.mh-bar { flex: 1; text-align: center; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,.6); }
+.mh-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.mh-bar { flex: 1; text-align: center; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,.5); }
 .mockup-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
 .chart-row { display: flex; align-items: center; gap: 12px; font-size: 0.85rem; font-weight: 600;}
-.chart-label { width: 50px; color: var(--aura-silver); text-align: right; }
-.chart-track { flex: 1; height: 10px; background: rgba(88,168,180,0.1); border-radius: 99px; overflow: hidden; }
-.chart-fill { height: 100%; width: var(--w); background: linear-gradient(90deg, var(--aura-primary), var(--aura-secondary)); border-radius: 99px; animation: grow 1.2s ease-out forwards; transform-origin: right; }
+.chart-label { width: 50px; color: rgba(255,255,255,0.6); text-align: right; }
+.chart-track { flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 99px; overflow: hidden; }
+.chart-fill { height: 100%; width: var(--w); background: linear-gradient(90deg, var(--aura-teal), var(--aura-cyan)); border-radius: 99px; animation: grow 1.2s ease-out forwards; transform-origin: right; }
 @keyframes grow { from { width: 0; } to { width: var(--w); } }
-.chart-val { width: 36px; color: var(--aura-secondary); }
+.chart-val { width: 36px; color: var(--aura-cyan); }
 .mockup-metric { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
-.metric-box { background: #fff; border-radius: 12px; padding: 16px; text-align: center; display: flex; flex-direction: column; gap: 4px; border: 1px solid rgba(0,0,0,0.05); }
-.metric-box.accent { background: rgba(88,168,180,0.05); border-color: rgba(88,168,180,0.1); }
-.metric-num { font-size: 1.6rem; font-weight: 900; color: var(--dark); }
-.metric-box.accent .metric-num { color: var(--aura-secondary); }
-.metric-lbl { font-size: 0.8rem; font-weight: 600; color: var(--aura-silver); }
-.float-badge { position: absolute; bottom: -20px; right: -20px; background: #fff; border: 1px solid rgba(88,168,180,0.15); border-radius: 999px; padding: 10px 20px; font-size: 0.85rem; font-weight: 700; color: var(--aura-secondary); display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(18,26,35,0.06); z-index: 10;}
-.fb-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--aura-primary); animation: pulse 1.5s ease-in-out infinite; }
+.metric-box { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 16px; text-align: center; display: flex; flex-direction: column; gap: 4px; border: 1px solid rgba(255,255,255,0.03); }
+.metric-box.accent { background: rgba(26,189,168,0.1); border-color: rgba(26,189,168,0.2); }
+.metric-num { font-size: 1.6rem; font-weight: 900; }
+.metric-lbl { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.5); }
+.float-badge { position: absolute; bottom: -20px; right: -20px; background: var(--aura-dark); border: 1px solid rgba(26,189,168,0.3); border-radius: 999px; padding: 10px 20px; font-size: 0.85rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 10;}
+.fb-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--aura-cyan); animation: pulse 1.5s ease-in-out infinite; }
 @media (max-width: 991px) { .hero-visual { display: none; } }
 </style>
+
+<script is:inline>
+(function(){
+  function run(){
+    document.querySelectorAll('.num').forEach(function(el){
+      var to = parseInt(el.dataset.to);
+      var s  = performance.now();
+      var d  = 1800;
+      (function tick(now){
+        var t = Math.min((now-s)/d,1);
+        var e = 1 - Math.pow(1-t,3);
+        el.textContent = Math.round(e*to);
+        if(t<1) requestAnimationFrame(tick);
+      })(performance.now());
+    });
+  }
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
+})();
+</script>

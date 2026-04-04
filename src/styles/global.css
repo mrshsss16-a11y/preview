@@ -9,21 +9,61 @@
 
   html { scroll-behavior: smooth; }
   body { font-family: 'DIN Next LT Arabic', 'Tajawal', sans-serif !important; line-height: 1.8; -webkit-font-smoothing: antialiased; background-color: #FDFDFD; }
-  h1, h2, h3, h4, h5, h6, p, span, a, button { padding-top: 0.1em; padding-bottom: 0.1em; }
 }
 
 :root {
-  /* ألوان أورا الرسمية */
-  --aura-primary: #58A8B4;    /* التركواز/التيل الأساسي */
-  --aura-secondary: #438FB3;  /* الأزرق الهادئ */
-  --aura-silver: #B3B7C1;     /* الفضي للخطوط والملاحظات */
-  
-  /* ألوان مساعدة للتباين */
-  --dark: #121A23;            /* كحلي شديد السواد لضمان وضوح النصوص فوق الخلفيات الفاتحة */
-  --bg-light: #FDFDFD;        /* أبيض نقي */
-  --bg-alt: #F4F8F9;          /* أبيض مزرق خفيف جداً للتناوب */
+  /* ── Aura Color System ── */
+  --aura-cyan:       #1ABDA8;
+  --aura-cyan-bright:#22D8E8;
+  --aura-teal:       #0F6E7E;
+  --aura-dark:       #070F1A;   /* الخلفية الليلية */
+  --aura-navy:       #0D1B2A;   /* dark cards */
+  --aura-soft:       #E8FAFB;   /* خلفية فاتحة */
+  --aura-glow-10:    rgba(26,189,168,0.10);
+  --aura-glow-20:    rgba(26,189,168,0.20);
+
+  /* ── Halo Arc Token ── */
+  --halo-stroke:     #1ABDA8;
+  --halo-inner:      #0F6E7E;
+  --halo-glow:       rgba(26,189,168,0.08);
+
+  /* ── Typography ── */
+  --font-ar: 'DIN Next LT Arabic', 'Cairo', sans-serif;
 }
 
-body > main > section:nth-child(odd) { background: var(--bg-light); }
-body > main > section:nth-child(even) { background: var(--bg-alt); }
-body > main > section.section-dark { background: var(--dark) !important; color: #fff; }
+/* ── Section alternation ── */
+.section-dark  { background: var(--aura-dark); color: #fff; }
+.section-light { background: var(--aura-soft); }
+.section-white { background: #fff; }
+
+/* ── Halo glow for CTA buttons ── */
+.btn-aura {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: linear-gradient(135deg, var(--aura-cyan), var(--aura-teal));
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(26,189,168,0.3);
+  transition: box-shadow 0.25s, transform 0.2s;
+  text-decoration: none;
+}
+.btn-aura:hover {
+  box-shadow: 0 8px 40px rgba(26,189,168,0.55);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* ── Halo Wave Divider ── */
+.halo-divider {
+  background: var(--aura-dark);
+  height: 48px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -1px; /* لمنع أي خط أبيض بين الأقسام */
+}
