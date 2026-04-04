@@ -1,65 +1,121 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpLeft } from 'lucide-react';
+import { useState, useRef } from 'react';
 
-const CATEGORIES = ['الكل', 'هوية بصرية', 'SEO', 'تطوير ويب', 'حملات إعلانية'];
+export default function PortfolioGrid({ projects }) {
+  const [active, setActive] = useState('الكل');
+  const refs = useRef(new Map());
 
-export default function PortfolioGrid({ projects = [] }) {
-  const [filter, setFilter] = useState('الكل');
+  // استخراج التصنيفات ديناميكياً من المشاريع بدون تكرار
+  const cats = ['الكل', ...new Set(projects.map(p => p.category).filter(Boolean))];
 
-  const filteredProjects = projects.filter(p => filter === 'الكل' || p.category === filter);
+  const filtered = active === 'الكل' 
+    ? projects 
+    : projects.filter(p => p.category === active);
+
+  function flip(newActive) {
+    const rects = new Map();
+    refs.current.forEach((el, id) => {
+      if (el) rects.set(id, el.getBoundingClientRect());
+    });
+    
+    setActive(newActive);
+
+    requestAnimationFrame(() => {
+      refs.current.forEach((el, id) => {
+        const prev = rects.get(id);
+        if (!prev || !el) return;
+        const next = el.getBoundingClientRect();
+        const dx = prev.left - next.left;
+        const dy = prev.top  - next.top;
+        if (!dx && !dy) return;
+
+        el.style.transform = `translate(${dx}px,${dy}px)`;
+        el.style.transition = 'none';
+        requestAnimationFrame(() => {
+          el.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1)';
+          el.style.transform  = '';
+        });
+      });
+    });
+  }
+
+  // استخراج لون متدرج آمن
+  const getGradient = (gradString) => {
+    if (!gradString) return 'linear-gradient(135deg, #58A8B4 0%, #070F1A 100%)';
+    const colorMatch = gradString.match(/to-\[([^\]]+)\]/);
+    const color = colorMatch ? colorMatch[1] : '#58A8B4';
+    return `linear-gradient(135deg, ${color} 0%, #070F1A 100%)`;
+  };
 
   return (
-    <div className="w-full relative z-10">
-      <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
-        {CATEGORIES.map((cat, idx) => (
-          <button 
-            key={idx} onClick={() => setFilter(cat)}
-            className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 border ${
-              filter === cat 
-                ? 'bg-[#58A8B4] text-white border-[#58A8B4] shadow-[0_4px_15px_rgba(88,168,180,0.3)]' 
-                : 'bg-white/50 text-[#B3B7C1] border-[#B3B7C1]/30 hover:border-[#58A8B4] hover:text-[#438FB3]'
-            }`}
+    <div>
+      {/* 1. أزرار الفلترة بتباين مثالي */}
+      <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginBottom: '48px', flexWrap: 'wrap' }}>
+        {cats.map(c => (
+          <button
+            key={c}
+            onClick={() => flip(c)}
+            style={{
+              padding: '10px 28px', borderRadius: '999px', cursor: 'pointer', transition: 'all 0.2s ease', fontSize: '15px',
+              border: active === c ? '1.5px solid #070F1A' : '1.5px solid #cbd5e1',
+              background: active === c ? '#070F1A' : '#ffffff',
+              color: active === c ? '#ffffff' : '#334155',
+              fontWeight: active === c ? 800 : 600,
+              boxShadow: active === c ? '0 8px 16px rgba(7,15,26,0.15)' : 'none'
+            }}
           >
-            {cat}
+            {c}
           </button>
         ))}
       </div>
 
-      <motion.div layout className="grid grid-cols-12 gap-6">
-        <AnimatePresence>
-          {filteredProjects.map((project) => (
-            <motion.a 
-              href={`/portfolio/${project.slug}`}
-              layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.4 }}
-              key={project.slug} 
-              className={`${project.colSpan} h-[400px] rounded-[2.5rem] relative overflow-hidden group block`}
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90 transition-transform duration-700 group-hover:scale-105`} />
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50 mix-blend-overlay" />
-
-              <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                  <span className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-wider">
-                    {project.category}
-                  </span>
-                  <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                    <ArrowUpLeft className="text-white" size={20} />
-                  </div>
-                </div>
-
-                <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                  <h4 className="text-[#58A8B4] font-bold mb-2">{project.client}</h4>
-                  <h3 className="text-3xl font-black text-white mb-3 leading-tight">{project.title}</h3>
-                  <p className="text-white/70 text-sm max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 leading-relaxed">
-                    {project.desc}
-                  </p>
-                </div>
-              </div>
-            </motion.a>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      {/* 2. شبكة الأعمال التفاعلية */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '24px' }}>
+        {filtered.map(p => (
+          <a href={`/portfolio/${p.slug}`}
+            key={p.slug}
+            ref={el => { if (el) refs.current.set(p.slug, el); }}
+            style={{
+              background: '#070F1A', borderRadius: '24px', overflow: 'hidden', textDecoration: 'none',
+              border: '1px solid rgba(88,168,180,0.15)', transition: 'transform 0.3s, box-shadow 0.3s',
+              display: 'flex', flexDirection: 'column', willChange: 'transform'
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-8px)';
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(88,168,180,0.2)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = '';
+              e.currentTarget.style.boxShadow = '';
+            }}
+          >
+            {/* غلاف المشروع */}
+            <div style={{ 
+              height: '220px', 
+              background: getGradient(p.gradient), 
+              display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' 
+            }}>
+              <div style={{position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '16px 16px'}}></div>
+              <svg width="60" height="60" viewBox="0 0 44 44" fill="none" stroke="#fff" opacity="0.4">
+                <path d="M7 38 A20 20 0 0 1 37 38" strokeWidth="4" strokeLinecap="round"/>
+                <circle cx="22" cy="22" r="6" fill="#fff" stroke="none"/>
+              </svg>
+            </div>
+            
+            {/* نصوص وتفاصيل المشروع */}
+            <div style={{ padding: '24px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: '12px', color: '#58A8B4', fontWeight: 800, letterSpacing: '.05em', marginBottom: '8px' }}>
+                {p.category || 'أعمال أورا'}
+              </span>
+              <h3 style={{ color: '#fff', fontWeight: 900, fontSize: '22px', margin: '0 0 8px 0', lineHeight: 1.3 }}>
+                {p.title}
+              </h3>
+              <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0, lineHeight: 1.6, fontWeight: 500 }}>
+                {p.desc || p.client || 'تصفح تفاصيل المشروع...'}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }

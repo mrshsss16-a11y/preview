@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar.jsx';
 import Hero from '../components/Hero.astro';
 import ClientMarquee from '../components/ClientMarquee.astro';
 import ServiceCards from '../components/ServiceCards.astro';
-import Portfolio from '../components/Portfolio.jsx';
+import PortfolioGrid from '../components/PortfolioGrid.jsx';
 import Testimonials from '../components/Testimonials.astro';
 import ContactUsBento from '../components/ContactUsBento.jsx';
 import Footer from '../components/Footer.jsx';
@@ -52,7 +52,7 @@ try {
                     <span class="text-[#1ABDA8] font-bold tracking-wider uppercase text-sm mb-3 block">أعمالنا</span>
                     <h2 class="text-4xl md:text-5xl font-black text-[#070F1A]">هالات <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#1ABDA8] to-[#0F6E56]">صنعناها</span></h2>
                 </div>
-                {mappedProjects.length > 0 && <Portfolio client:idle projects={mappedProjects} />}
+                {mappedProjects.length > 0 && <PortfolioGrid client:idle projects={mappedProjects} />}
                 <div class="mt-16 text-center"><a href="/portfolio" class="inline-flex items-center gap-2 bg-transparent border-2 border-[#1ABDA8] text-[#0F6E56] hover:bg-[#1ABDA8] hover:text-white px-10 py-4 rounded-xl font-bold text-lg transition-all">تصفح كافة أعمالنا</a></div>
             </div>
         </section>
