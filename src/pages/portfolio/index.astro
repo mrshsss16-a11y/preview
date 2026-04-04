@@ -1,0 +1,94 @@
+---
+import '../../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+import { getCollection } from 'astro:content';
+
+import Navbar from '../../components/Navbar.jsx';
+import Footer from '../../components/Footer.jsx';
+import PortfolioGrid from '../../components/Portfolio.jsx';
+import ContactUsBento from '../../components/ContactUsBento.jsx';
+import SEO from '../../components/SEO.astro';
+
+let mappedProjects = [];
+try {
+  const allProjects = await getCollection('portfolio');
+  // ترتيب المشاريع من الأحدث للأقدم
+  mappedProjects = allProjects.map(p => ({
+    title: p.data.title,
+    client: p.data.client,
+    category: p.data.category || 'عام',
+    desc: p.data.description,
+    gradient: p.data.gradient,
+    slug: p.id
+  }));
+} catch (error) {
+  console.error("خطأ في جلب المشاريع:", error);
+}
+---
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <SEO title="معرض الأعمال | وكالة أورا للتسويق" description="تصفح قصص نجاحنا وهالات صنعناها لعملائنا في مختلف القطاعات." />
+    <ViewTransitions />
+</head>
+<body class="font-['DIN_Next_LT_Arabic','Tajawal'] bg-[#FDFDFD] text-[#1e293b] antialiased selection:bg-[#58A8B4] selection:text-white overflow-x-hidden">
+    
+    <Navbar client:load />
+
+    <main class="w-full">
+        <section class="relative bg-[#070F1A] pt-40 pb-32 overflow-hidden rounded-b-[3rem] md:rounded-b-[4rem] z-10">
+            <div class="absolute inset-0 pointer-events-none flex justify-center items-center">
+                <div class="w-[700px] h-[700px] rounded-full bg-[#438FB3]/10 blur-[150px]"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 max-w-[900px] relative z-10 text-center reveal">
+                <span class="inline-flex items-center gap-2 text-[#58A8B4] font-bold tracking-widest uppercase text-sm mb-6">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    قصص نجاح
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight" style="view-transition-name: hero-title;">
+                    هالات <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#58A8B4] to-[#438FB3]">صنعناها</span>
+                </h1>
+                <p class="text-[#B3B7C1] text-lg md:text-xl leading-relaxed font-medium">
+                    كل مشروع هو تحدٍ جديد. تصفح أعمالنا واكتشف كيف حولنا أهداف شركائنا إلى نتائج ملموسة وأرقام تتحدث عن نفسها.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-24 relative z-0 bg-[#FDFDFD]">
+            <div class="container mx-auto px-4 max-w-[1200px]">
+                {mappedProjects.length > 0 ? (
+                    <PortfolioGrid client:idle projects={mappedProjects} />
+                ) : (
+                    <div class="text-center py-20 text-[#B3B7C1] font-bold text-xl">جاري تحديث معرض الأعمال...</div>
+                )}
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#F4F8F9] relative z-20">
+            <div class="container mx-auto px-4 max-w-[1200px]">
+                <ContactUsBento client:load />
+            </div>
+        </section>
+    </main>
+
+    <Footer client:load />
+
+    <script is:inline>
+        document.addEventListener('astro:page-load', () => {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+        });
+    </script>
+    <style>
+        .reveal { --d: 0ms; opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease var(--d), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d); }
+        .reveal.in { opacity: 1; transform: none; }
+    </style>
+</body>
+</html>

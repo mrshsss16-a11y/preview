@@ -1,40 +1,115 @@
 ---
 import '../../styles/global.css';
 import { getCollection, render } from 'astro:content';
+import { ViewTransitions } from 'astro:transitions';
+
 import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
+import ContactUsBento from '../../components/ContactUsBento.jsx';
 import SEO from '../../components/SEO.astro';
 
 export async function getStaticPaths() {
   const portfolioEntries = await getCollection('portfolio');
   return portfolioEntries.map(entry => ({
-    params: { slug: entry.id }, // تغيير slug إلى id
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
----
 
+// تجهيز ألوان الغلاف (Fallback to Aura colors)
+const gradientBg = entry.data.gradient 
+    ? `linear-gradient(135deg, ${entry.data.gradient.split(' ')[1].replace('to-[', '').replace(']','')} 0%, #070F1A 100%)`
+    : `linear-gradient(135deg, #438FB3 0%, #070F1A 100%)`;
+---
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEO title={entry.data.title} />
+    <SEO title={`${entry.data.title} | أعمال أورا`} description={entry.data.description || `دراسة حالة لمشروع ${entry.data.title}`} />
+    <ViewTransitions />
 </head>
-<body class="bg-[#FDFDFD] font-['DIN_Next_LT_Arabic','Tajawal'] text-[#1A1D20] antialiased">
+<body class="font-['DIN_Next_LT_Arabic','Tajawal'] bg-[#FDFDFD] text-[#1e293b] antialiased selection:bg-[#58A8B4] selection:text-white overflow-x-hidden">
+    
     <Navbar client:load />
-    <main class="pt-40">
-        <section class={`w-full bg-gradient-to-br ${entry.data.gradient} py-20 text-white text-center`}>
-            <h1 class="text-5xl font-black">{entry.data.title}</h1>
-            <p class="text-xl mt-4">{entry.data.client}</p>
+
+    <main class="w-full">
+        <section class="relative pt-48 pb-20 overflow-hidden z-10" style={`background: ${gradientBg};`}>
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.4) 1px, transparent 0); background-size: 32px 32px;"></div>
+            
+            <div class="container mx-auto px-4 max-w-[900px] relative z-10 reveal">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white font-bold text-sm backdrop-blur-md">
+                        {entry.data.category || 'مشروع'}
+                    </span>
+                    {entry.data.publishDate && (
+                        <span class="text-white/60 text-sm font-medium">{entry.data.publishDate}</span>
+                    )}
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+                    {entry.data.title}
+                </h1>
+                <p class="text-white/80 text-xl font-medium max-w-2xl leading-relaxed">
+                    {entry.data.description}
+                </p>
+            </div>
         </section>
-        <div class="container mx-auto px-4 max-w-3xl py-20 prose lg:prose-xl">
-            <Content />
-        </div>
+
+        <section class="bg-white border-b border-[#B3B7C1]/20 py-8 relative z-20">
+            <div class="container mx-auto px-4 max-w-[900px]">
+                <div class="flex flex-wrap md:flex-nowrap gap-10 md:gap-20">
+                    <div>
+                        <span class="block text-[#B3B7C1] text-sm font-bold uppercase tracking-widest mb-1">العميل</span>
+                        <span class="block text-[#070F1A] font-black text-lg">{entry.data.client || 'سري'}</span>
+                    </div>
+                    <div>
+                        <span class="block text-[#B3B7C1] text-sm font-bold uppercase tracking-widest mb-1">الخدمة</span>
+                        <span class="block text-[#070F1A] font-black text-lg">{entry.data.category || 'تسويق شامل'}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-[#FDFDFD]">
+            <div class="container mx-auto px-4 max-w-[800px]">
+                <article class="prose prose-lg md:prose-xl max-w-none 
+                    prose-headings:font-black prose-headings:text-[#070F1A]
+                    prose-p:text-[#475569] prose-p:font-medium prose-p:leading-loose
+                    prose-a:text-[#58A8B4] prose-a:no-underline hover:prose-a:underline
+                    prose-strong:text-[#070F1A] prose-strong:font-black
+                    prose-ul:text-[#475569] prose-li:marker:text-[#58A8B4]
+                    prose-blockquote:border-r-[#438FB3] prose-blockquote:bg-[#F4F8F9] prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-l-2xl prose-blockquote:text-[#070F1A] prose-blockquote:not-italic
+                    reveal" style="--d:200ms">
+                    <Content />
+                </article>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#F4F8F9] relative z-20">
+            <div class="container mx-auto px-4 max-w-[1200px]">
+                <ContactUsBento client:load />
+            </div>
+        </section>
     </main>
+
     <Footer client:load />
+
+    <script is:inline>
+        document.addEventListener('astro:page-load', () => {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.05 });
+            document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+        });
+    </script>
+    <style>
+        .reveal { --d: 0ms; opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease var(--d), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d); }
+        .reveal.in { opacity: 1; transform: none; }
+    </style>
 </body>
 </html>
