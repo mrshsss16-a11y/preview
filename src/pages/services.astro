@@ -1,124 +1,114 @@
 ---
-import '../styles/global.css';
-import { ViewTransitions } from 'astro:transitions';
-
-import Navbar from '../components/Navbar.jsx';
-import ContactUsBento from '../components/ContactUsBento.jsx';
-import Footer from '../components/Footer.jsx';
+import Layout from '../layouts/Layout.astro';
 import SEOHead from '../components/SEOHead.astro';
+import ProcessFlow from '../components/ProcessFlow.astro';
+import ServiceResult from '../components/ServiceResult.astro';
+import ContactUsBento from '../components/ContactUsBento.jsx';
 
 const services = [
   {
     id: 'brand-identity', num: '01', title: 'تصميم الهوية البصرية',
     hook: 'هالتك البصرية هي أول ما يراه عميلك — وآخر ما ينساه.',
-    body: `تصميم الهوية البصرية ليس مجرد رسم شعار، بل هو بناء لغة بصرية كاملة تحكي قصة علامتك في ثوانٍ. في آورا للتسويق، نؤمن أن كل هوية تجارية ناجحة تبدأ من فهم عميق لجوهر عملك وقيمه قبل أن تبدأ بأي تصميم.\n\nنقدم لك منظومة هوية متكاملة: شعار احترافي يعكس شخصيتك، نظام ألوان مدروس يثبت في الأذهان، طباعة عربية تجمع الأصالة والحداثة، ودليل هوية شامل يضمن الاتساق في كل نقطة تواصل مع جمهورك.\n\nعملنا مع علامات تجارية سعودية من مكة إلى الرياض، ونعرف كيف نمزج الهوية المحلية بالمعايير العالمية.`,
-    slogan: 'هالتك الفارقة تبدأ بصورة لا تُنسى.', cta: 'ابدأ هويتك', color: 'from-[#58A8B4] to-[#438FB3]',
-    keywords: ['تصميم هوية بصرية', 'هوية تجارية', 'شعار احترافي']
+    body: `تصميم الهوية البصرية ليس مجرد رسم شعار، بل هو بناء لغة بصرية كاملة تحكي قصة علامتك في ثوانٍ. في آورا للتسويق، نؤمن أن كل هوية تجارية ناجحة تبدأ من فهم عميق لجوهر عملك وقيمه قبل أن تبدأ بأي تصميم.\n\nنقدم لك منظومة هوية متكاملة: شعار احترافي يعكس شخصيتك، نظام ألوان مدروس يثبت في الأذهان، طباعة عربية تجمع الأصالة والحداثة، ودليل هوية شامل يضمن الاتساق في كل نقطة تواصل مع جمهورك.`,
+    slogan: 'هالتك الفارقة تبدأ بصورة لا تُنسى.', cta: 'ابدأ هويتك', color: 'from-[#58A8B4] to-[#438FB3]', keywords: ['تصميم هوية بصرية', 'هوية تجارية', 'شعار احترافي'],
+    result: { stat: '+150%', label: 'تذكُّر العلامة', client: 'شركة المسافر', link: '/portfolio/al-musafer' }
   },
   {
     id: 'seo', num: '02', title: 'تحسين محركات البحث (SEO)',
     hook: 'موقعك الخفي هو فرصة ذهبية مهداة لمنافسيك.',
-    body: `أن تمتلك موقعاً رائعاً ولا يزوره أحد يشبه افتتاح متجر فخم في صحراء خالية. نحن نضعك في الشارع الأكثر ازدحاماً في العالم: الصفحة الأولى لجوجل.\n\nاستراتيجيتنا للـ SEO لا تعتمد على حيل مؤقتة، بل على بناء بنية تحتية تقنية صلبة، ومحتوى يُجيب على أسئلة عملائك، وبناء روابط خلفية موثوقة. نستهدف الكلمات المفتاحية التي تجلب مشترين حقيقيين، لا مجرد زوار عابرين.\n\nمن المراجعة التقنية إلى الكلمات المفتاحية المحلية (Local SEO) في مكة والسعودية، نحن نضمن نمواً عضوياً مستداماً.`,
-    slogan: 'هالتك الرقمية تتصدر المشهد بلا منازع.', cta: 'تصدر نتائج البحث', color: 'from-[#438FB3] to-[#070F1A]',
-    keywords: ['تحسين محركات البحث', 'SEO مكة', 'تصدر نتائج جوجل']
+    body: `أن تمتلك موقعاً رائعاً ولا يزوره أحد يشبه افتتاح متجر فخم في صحراء خالية. نحن نضعك في الشارع الأكثر ازدحاماً في العالم: الصفحة الأولى لجوجل.\n\nاستراتيجيتنا للـ SEO لا تعتمد على حيل مؤقتة، بل على بناء بنية تحتية تقنية صلبة، ومحتوى يُجيب على أسئلة عملائك، وبناء روابط خلفية موثوقة.`,
+    slogan: 'هالتك الرقمية تتصدر المشهد بلا منازع.', cta: 'تصدر نتائج البحث', color: 'from-[#438FB3] to-[#070F1A]', keywords: ['تحسين محركات البحث', 'SEO مكة', 'تصدر جوجل'],
+    result: { stat: '+310%', label: 'زيارات عضوية', client: 'تيك زون', link: '/portfolio/tech-zone' }
   },
   {
     id: 'ad-campaigns', num: '03', title: 'إدارة الحملات الإعلانية',
     hook: 'إعلاناتك تُكلف ولا تبيع؟ الخلل ليس في المنتج، بل في الاستهداف.',
-    body: `إطلاق الإعلانات أمر سهل، لكن تحقيق عائد استثمار (ROAS) حقيقي هو علم وفن. نحن ندير ميزانيتك الإعلانية وكأنها ميزانيتنا الخاصة.\n\nنقوم ببناء قمع تسويقي (Funnel) متكامل عبر منصات Google، Meta، و Snapchat. نبدأ بالوعي، ثم الاهتمام، وصولاً إلى إعادة الاستهداف الدقيق (Retargeting) لمن أبدوا اهتماماً ولم يشتروا.\n\nنقيس كل هللة تُنفق ونحسن الحملات يومياً لنضمن أقل تكلفة استحواذ (CPA) وأعلى مردود لمشروعك.`,
-    slogan: 'هالة تجذب العميل الحقيقي وتضاعف المبيعات.', cta: 'أطلق حملتك الإعلانية', color: 'from-[#58A8B4] to-[#438FB3]',
-    keywords: ['إدارة حملات إعلانية', 'إعلانات جوجل', 'إعلانات ممولة']
+    body: `إطلاق الإعلانات أمر سهل، لكن تحقيق عائد استثمار (ROAS) حقيقي هو علم وفن. نحن ندير ميزانيتك الإعلانية وكأنها ميزانيتنا الخاصة.\n\nنقوم ببناء قمع تسويقي متكامل عبر منصات Google و Meta. نبدأ بالوعي، ثم الاهتمام، وصولاً إلى إعادة الاستهداف الدقيق (Retargeting).`,
+    slogan: 'هالة تجذب العميل الحقيقي وتضاعف المبيعات.', cta: 'أطلق حملتك الإعلانية', color: 'from-[#58A8B4] to-[#438FB3]', keywords: ['حملات إعلانية', 'إعلانات جوجل', 'إعلانات ممولة'],
+    result: { stat: '6.4x', label: 'عائد الاستثمار (ROAS)', client: 'إيفوريا للعطور', link: '/portfolio/euphoria' }
   },
   {
     id: 'content-creation', num: '04', title: 'صناعة المحتوى',
     hook: 'المحتوى الباهت المنسوخ لا يصنع ولاءً ولا يبني مجتمعاً.',
-    body: `المحتوى هو صوت علامتك التجارية. إذا كان صوتك يشبه الجميع، فلن يسمعك أحد. نحن في آورا نصنع محتوى يتحدث بلسان جمهورك ويلمس احتياجاتهم الفعلية.\n\nسواء كان مقالات مدونة مُحسنة للسيو، أو نصوص بيعية للموقع (Copywriting)، أو سيناريوهات إعلانية جذابة؛ نحن نضمن أن كل كلمة تُكتب تخدم هدفاً تسويقياً واضحاً.\n\nالمحتوى الجيد يبني الثقة، والثقة هي العملة الأغلى في عالم التسويق الرقمي اليوم.`,
-    slogan: 'هالة تتحدث لغة جمهورك وتأسر انتباههم.', cta: 'ابدأ بصناعة محتواك', color: 'from-[#438FB3] to-[#070F1A]',
-    keywords: ['صناعة المحتوى', 'كتابة محتوى تسويقي', 'Copywriting']
+    body: `المحتوى هو صوت علامتك التجارية. إذا كان صوتك يشبه الجميع، فلن يسمعك أحد. نحن في آورا نصنع محتوى يتحدث بلسان جمهورك ويلمس احتياجاتهم الفعلية.\n\nسواء مقالات SEO، أو نصوص بيعية، نحن نضمن أن كل كلمة تُكتب تخدم هدفاً تسويقياً واضحاً.`,
+    slogan: 'هالة تتحدث لغة جمهورك وتأسر انتباههم.', cta: 'ابدأ بصناعة محتواك', color: 'from-[#438FB3] to-[#070F1A]', keywords: ['صناعة المحتوى', 'Copywriting', 'كتابة إبداعية'],
+    result: { stat: '+200%', label: 'تفاعل حقيقي', client: 'تطبيق أثر', link: '/portfolio' }
   },
   {
     id: 'social-media', num: '05', title: 'إدارة منصات التواصل',
     hook: 'حساباتك صامتة؟ في هذه اللحظة عملائك يتحدثون مع منافسيك.',
-    body: `التواجد على منصات التواصل الاجتماعي لم يعد رفاهية، بل هو واجهة خدمة العملاء ومسرح عرض منتجاتك اليومي. نحن نحول حساباتك من منصات صامتة إلى مجتمعات تنبض بالحياة.\n\nندير التواجد الرقمي بالكامل: تخطيط استراتيجي للمحتوى، تصاميم مبتكرة، جدولة ذكية، وتفاعل حقيقي مع الجمهور. نحن نعكس شخصية علامتك التجارية في كل تغريدة ومنشور.\n\nنبني لك حضوراً يجعل جمهورك ينتظر جديدك بشغف بدلاً من تجاهله.`,
-    slogan: 'هالة تبني مجتمعاً وفياً حول علامتك.', cta: 'أدر حساباتك باحترافية', color: 'from-[#58A8B4] to-[#438FB3]',
-    keywords: ['إدارة حسابات التواصل', 'تسويق انستقرام', 'السوشيال ميديا']
+    body: `التواجد على منصات التواصل لم يعد رفاهية. نحن نحول حساباتك من منصات صامتة إلى مجتمعات تنبض بالحياة.\n\nندير التواجد الرقمي بالكامل: تخطيط استراتيجي، تصاميم مبتكرة، وتفاعل حقيقي مع الجمهور. نحن نعكس شخصيتك في كل تغريدة.`,
+    slogan: 'هالة تبني مجتمعاً وفياً حول علامتك.', cta: 'أدر حساباتك باحترافية', color: 'from-[#58A8B4] to-[#438FB3]', keywords: ['إدارة حسابات', 'تسويق انستقرام', 'السوشيال ميديا'],
+    result: { stat: '100K+', label: 'متابع مستهدف', client: 'مطاعم الكرم', link: '/portfolio' }
   },
   {
     id: 'ecommerce', num: '06', title: 'إدارة المتاجر الإلكترونية',
     hook: 'زوار متجرك يغادرون سلة المشتريات فارغة؟ تجربة المستخدم هي السر.',
-    body: `المتجر الإلكتروني الناجح ليس مجرد واجهة عرض، بل هو بائع آلي يعمل 24/7. نحن نتدخل لتحسين كل خطوة يخطوها العميل من لحظة دخوله المتجر وحتى إتمام الدفع.\n\nنعمل على تبسيط واجهة المستخدم (UI/UX)، تحسين سرعة المتجر، كتابة أوصاف منتجات مقنعة، ومعالجة أسباب السلال المتروكة. كما نربط متجرك بأدوات التحليل الدقيقة (Google Analytics) لنفهم سلوك المشتري.\n\nنحول متجرك لآلة بيع لا تتوقف عن العمل بكفاءة عالية.`,
-    slogan: 'هالة تحول الزائر العابر إلى مشترٍ دائم.', cta: 'طوّر متجرك الإلكتروني', color: 'from-[#438FB3] to-[#070F1A]',
-    keywords: ['إدارة متاجر إلكترونية', 'تحسين سلة المشتريات', 'تجارة إلكترونية مكة']
+    body: `المتجر الإلكتروني الناجح ليس مجرد واجهة عرض، بل هو بائع آلي يعمل 24/7. نحن نتدخل لتحسين كل خطوة يخطوها العميل.\n\nنعمل على تبسيط واجهة المستخدم، تحسين سرعة المتجر، وكتابة أوصاف منتجات مقنعة لرفع معدل التحويل.`,
+    slogan: 'هالة تحول الزائر العابر إلى مشترٍ دائم.', cta: 'طوّر متجرك الإلكتروني', color: 'from-[#438FB3] to-[#070F1A]', keywords: ['إدارة متاجر', 'تجارة إلكترونية', 'تحسين سلة المشتريات'],
+    result: { stat: '4.2x', label: 'معدل التحويل', client: 'متجر عبق', link: '/portfolio' }
   }
 ];
 ---
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEOHead 
-        title="خدمات التسويق الرقمي في مكة المكرمة | آورا للتسويق" 
-        description="6 خدمات رقمية متكاملة لاكتمال هالتك: تصميم الهوية البصرية، SEO، حملات Google وMeta، صناعة المحتوى، التواصل الاجتماعي، والمتاجر الإلكترونية. تواصل معنا." 
-    />
-    <ViewTransitions />
-</head>
-<body class="font-['DIN_Next_LT_Arabic','Tajawal'] bg-[#FDFDFD] text-[#1e293b] antialiased overflow-x-hidden">
-    
-    <Navbar client:load />
+<Layout title="خدمات التسويق الرقمي في مكة المكرمة | آورا للتسويق">
+  <SEOHead 
+    title="خدمات التسويق الرقمي في مكة المكرمة | آورا للتسويق" 
+    description="6 خدمات رقمية متكاملة لاكتمال هالتك: تصميم الهوية البصرية، SEO، حملات Google وMeta، صناعة المحتوى، التواصل الاجتماعي، والمتاجر الإلكترونية. تواصل معنا." 
+  />
+  
+  <main class="w-full bg-[var(--c-light)]">
+    <section class="relative bg-[#070F1A] pt-40 pb-32 overflow-hidden rounded-b-[3rem] z-10">
+      <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+        <div class="w-[600px] h-[600px] rounded-full bg-[#58A8B4]/10 blur-[120px]"></div>
+      </div>
+      <div class="container mx-auto px-4 max-w-[900px] relative z-10 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight" style="view-transition-name: hero-title;">
+          منظومة متكاملة <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#58A8B4] to-[#438FB3]">لاكتمال هالتك</span>
+        </h1>
+        <p class="text-[#B3B7C1] text-lg md:text-xl leading-relaxed font-medium">
+          من تصميم الهوية التي تخطف الأنظار، إلى الحملات التي تضاعف المبيعات. نحن نغطي كافة احتياجاتك الرقمية باحترافية تامة.
+        </p>
+      </div>
+    </section>
 
-    <main class="w-full">
-        <section class="relative bg-[#070F1A] pt-40 pb-32 overflow-hidden rounded-b-[3rem] z-10">
-            <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
-                <div class="w-[600px] h-[600px] rounded-full bg-[#58A8B4]/10 blur-[120px]"></div>
+    <section class="py-24">
+      <div class="container mx-auto px-4 max-w-[900px] flex flex-col gap-16">
+        {services.map((s, i) => (
+          <article id={s.id} class="bg-white border border-[#B3B7C1]/20 rounded-[2.5rem] p-8 md:p-12 shadow-[0_10px_40px_rgba(7,15,26,0.03)] reveal" style={`--d:${i * 100}ms`}>
+            <div class="sr-only">الكلمات المفتاحية: {s.keywords.join('، ')}</div>
+            
+            <div class="flex items-center gap-4 mb-6">
+              <span class={`text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br ${s.color}`}>{s.num}</span>
+              <h2 class="text-3xl md:text-4xl font-black text-[#070F1A]">{s.title}</h2>
             </div>
             
-            <div class="container mx-auto px-4 max-w-[900px] relative z-10 text-center">
-                <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight" style="view-transition-name: hero-title;">
-                    منظومة متكاملة <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#58A8B4] to-[#438FB3]">لاكتمال هالتك</span>
-                </h1>
-                <p class="text-[#B3B7C1] text-lg md:text-xl leading-relaxed font-medium">
-                    من تصميم الهوية التي تخطف الأنظار، إلى الحملات التي تضاعف المبيعات. نحن نغطي كافة احتياجاتك الرقمية باحترافية تامة.
-                </p>
+            <p class="text-xl md:text-2xl font-bold text-[#438FB3] mb-6 leading-snug border-r-4 border-[#58A8B4] pr-4 bg-[#F4F8F9] py-3">{s.hook}</p>
+            
+            <div class="text-[#475569] text-lg leading-loose font-medium mb-8 space-y-4">
+              {s.body.split('\n\n').map(para => <p>{para}</p>)}
             </div>
-        </section>
 
-        <section class="py-24 bg-[#FDFDFD]">
-            <div class="container mx-auto px-4 max-w-[900px] flex flex-col gap-16">
-                {services.map((s, i) => (
-                    <article id={s.id} class="bg-white border border-[#B3B7C1]/20 rounded-[2.5rem] p-8 md:p-12 shadow-[0_10px_40px_rgba(7,15,26,0.03)] reveal" style={`--d:${i * 100}ms`}>
-                        <div class="sr-only">الكلمات المفتاحية: {s.keywords.join('، ')}</div>
-                        
-                        <div class="flex items-center gap-4 mb-6">
-                            <span class={`text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br ${s.color}`}>{s.num}</span>
-                            <h2 class="text-3xl md:text-4xl font-black text-[#070F1A]">{s.title}</h2>
-                        </div>
-                        
-                        <p class="text-xl md:text-2xl font-bold text-[#438FB3] mb-6 leading-snug border-r-4 border-[#58A8B4] pr-4 bg-[#F4F8F9] py-3">{s.hook}</p>
-                        
-                        <div class="text-[#475569] text-lg leading-loose font-medium mb-8 space-y-4">
-                            {s.body.split('\n\n').map(para => <p>{para}</p>)}
-                        </div>
+            <ServiceResult stat={s.result.stat} label={s.result.label} clientName={s.result.client} link={s.result.link} />
 
-                        <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[#B3B7C1]/20 pt-8 mt-4">
-                            <p class="text-[#070F1A] font-black text-xl flex-1">{s.slogan}</p>
-                            <a href="#contact" class={`bg-gradient-to-l ${s.color} text-white px-8 py-3.5 rounded-full font-bold text-lg hover:-translate-y-1 transition-transform shrink-0 shadow-lg inline-block text-center`}>
-                                {s.cta} ←
-                            </a>
-                        </div>
-                    </article>
-                ))}
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[#B3B7C1]/20 pt-8 mt-8">
+              <p class="text-[#070F1A] font-black text-xl flex-1">{s.slogan}</p>
+              <a href="#contact" class={`magnetic-btn bg-gradient-to-l ${s.color} text-white px-8 py-3.5 rounded-full font-bold text-lg shadow-lg inline-block text-center decoration-none`}>
+                {s.cta} ←
+              </a>
             </div>
-        </section>
+          </article>
+        ))}
+      </div>
+    </section>
 
-        <section class="py-24 bg-[#F4F8F9] relative z-20 overflow-hidden">
-            <div class="container mx-auto px-4 max-w-[1200px]"><ContactUsBento client:load /></div>
-        </section>
-    </main>
+    <div class="px-4 max-w-7xl mx-auto">
+      <ProcessFlow />
+    </div>
 
-    <Footer client:load />
-    
-    <style>.reveal { --d: 0ms; opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease var(--d), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d); } .reveal.in { opacity: 1; transform: none; }</style>
-    <script is:inline>document.addEventListener('astro:page-load', () => { const obs = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } }); }, { threshold: 0.1 }); document.querySelectorAll('.reveal').forEach((el) => obs.observe(el)); });</script>
-</body>
-</html>
+    <section id="contact" class="py-24 bg-[#F4F8F9] relative z-20">
+      <div class="container mx-auto px-4 max-w-[1200px]">
+        <ContactUsBento client:load />
+      </div>
+    </section>
+  </main>
+</Layout>
