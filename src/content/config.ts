@@ -1,6 +1,5 @@
 import { z, defineCollection } from 'astro:content';
 
-// تعريف هيكل بيانات المدونة
 const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -8,10 +7,10 @@ const blogCollection = defineCollection({
     category: z.string().optional(),
     date: z.string().optional(),
     description: z.string().optional(),
+    image: z.string().optional(), // حقل الصورة الجديد
   }),
 });
 
-// تعريف هيكل بيانات معرض الأعمال
 const portfolioCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -21,10 +20,10 @@ const portfolioCollection = defineCollection({
     description: z.string().optional(),
     publishDate: z.string().optional(),
     gradient: z.string().optional(),
+    image: z.string().optional(),
   }),
 });
 
-// تصدير الإعدادات ليقرأها Astro
 export const collections = {
   'blog': blogCollection,
   'portfolio': portfolioCollection,
