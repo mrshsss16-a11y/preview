@@ -32,3 +32,20 @@
   background: var(--aura-dark); height: 48px; position: relative; overflow: hidden;
   display: flex; align-items: center; justify-content: center; margin-bottom: -1px;
 }
+
+/* إصلاح مشكلة الفراغ الأيسر الناتج عن أنميشن الفورم (Layout Shift) */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+/* تأمين حاويات الأقسام لتمنع خروج الأنميشن عن الشاشة */
+section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* مسافة علوية لتعويض الناف بار العائم */
+main {
+  padding-top: 0; 
+}
