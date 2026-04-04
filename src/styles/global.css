@@ -12,58 +12,23 @@
 }
 
 :root {
-  /* ── Aura Color System ── */
   --aura-cyan:       #1ABDA8;
   --aura-cyan-bright:#22D8E8;
   --aura-teal:       #0F6E7E;
-  --aura-dark:       #070F1A;   /* الخلفية الليلية */
-  --aura-navy:       #0D1B2A;   /* dark cards */
-  --aura-soft:       #E8FAFB;   /* خلفية فاتحة */
-  --aura-glow-10:    rgba(26,189,168,0.10);
-  --aura-glow-20:    rgba(26,189,168,0.20);
-
-  /* ── Halo Arc Token ── */
-  --halo-stroke:     #1ABDA8;
-  --halo-inner:      #0F6E7E;
-  --halo-glow:       rgba(26,189,168,0.08);
-
-  /* ── Typography ── */
-  --font-ar: 'DIN Next LT Arabic', 'Cairo', sans-serif;
+  --aura-dark:       #070F1A;
+  --aura-navy:       #0D1B2A;
+  --aura-soft:       #E8FAFB;
 }
 
-/* ── Section alternation ── */
-.section-dark  { background: var(--aura-dark); color: #fff; }
-.section-light { background: var(--aura-soft); }
-.section-white { background: #fff; }
-
-/* ── Halo glow for CTA buttons ── */
 .btn-aura {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: linear-gradient(135deg, var(--aura-cyan), var(--aura-teal));
-  color: #fff;
-  border: none;
-  padding: 14px 32px;
-  border-radius: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 24px rgba(26,189,168,0.3);
-  transition: box-shadow 0.25s, transform 0.2s;
-  text-decoration: none;
+  color: #fff; border: none; padding: 14px 32px; border-radius: 12px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 24px rgba(26,189,168,0.3); transition: box-shadow 0.25s, transform 0.2s; text-decoration: none;
 }
-.btn-aura:hover {
-  box-shadow: 0 8px 40px rgba(26,189,168,0.55);
-  transform: translateY(-2px);
-  color: #fff;
-}
+.btn-aura:hover { box-shadow: 0 8px 40px rgba(26,189,168,0.55); transform: translateY(-2px); color: #fff; }
 
-/* ── Halo Wave Divider ── */
 .halo-divider {
-  background: var(--aura-dark);
-  height: 48px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: -1px; /* لمنع أي خط أبيض بين الأقسام */
+  background: var(--aura-dark); height: 48px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; margin-bottom: -1px;
 }

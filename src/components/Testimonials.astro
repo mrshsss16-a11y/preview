@@ -6,24 +6,24 @@ const testimonials = [
   { quote: "محتوى إبداعي لامس قلوب جمهورنا وصنع تفاعلاً حقيقياً. أورا ليسوا مجرد وكالة، هم شركاء نجاحنا.", name: "نورة الجعيد", title: "صاحبة متجر إيفوريا", avatar: "ن" }
 ];
 ---
-<section class="testimonials section-dark" dir="rtl">
+<section class="testimonials bg-[#070F1A] py-24 relative overflow-hidden" dir="rtl">
   <div class="testi-inner">
     <div class="section-header">
-      <span class="section-eyebrow accent-color">شركاء النجاح</span>
-      <h2 class="section-title text-white">لا تأخذ بكلامنا، <span class="hl-light">اسمع منهم</span></h2>
-      <p class="section-desc text-muted-light">أربع قصص حقيقية من شركاء وثقوا في هالة "أورا" لتحويل أعمالهم.</p>
+      <span class="section-eyebrow text-[#1ABDA8]">شركاء النجاح</span>
+      <h2 class="section-title text-white">لا تأخذ بكلامنا، <span class="text-[#1ABDA8]">اسمع منهم</span></h2>
+      <p class="section-desc text-[#94a3b8]">أربع قصص حقيقية من شركاء وثقوا في هالة "أورا" لتحويل أعمالهم.</p>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {testimonials.map((t) => (
         <div class="testi-card group">
-          <svg class="quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="var(--aura-primary)" opacity="0.1"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-          <p class="quote-text">{t.quote}</p>
+          <svg class="quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="#1ABDA8" opacity="0.1"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          <p class="quote-text text-[#e2e8f0]">{t.quote}</p>
           <div class="testi-author">
-            <div class="author-avatar">{t.avatar}</div>
+            <div class="author-avatar bg-white/5 border border-[#1ABDA8]/20 text-[#1ABDA8]">{t.avatar}</div>
             <div class="author-info">
-              <h4 class="author-name group-hover:text-[var(--aura-primary)] transition-colors">{t.name}</h4>
-              <span class="author-title">{t.title}</span>
+              <h4 class="author-name text-white group-hover:text-[#1ABDA8] transition-colors">{t.name}</h4>
+              <span class="author-title text-[#94a3b8]">{t.title}</span>
             </div>
           </div>
         </div>
@@ -33,22 +33,19 @@ const testimonials = [
 </section>
 
 <style>
-.testimonials { background: var(--dark); padding: 100px 5%; position: relative; overflow: hidden; }
-.testimonials::before { content: ''; position: absolute; top: -20%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, color-mix(in srgb, var(--aura-primary) 10%, transparent) 0%, transparent 70%); pointer-events: none; }
-.testimonials::after { content: ''; position: absolute; bottom: -20%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, color-mix(in srgb, var(--aura-secondary) 10%, transparent) 0%, transparent 70%); pointer-events: none; }
-.testi-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.testimonials::before { content: ''; position: absolute; top: -20%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(26,189,168,0.1) 0%, transparent 70%); pointer-events: none; }
+.testimonials::after { content: ''; position: absolute; bottom: -20%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(15,110,126,0.1) 0%, transparent 70%); pointer-events: none; }
+.testi-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; padding: 0 5%; }
 .section-header { text-align: center; margin-bottom: 60px; }
-.accent-color { color: var(--aura-primary); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 12px; font-size: 0.9rem; }
-.text-white { color: #fff; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 16px; }
-.hl-light { color: var(--aura-primary); }
-.text-muted-light { color: var(--aura-silver); max-width: 500px; margin: 0 auto; line-height: 1.6; font-size: 1.1rem; }
+.section-eyebrow { font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 12px; font-size: 0.9rem; }
+.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 16px; }
+.section-desc { max-width: 500px; margin: 0 auto; line-height: 1.6; font-size: 1.1rem; }
 .testi-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; padding: 40px; position: relative; backdrop-filter: blur(10px); transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-.testi-card:hover { transform: translateY(-4px); border-color: rgba(88,168,180,0.3); }
+.testi-card:hover { transform: translateY(-4px); border-color: rgba(26,189,168,0.3); }
 .quote-icon { position: absolute; top: 30px; left: 30px; transform: scaleX(-1); }
-.quote-text { color: #e2e8f0; font-size: 1.1rem; line-height: 1.8; margin-top: 10px; margin-bottom: 30px; font-weight: 500; }
-/* هنا تم إصلاح الخطأ من mt-auto إلى margin-top: auto; */
+.quote-text { font-size: 1.1rem; line-height: 1.8; margin-top: 10px; margin-bottom: 30px; font-weight: 500; }
 .testi-author { display: flex; align-items: center; gap: 16px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: auto; }
-.author-avatar { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.05); color: var(--aura-primary); border: 1px solid rgba(88,168,180,0.2); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.4rem; }
-.author-name { color: #fff; font-weight: 800; font-size: 1.1rem; margin-bottom: 4px; }
-.author-title { color: var(--aura-silver); font-size: 0.85rem; font-weight: 500;}
+.author-avatar { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.4rem; }
+.author-name { font-weight: 800; font-size: 1.1rem; margin-bottom: 4px; }
+.author-title { font-size: 0.85rem; font-weight: 500;}
 </style>
