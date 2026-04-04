@@ -1,0 +1,83 @@
+---
+const team = [
+  { name: "أحمد الشريف", role: "مؤسس ومدير إبداعي", quote: "أؤمن أن كل علامة تجارية تملك هالة — مهمتنا إظهارها", initials: "أ.ش" },
+  { name: "سارة المكاوي", role: "مديرة استراتيجية المحتوى", quote: "الكلمة الصحيحة تُحوّل الزائر إلى عميل مدى الحياة", initials: "س.م" },
+  { name: "محمد العتيبي", role: "مختص SEO وتحليل البيانات", quote: "الأرقام لا تكذب — نجعلها تعمل لصالحك", initials: "م.ع" },
+  { name: "نورة الدوسري", role: "مصممة هوية بصرية", quote: "الجمال وظيفي — كل خط وكل لون له هدف", initials: "ن.د" }
+];
+---
+<section class="team-section reveal" dir="rtl">
+  <div class="team-container">
+    <header class="team-header">
+      <span class="eyebrow">فريقنا</span>
+      <h2 class="title">الهالات التي تُحرّك الإبداع</h2>
+      <p class="description">متخصصون جمعتهم شغف واحد — بناء علامات لا تُنسى</p>
+    </header>
+
+    <div class="team-grid">
+      {team.map((member) => (
+        <article class="t-card">
+          <div class="avatar-wrapper">
+            <div class="avatar"><span class="initials">{member.initials}</span></div>
+            <svg class="halo-arc" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 4 4 Q 20 20 36 4" stroke="#1ABDA8" stroke-width="3.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="info-wrapper">
+            <h3 class="member-name">{member.name}</h3>
+            <span class="member-role">{member.role}</span>
+            <p class="member-quote">"{member.quote}"</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  :root { --c-teal: #1ABDA8; --c-navy: #0D1B2A; --c-dark: #070F1A; --c-light-text: #E2E8F0; --c-muted-text: #94A3B8; }
+  .team-section { background-color: var(--c-navy); padding: 6rem 1.5rem; position: relative; overflow: hidden; border-radius: 3rem; margin: 2rem 0; }
+  .team-container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; }
+  .team-header { text-align: center; margin-bottom: 4rem; }
+  .eyebrow { display: inline-block; color: var(--c-teal); font-size: 0.875rem; font-weight: 800; background: rgba(26, 189, 168, 0.1); padding: 0.25rem 1rem; border-radius: 999px; margin-bottom: 1rem; border: 1px solid rgba(26, 189, 168, 0.2); }
+  .title { color: #FFFFFF; font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
+  .description { color: var(--c-muted-text); font-size: 1.125rem; font-weight: 500; }
+  .team-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  @media (min-width: 768px) { .team-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
+  .t-card { background-color: var(--c-dark); border: 1px solid rgba(26, 189, 168, 0.08); border-radius: 24px; padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease; will-change: transform; }
+  .t-card.is-hovered { transition: transform 0.1s linear; z-index: 10; }
+  .t-card:hover { border-color: rgba(26, 189, 168, 0.5); box-shadow: 0 16px 40px -10px rgba(26, 189, 168, 0.15); }
+  .avatar-wrapper { position: relative; margin-bottom: 1.5rem; }
+  .avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--c-teal) 0%, var(--c-navy) 100%); display: flex; align-items: center; justify-content: center; border: 2px solid rgba(26, 189, 168, 0.3); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); position: relative; z-index: 2; }
+  .initials { color: #FFFFFF; font-size: 1.5rem; font-weight: 800; }
+  .halo-arc { position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 36px; filter: drop-shadow(0 0 6px var(--c-teal)); opacity: 0.8; z-index: 1; transition: opacity 0.3s ease, transform 0.3s ease; }
+  .t-card:hover .halo-arc { opacity: 1; transform: translateX(-50%) translateY(2px); filter: drop-shadow(0 0 10px var(--c-teal)); }
+  .member-name { color: var(--c-light-text); font-size: 1.25rem; font-weight: 800; margin-bottom: 0.25rem; }
+  .member-role { display: block; color: var(--c-teal); font-size: 0.875rem; font-weight: 600; margin-bottom: 1.25rem; }
+  .member-quote { color: var(--c-muted-text); font-size: 0.95rem; line-height: 1.6; font-style: italic; }
+</style>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const isTouch = window.matchMedia("(any-pointer: coarse)").matches;
+    if (isTouch) return;
+    document.querySelectorAll('.t-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        window.requestAnimationFrame(() => {
+          card.classList.add('is-hovered');
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left, y = e.clientY - rect.top;
+          const rotateX = (((y - (rect.height / 2)) / (rect.height / 2)) * -6); 
+          const rotateY = (((x - (rect.width / 2)) / (rect.width / 2)) * 6);
+          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        });
+      });
+      card.addEventListener('mouseleave', () => {
+        window.requestAnimationFrame(() => {
+          card.classList.remove('is-hovered');
+          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+      });
+    });
+  });
+</script>
