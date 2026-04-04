@@ -1,40 +1,106 @@
 ---
 import '../../styles/global.css';
 import { getCollection, render } from 'astro:content';
+import { ViewTransitions } from 'astro:transitions';
+
 import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
+import ContactUsBento from '../../components/ContactUsBento.jsx';
 import SEO from '../../components/SEO.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map(entry => ({
-    params: { slug: entry.id }, // تغيير slug إلى id
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry); // استخدام render الحديثة
----
+const { Content } = await render(entry);
 
+const formatDate = (date) => {
+  if (!date) return '';
+  return new Date(date).toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
+};
+---
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEO title={entry.data.title} description={entry.data.summary} />
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <SEO title={`${entry.data.title} | مدونة أورا`} description={entry.data.description || `اقرأ مقال ${entry.data.title} على مدونة أورا`} />
+    <ViewTransitions />
 </head>
-<body class="bg-[#FDFDFD] font-['DIN_Next_LT_Arabic','Tajawal'] text-[#1A1D20] antialiased">
+<body class="font-['DIN_Next_LT_Arabic','Tajawal'] bg-[#FDFDFD] text-[#1e293b] antialiased selection:bg-[#58A8B4] selection:text-white overflow-x-hidden">
+    
     <Navbar client:load />
-    <main class="relative w-full pt-40 pb-32">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-black text-[#1A1D20] mb-8">{entry.data.title}</h1>
-            <article class="prose prose-lg md:prose-xl max-w-none">
-                <Content />
-            </article>
-        </div>
+
+    <main class="w-full">
+        <section class="relative pt-48 pb-24 overflow-hidden z-10 bg-[#070F1A]">
+            <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#438FB3 1px, transparent 1px), linear-gradient(90deg, #438FB3 1px, transparent 1px); background-size: 40px 40px;"></div>
+            
+            <div class="container mx-auto px-4 max-w-[800px] relative z-10 text-center reveal">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <span class="px-4 py-1.5 rounded-full bg-[#58A8B4]/20 text-[#58A8B4] font-bold text-sm">
+                        {entry.data.category || 'تسويق'}
+                    </span>
+                    <span class="text-[#B3B7C1] text-sm font-medium flex items-center gap-2">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        {formatDate(entry.data.date)}
+                    </span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-black text-white mb-8 leading-tight">
+                    {entry.data.title}
+                </h1>
+            </div>
+        </section>
+
+        <section class="py-20 bg-[#FDFDFD] relative -mt-8 rounded-t-[3rem] z-20">
+            <div class="container mx-auto px-4 max-w-[800px]">
+                <article class="prose prose-lg md:prose-xl max-w-none 
+                    prose-headings:font-black prose-headings:text-[#070F1A] prose-headings:mb-6 prose-headings:mt-12
+                    prose-p:text-[#475569] prose-p:font-medium prose-p:leading-loose prose-p:mb-6
+                    prose-a:text-[#58A8B4] prose-a:no-underline hover:prose-a:underline prose-a:font-bold
+                    prose-strong:text-[#070F1A] prose-strong:font-black
+                    prose-ul:text-[#475569] prose-li:marker:text-[#58A8B4]
+                    prose-img:rounded-2xl prose-img:shadow-xl prose-img:border prose-img:border-[#B3B7C1]/20
+                    prose-blockquote:border-r-[6px] prose-blockquote:border-r-[#58A8B4] prose-blockquote:bg-[#F4F8F9] prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-l-2xl prose-blockquote:text-[#070F1A] prose-blockquote:not-italic prose-blockquote:font-bold
+                    reveal" style="--d:200ms">
+                    <Content />
+                </article>
+
+                <div class="mt-20 pt-10 border-t border-[#B3B7C1]/20 text-center reveal" style="--d:300ms">
+                    <a href="/blog" class="inline-flex items-center gap-3 text-[#438FB3] font-bold text-lg hover:text-[#58A8B4] transition-colors">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        العودة إلى المقالات
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#F4F8F9] relative z-20">
+            <div class="container mx-auto px-4 max-w-[1200px]">
+                <ContactUsBento client:load />
+            </div>
+        </section>
     </main>
+
     <Footer client:load />
+
+    <script is:inline>
+        document.addEventListener('astro:page-load', () => {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.05 });
+            document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+        });
+    </script>
+    <style>
+        .reveal { --d: 0ms; opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease var(--d), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d); }
+        .reveal.in { opacity: 1; transform: none; }
+    </style>
 </body>
 </html>
