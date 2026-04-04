@@ -6,7 +6,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
 import ContactUsBento from '../../components/ContactUsBento.jsx';
-import SEO from '../../components/SEO.astro';
+import SEOHead from '../../components/SEOHead.astro';
 
 export async function getStaticPaths() {
   const portfolioEntries = await getCollection('portfolio');
@@ -29,7 +29,7 @@ const gradientBg = entry.data.gradient
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEO title={`${entry.data.title} | أعمال أورا`} description={entry.data.description || `دراسة حالة لمشروع ${entry.data.title}`} />
+    <SEOHead title={`${entry.data.title} | أعمال أورا`} description={entry.data.description || `دراسة حالة لمشروع ${entry.data.title}`} />
     <ViewTransitions />
 </head>
 <body class="font-['DIN_Next_LT_Arabic','Tajawal'] bg-[#FDFDFD] text-[#1e293b] antialiased selection:bg-[#58A8B4] selection:text-white overflow-x-hidden">
