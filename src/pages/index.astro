@@ -6,7 +6,7 @@ import HaloSeparator from '../components/HaloSeparator.astro';
 import ClientMarquee from '../components/ClientMarquee.astro';
 import Services from '../components/Services.astro';
 import Testimonials from '../components/Testimonials.astro';
-import PortfolioGrid from '../components/PortfolioGrid.jsx';
+import FeaturedPortfolio from '../components/FeaturedPortfolio.astro';
 import ContactUsBento from '../components/ContactUsBento.jsx';
 import { getCollection } from 'astro:content';
 
@@ -43,7 +43,7 @@ try {
         <h2 class="text-4xl md:text-5xl font-extrabold text-[#070F1A]">هالات صنعناها</h2>
       </div>
       {mappedProjects.length > 0 ? (
-         <PortfolioGrid client:idle projects={mappedProjects} />
+         <FeaturedPortfolio projects={mappedProjects} />
       ) : (
          <p class="text-center text-gray-500">جاري إضافة الأعمال...</p>
       )}

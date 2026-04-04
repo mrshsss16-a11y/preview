@@ -1,0 +1,68 @@
+---
+export interface Props {
+  projects: any[];
+}
+const { projects } = Astro.props;
+
+// نأخذ أول 3 أعمال فقط للعرض في الرئيسية
+const featured = projects.slice(0, 3); 
+---
+
+<div class="featured-portfolio" dir="rtl">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {featured.map((p, i) => {
+      // استخراج اللون الأساسي من التدرج
+      const gradient = p.gradient || 'from-[#58A8B4] to-[#070F1A]';
+      const fromColor = gradient.includes('from-[') ? gradient.split('from-[')[1].split(']')[0] : '#58A8B4';
+      
+      return (
+      <a href={`/portfolio/${p.slug}`} class="tilt-card block bg-[#070F1A] rounded-[24px] overflow-hidden border border-[rgba(88,168,180,0.15)] no-underline flex flex-col reveal" style={`--delay: ${i * 150}ms`}>
+        
+        <div class="relative h-[220px] flex items-center justify-center overflow-hidden" style={`background: linear-gradient(135deg, ${fromColor} 0%, #070F1A 100%)`}>
+          <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 16px 16px;"></div>
+          
+          <svg width="60" height="60" viewBox="0 0 44 44" fill="none" stroke="#fff" stroke-opacity="0.3">
+            <path d="M7 38 A20 20 0 0 1 37 38" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="22" cy="22" r="6" fill="#fff" stroke="none"/>
+          </svg>
+          
+          {p.result && (
+            <div class="absolute bottom-4 right-4 bg-[#070F1A]/60 backdrop-blur-md border border-white/10 text-[#1ABDA8] px-3 py-1.5 rounded-xl text-xs font-black">
+              النتيجة: {p.result}
+            </div>
+          )}
+        </div>
+        
+        <div class="p-6 flex-1 flex flex-col">
+          <span class="text-[12px] text-[#58A8B4] font-black tracking-wider mb-2">
+            {p.category || 'أعمال أورا'}
+          </span>
+          <h3 class="text-white font-black text-xl mb-2 leading-snug">
+            هالة {p.client || 'المشروع'} — من الغياب إلى التصدر
+          </h3>
+          <p class="text-[#94a3b8] text-sm m-0 leading-relaxed font-medium line-clamp-2">
+            {p.title}
+          </p>
+        </div>
+      </a>
+    )})}
+  </div>
+  
+  <div class="mt-16 text-center reveal" style="--delay: 450ms;">
+    <a href="/portfolio" class="magnetic-btn group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full border-2 border-[#070F1A] text-[#070F1A] font-black text-lg hover:bg-[#070F1A] hover:text-white transition-all duration-300 decoration-none overflow-hidden">
+      <span class="relative z-10 flex items-center gap-2">
+        تصفح السجل الكامل
+        <svg class="w-5 h-5 transform rotate-180 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+</style>
