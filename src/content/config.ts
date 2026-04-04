@@ -18,7 +18,7 @@ const portfolioCollection = defineCollection({
     category: z.string().optional(),
     client: z.string().optional(),
     description: z.string().optional(),
-    publishDate: z.string().optional(),
+    publishDate: z.string().optional(), result: z.string().optional(),
     gradient: z.string().optional(),
     image: z.string().optional(),
   }),
