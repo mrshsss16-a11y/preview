@@ -24,12 +24,12 @@ export default function Navbar() {
         }`}
         dir="rtl"
       >
-        {/* اللوجو الجديد عبر الرابط */}
+        {/* اللوجو مع فلاتر تفتيح التباين والإضاءة (Brightness + Drop Shadow) */}
         <a href="/" className="flex items-center no-underline group shrink-0">
           <img 
             src="https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp" 
             alt="شعار وكالة أورا" 
-            className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            className="h-8 md:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105 brightness-200 contrast-125 drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]"
             loading="lazy"
           />
         </a>
