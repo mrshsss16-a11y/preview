@@ -1,0 +1,175 @@
+---
+// src/components/ServiceResult.astro
+// بطاقة إثبات نجاح الخدمة (تضاف أسفل كل خدمة في صفحة الخدمات)
+
+export interface Props {
+  stat: string;
+  label: string;
+  clientName: string;
+  link: string;
+}
+
+const { stat, label, clientName, link } = Astro.props;
+---
+
+<a href={link} class="s-result-card group reveal" dir="rtl">
+  
+  <div class="sr-main">
+    <div class="sr-icon-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+        <polyline points="17 6 23 6 23 12"></polyline>
+      </svg>
+    </div>
+    <div class="sr-stats">
+      <span class="sr-value">{stat}</span>
+      <span class="sr-label">{label}</span>
+    </div>
+  </div>
+
+  <div class="sr-divider"></div>
+
+  <div class="sr-meta">
+    <div class="sr-client">
+      <span class="sr-meta-lbl">العميل:</span>
+      <span class="sr-client-name">{clientName}</span>
+    </div>
+    
+    <div class="sr-action">
+      <span class="sr-action-txt">اقرأ القصة</span>
+      <svg class="sr-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+</a>
+
+<style>
+  .s-result-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #E8FAFB; /* Soft Teal Background */
+    border: 1px solid rgba(26, 189, 168, 0.2);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Tajawal', sans-serif;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .s-result-card {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .s-result-card:hover {
+    border-color: #1ABDA8;
+    background-color: #E0F8F9;
+    box-shadow: 0 8px 24px -6px rgba(26, 189, 168, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .sr-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .sr-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #1ABDA8;
+    color: #070F1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sr-stats {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sr-value {
+    color: #070F1A;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .sr-label {
+    color: #0F6E7E;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .sr-divider {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(15, 110, 126, 0.1);
+    margin: 1rem 0;
+  }
+
+  @media (min-width: 640px) {
+    .sr-divider {
+      width: 1px;
+      height: 36px;
+      margin: 0 1.5rem;
+    }
+  }
+
+  .sr-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 1rem;
+  }
+
+  .sr-client {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sr-meta-lbl {
+    color: #64748B;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .sr-client-name {
+    color: #0D1B2A;
+    font-size: 0.95rem;
+    font-weight: 800;
+  }
+
+  .sr-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1ABDA8;
+    font-weight: 800;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .s-result-card:hover .sr-action {
+    color: #0F6E7E;
+  }
+
+  .sr-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .s-result-card:hover .sr-arrow {
+    transform: translateX(-4px); /* RTL Left move */
+  }
+</style>

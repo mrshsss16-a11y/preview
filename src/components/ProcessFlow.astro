@@ -1,0 +1,162 @@
+---
+// src/components/ProcessFlow.astro
+// مكون يشرح منهجية عمل أورا (4 خطوات) بخط زمني أفقي/عمودي
+
+const steps = [
+  { num: '01', title: 'اكتشاف', desc: 'نفهم عملك وجمهورك وأهدافك بعمق' },
+  { num: '02', title: 'استراتيجية', desc: 'نبني خطة مخصصة لا قوالب جاهزة' },
+  { num: '03', title: 'تنفيذ', desc: 'ننفذ بدقة ونختبر باستمرار' },
+  { num: '04', title: 'قياس', desc: 'نقيس النتائج ونُطوّر لا نتوقف' }
+];
+---
+
+<section class="process-section" dir="rtl">
+  <div class="process-container">
+    
+    <div class="text-center mb-16 reveal">
+      <span class="text-[#1ABDA8] font-bold text-sm tracking-wider uppercase mb-2 block">منهجيتنا</span>
+      <h2 class="text-3xl md:text-5xl font-black text-white">كيف نبني هالتك؟</h2>
+    </div>
+
+    <div class="process-timeline">
+      {steps.map((step, index) => (
+        <div class="process-step reveal" style={`--delay: ${index * 150}ms`}>
+          <div class="step-icon-wrapper">
+            <span class="step-num">{step.num}</span>
+            <svg class="mini-halo" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 4 4 Q 20 20 36 4" stroke="#1ABDA8" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            {index !== steps.length - 1 && <div class="step-connector"></div>}
+          </div>
+          
+          <div class="step-content">
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .process-section {
+    background-color: #070F1A;
+    padding: 6rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Tajawal', sans-serif;
+  }
+  .process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Timeline Grid */
+  .process-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .process-timeline {
+      flex-direction: row;
+      gap: 0;
+      justify-content: space-between;
+    }
+  }
+
+  /* Step Item */
+  .process-step {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .process-step {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+  }
+
+  /* Icon & Connector Wrapper */
+  .step-icon-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+  }
+
+  /* الخط الزمني (Connector) */
+  .step-connector {
+    position: absolute;
+    background-color: rgba(26, 189, 168, 0.3); /* Teal with 30% opacity */
+    
+    /* Mobile (Vertical line) */
+    width: 2px;
+    height: calc(100% + 3rem);
+    top: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media (min-width: 768px) {
+    .step-connector {
+      /* Desktop (Horizontal line RTL: goes from left of current to right of next) */
+      width: calc(100% - 64px);
+      height: 2px;
+      top: 50%;
+      left: auto;
+      right: calc(50% + 32px);
+      transform: translateY(-50%);
+    }
+  }
+
+  /* Typography */
+  .step-num {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #1ABDA8;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  .mini-halo {
+    position: absolute;
+    bottom: 2px;
+    width: 32px;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(26, 189, 168, 0.4));
+  }
+
+  .step-title {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-desc {
+    color: #94A3B8;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 500;
+    max-width: 260px;
+  }
+</style>
