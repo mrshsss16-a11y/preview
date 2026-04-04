@@ -24,10 +24,14 @@ export default function Navbar() {
         }`}
         dir="rtl"
       >
-        {/* اللوجو */}
-        <a href="/" className="flex items-center gap-2 text-white no-underline group">
-          <span className="font-black text-2xl tracking-wide group-hover:text-[#58A8B4] transition-colors">أورا</span>
-          <span className="w-2 h-2 rounded-full bg-[#58A8B4] shadow-[0_0_8px_#58A8B4]"></span>
+        {/* اللوجو الجديد عبر الرابط */}
+        <a href="/" className="flex items-center no-underline group shrink-0">
+          <img 
+            src="https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp" 
+            alt="شعار وكالة أورا" 
+            className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
         </a>
 
         {/* الروابط للشاشات الكبيرة */}
