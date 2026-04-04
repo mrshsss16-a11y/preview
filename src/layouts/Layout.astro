@@ -1,6 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import InteractiveEngine from '../components/InteractiveEngine.astro';
+import Effects from '../components/Effects.astro';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 
@@ -27,6 +27,6 @@ const { title } = Astro.props;
     <Navbar client:load />
     <slot />
     <Footer client:load />
-    <InteractiveEngine />
+    <Effects />
   </body>
 </html>
