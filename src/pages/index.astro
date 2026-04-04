@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import SEOHead from '../components/SEOHead.astro';
 import Hero from '../components/Hero.astro';
 import HaloSeparator from '../components/HaloSeparator.astro';
+import ClientMarquee from '../components/ClientMarquee.astro';
 import Services from '../components/Services.astro';
+import Testimonials from '../components/Testimonials.astro';
 import PortfolioGrid from '../components/PortfolioGrid.jsx';
 import ContactUsBento from '../components/ContactUsBento.jsx';
 import { getCollection } from 'astro:content';
@@ -31,6 +33,7 @@ try {
   
   <Hero />
   <HaloSeparator />
+  <ClientMarquee />
   <Services />
 
   <section class="py-24 bg-[var(--c-light)] relative">
@@ -46,6 +49,8 @@ try {
       )}
     </div>
   </section>
+
+  <Testimonials />
 
   <section id="contact" class="py-24 bg-[#F4F8F9] relative z-20 overflow-hidden">
       <div class="container mx-auto px-4 max-w-[1200px]">
