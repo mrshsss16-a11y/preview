@@ -1,8 +1,6 @@
 ---
-// src/components/Hero.astro
 ---
 <section class="hero section-dark" dir="rtl">
-
   <div class="halo-backdrop" aria-hidden="true">
     <svg viewBox="0 0 1400 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <path d="M -100 700 A 800 800 0 0 1 1500 700" fill="none" stroke="#1ABDA8" stroke-width="140" stroke-linecap="round" opacity="0.04" />
@@ -14,11 +12,8 @@
 
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="badge">
-        <span class="badge-pulse"></span>
-        الوكالة الرقمية الأسرع نموًا في مكة المكرمة
-      </div>
-      <h1>وكالة <span class="grad-text">آورا</span><br/>للتسويق الرقمي</h1>
+      <div class="badge"><span class="badge-pulse"></span>الوكالة الرقمية الأسرع نموًا في مكة</div>
+      <h1 class="hero-h1">وكالة <span class="grad-text">آورا</span><br/>للتسويق الرقمي</h1>
       <p class="hero-desc">نبني هالتك الرقمية — هوية فارقة، محتوى يُشعل، وتسويق يتصدر. شريكك الاستراتيجي من الفكرة إلى النتيجة.</p>
 
       <div class="cta-group">
@@ -42,10 +37,9 @@
           <div class="chart-row"><div class="chart-label">SEO</div><div class="chart-track"><div class="chart-fill" style="--w:88%"></div></div><span class="chart-val">88%</span></div>
           <div class="chart-row"><div class="chart-label">إعلانات</div><div class="chart-track"><div class="chart-fill" style="--w:73%"></div></div><span class="chart-val">73%</span></div>
           <div class="chart-row"><div class="chart-label">محتوى</div><div class="chart-track"><div class="chart-fill" style="--w:94%"></div></div><span class="chart-val">94%</span></div>
-          <div class="chart-row"><div class="chart-label">هوية</div><div class="chart-track"><div class="chart-fill" style="--w:61%"></div></div><span class="chart-val">61%</span></div>
           <div class="mockup-metric">
             <div class="metric-box"><span class="metric-num text-white">+240%</span><span class="metric-lbl">النمو العضوي</span></div>
-            <div class="metric-box accent"><span class="metric-num text-[var(--aura-cyan)]">3.2×</span><span class="metric-lbl">عائد الاستثمار</span></div>
+            <div class="metric-box accent"><span class="metric-num text-[#1ABDA8]">3.2×</span><span class="metric-lbl">عائد الاستثمار</span></div>
           </div>
         </div>
       </div>
@@ -54,42 +48,34 @@
   </div>
 </section>
 
-<div class="halo-divider" aria-hidden="true">
-  <svg width="100%" height="48" viewBox="0 0 1400 48" preserveAspectRatio="none">
-    <path d="M0 24 Q350 0 700 24 Q1050 48 1400 24" fill="none" stroke="#1ABDA8" stroke-width="1" opacity="0.3"/>
-    <circle cx="700" cy="24" r="16" fill="#070F1A" stroke="#1ABDA8" stroke-width="1" opacity="0.8"/>
-    <path d="M691 30 A11 11 0 0 1 709 30" fill="none" stroke="#1ABDA8" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="709" y1="18" x2="709" y2="30" stroke="#0F6E7E" stroke-width="2.5" stroke-linecap="round"/>
-  </svg>
-</div>
-
 <style>
-.hero { position: relative; overflow: hidden; padding: clamp(120px, 15vw, 160px) 5% 100px; }
-.halo-backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 0;}
-.halo-backdrop svg { width: 100%; height: 100%; }
+.hero { position: relative; overflow: hidden; padding: clamp(120px, 15vw, 160px) 5% 100px; background: #070F1A; color: #fff;}
+.halo-backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 0; --mx: 50%; --my: 50%; view-transition-name: halo;}
+.halo-backdrop::after { content: ''; position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mx) var(--my), rgba(26, 189, 168, 0.08), transparent 60%); transition: background 0.15s; }
 .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
 @media (min-width: 992px) { .hero-inner { grid-template-columns: 1fr 1fr; } }
 .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(26,189,168,0.1); border: 1px solid rgba(26,189,168,0.25); color: #5DCAA5; padding: 6px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; margin-bottom: 20px; }
-.badge-pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--aura-cyan); animation: pulse 2s ease-in-out infinite; }
+.badge-pulse { width: 7px; height: 7px; border-radius: 50%; background: #1ABDA8; animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
-h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; }
-.grad-text { background: linear-gradient(135deg, var(--aura-cyan), var(--aura-cyan-bright)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; view-transition-name: hero-title;}
+.grad-text { background: linear-gradient(135deg, #1ABDA8, #22D8E8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero-desc { color: rgba(255,255,255,0.65); font-size: 1.1rem; line-height: 1.8; margin-bottom: 32px; max-width: 480px; font-weight: 500;}
 .cta-group { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
-.btn-outline { background: transparent; border: 1.5px solid rgba(26,189,168,0.35); color: rgba(255,255,255,0.8); padding: 13px 26px; border-radius: 12px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: border-color .2s, color .2s; display: inline-flex; align-items: center;}
-.btn-outline:hover { border-color: var(--aura-cyan); color: var(--aura-cyan); }
+.btn-aura { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #1ABDA8, #0F6E7E); color: #fff; padding: 14px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 24px rgba(26,189,168,0.3); transition: transform 0.1s ease, box-shadow 0.2s; will-change: transform;}
+.btn-outline { background: transparent; border: 1.5px solid rgba(26,189,168,0.35); color: rgba(255,255,255,0.8); padding: 13px 26px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: border-color .2s, color .2s; display: inline-flex; align-items: center;}
+.btn-outline:hover { border-color: #1ABDA8; color: #1ABDA8; }
 .stats { display: flex; align-items: center; gap: clamp(16px, 4vw, 30px); }
 .stat { display: flex; flex-direction: column; }
 .stat-top { display: flex; align-items: baseline; gap: 2px; }
-.stat .num { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 900; color: var(--aura-cyan); line-height: 1;}
-.stat .plus { color: var(--aura-cyan); font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 800; }
+.stat .num { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 900; color: #1ABDA8; line-height: 1;}
+.stat .plus { color: #1ABDA8; font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 800; }
 .stat .lbl { color: rgba(255,255,255,0.5); font-size: 0.85rem; font-weight: 600;}
 .divider { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, rgba(26,189,168,0.3), transparent); }
 
-/* Mockup الثيم الليلي */
+/* Mockup */
 .hero-visual { position: relative; display: flex; justify-content: center; }
-.mockup-card { width: 100%; max-width: 420px; background: var(--aura-navy); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.4); overflow: hidden; }
-.mockup-header { background: var(--aura-dark); padding: 14px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.02);}
+.mockup-card { width: 100%; max-width: 420px; background: #0D1B2A; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.4); overflow: hidden; }
+.mockup-header { background: #070F1A; padding: 14px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.02);}
 .mh-dots { display: flex; gap: 6px; }
 .mh-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.2); }
 .mh-bar { flex: 1; text-align: center; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,.5); }
@@ -97,22 +83,23 @@ h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-
 .chart-row { display: flex; align-items: center; gap: 12px; font-size: 0.85rem; font-weight: 600;}
 .chart-label { width: 50px; color: rgba(255,255,255,0.6); text-align: right; }
 .chart-track { flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 99px; overflow: hidden; }
-.chart-fill { height: 100%; width: var(--w); background: linear-gradient(90deg, var(--aura-teal), var(--aura-cyan)); border-radius: 99px; animation: grow 1.2s ease-out forwards; transform-origin: right; }
+.chart-fill { height: 100%; width: var(--w); background: linear-gradient(90deg, #0F6E7E, #1ABDA8); border-radius: 99px; animation: grow 1.2s ease-out forwards; transform-origin: right; }
 @keyframes grow { from { width: 0; } to { width: var(--w); } }
-.chart-val { width: 36px; color: var(--aura-cyan); }
+.chart-val { width: 36px; color: #1ABDA8; }
 .mockup-metric { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
 .metric-box { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 16px; text-align: center; display: flex; flex-direction: column; gap: 4px; border: 1px solid rgba(255,255,255,0.03); }
 .metric-box.accent { background: rgba(26,189,168,0.1); border-color: rgba(26,189,168,0.2); }
 .metric-num { font-size: 1.6rem; font-weight: 900; }
 .metric-lbl { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.5); }
-.float-badge { position: absolute; bottom: -20px; right: -20px; background: var(--aura-dark); border: 1px solid rgba(26,189,168,0.3); border-radius: 999px; padding: 10px 20px; font-size: 0.85rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 10;}
-.fb-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--aura-cyan); animation: pulse 1.5s ease-in-out infinite; }
+.float-badge { position: absolute; bottom: -20px; right: -20px; background: #070F1A; border: 1px solid rgba(26,189,168,0.3); border-radius: 999px; padding: 10px 20px; font-size: 0.85rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 10;}
+.fb-dot { width: 10px; height: 10px; border-radius: 50%; background: #1ABDA8; animation: pulse 1.5s ease-in-out infinite; }
 @media (max-width: 991px) { .hero-visual { display: none; } }
 </style>
 
 <script is:inline>
 (function(){
-  function run(){
+  // 1. Stats Counter
+  function runStats(){
     document.querySelectorAll('.num').forEach(function(el){
       var to = parseInt(el.dataset.to);
       var s  = performance.now();
@@ -125,6 +112,26 @@ h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-
       })(performance.now());
     });
   }
-  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', runStats) : runStats();
+
+  // 2. Spotlight & Magnetic Button
+  var hero = document.querySelector('.hero');
+  var halo = document.querySelector('.halo-backdrop');
+  if (hero && halo) {
+    hero.addEventListener('mousemove', function (e) {
+      var rect = hero.getBoundingClientRect();
+      halo.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+      halo.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+    });
+  }
+  document.querySelectorAll('.btn-aura').forEach(function (btn) {
+    btn.addEventListener('mousemove', function (e) {
+      var r = btn.getBoundingClientRect();
+      var dx = (e.clientX - (r.left + r.width / 2)) * 0.25;
+      var dy = (e.clientY - (r.top + r.height / 2)) * 0.25;
+      btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px) translateY(-2px)';
+    });
+    btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+  });
 })();
 </script>
