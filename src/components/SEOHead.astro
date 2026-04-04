@@ -1,0 +1,28 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "وكالة أورا للتسويق | هالتك الفارقة",
+  description = "وكالة تسويق رقمي متكاملة. نبني هالتك الرقمية عبر استراتيجيات ذكية وحلول إبداعية.",
+  image = "/og-image.jpg"
+} = Astro.props;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:site_name" content="آورا للتسويق" />
+<meta property="og:locale" content="ar_SA" />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
