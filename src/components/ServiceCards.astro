@@ -1,92 +1,162 @@
 ---
+// أيقونة الهالة الموحدة (Halo Motif) مع دعم تغيير الألوان
+const haloIcon = `<svg width="40" height="40" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M7 38 A20 20 0 0 1 37 38" stroke-width="4"/><path d="M12 38 A17 17 0 0 1 37 38" stroke-width="3" opacity="0.7"/><line x1="37" y1="17" x2="37" y2="38" stroke-width="3" opacity="0.7"/><ellipse cx="25" cy="40.5" rx="11" ry="2.5" fill="currentColor" stroke="none" opacity="0.2"/></svg>`;
+
 const services = [
-  { n:'01', title:'الهوية البصرية',       desc:'هوية تُجسّد روح علامتك وتثبت حضورك القوي في السوق.', cta:'ابدأ هويتك' },
-  { n:'02', title:'تحسين محركات البحث',   desc:'تصدر النتائج الأولى في جوجل وزد زياراتك العضوية والمجانية.', cta:'تصدر الآن' },
-  { n:'03', title:'الحملات الإعلانية',    desc:'حملات عبر Google وMeta باستهداف دقيق وعائد استثمار مقاس.',   cta:'أطلق حملتك' },
-  { n:'04', title:'صناعة المحتوى',        desc:'محتوى إبداعي يبني علامتك ويصل للقلوب بطريقة جذابة.',   cta:'ابدأ بمحتوى' },
-  { n:'05', title:'إدارة منصات التواصل', desc:'تواجد احترافي يبني مجتمعاً حقيقياً وولاءً حول علامتك.', cta:'أطلق حساباتك' },
-  { n:'06', title:'إدارة المتاجر', desc:'تحسين تجربة التسوق التي تحول الزوار إلى عملاء دائمين.',  cta:'طوّر متجرك' },
+  {
+    id: "branding",
+    colSpan: "col-span-1 md:col-span-2 lg:col-span-8",
+    bgClass: "bg-[#070F1A]",
+    titleClass: "text-white",
+    descClass: "text-[#B3B7C1]",
+    iconColor: "text-[#58A8B4]",
+    iconBg: "bg-white/5 border border-white/10",
+    arrowBg: "bg-white/10 text-white",
+    title: 'تصميم الهوية البصرية',
+    desc: 'بناء هوية متكاملة تعكس قيمك، تروي قصتك، وتترك انطباعاً لا يُنسى في ذهن عميلك.',
+    pattern: `<svg class="absolute left-0 bottom-0 opacity-5 pointer-events-none" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="150" r="100" fill="none" stroke="#ffffff" stroke-width="20"/></svg>`
+  },
+  {
+    id: "ads",
+    colSpan: "col-span-1 lg:col-span-4",
+    bgClass: "bg-white border border-[#B3B7C1]/20",
+    titleClass: "text-[#070F1A]",
+    descClass: "text-[#475569]",
+    iconColor: "text-[#438FB3]",
+    iconBg: "bg-[#438FB3]/10 border border-[#438FB3]/20",
+    arrowBg: "bg-[#438FB3]/10 text-[#438FB3]",
+    title: 'الحملات الإعلانية',
+    desc: 'إدارة حملات رقمية لاستهداف دقيق ورفع فوري ومستدام للمبيعات.',
+    pattern: ''
+  },
+  {
+    id: "content",
+    colSpan: "col-span-1 lg:col-span-4",
+    bgClass: "bg-[#F4F8F9] border border-[#B3B7C1]/20",
+    titleClass: "text-[#070F1A]",
+    descClass: "text-[#475569]",
+    iconColor: "text-[#58A8B4]",
+    iconBg: "bg-[#58A8B4]/10 border border-[#58A8B4]/20",
+    arrowBg: "bg-[#58A8B4]/10 text-[#58A8B4]",
+    title: 'صناعة المحتوى',
+    desc: 'كتابة إبداعية وتصوير إنتاجي يبرز هوية علامتك ويتحدث بلسان جمهورك.',
+    pattern: ''
+  },
+  {
+    id: "social",
+    colSpan: "col-span-1 lg:col-span-4",
+    bgClass: "bg-white border border-[#B3B7C1]/20",
+    titleClass: "text-[#070F1A]",
+    descClass: "text-[#475569]",
+    iconColor: "text-[#438FB3]",
+    iconBg: "bg-[#438FB3]/10 border border-[#438FB3]/20",
+    arrowBg: "bg-[#438FB3]/10 text-[#438FB3]",
+    title: 'إدارة التواصل',
+    desc: 'تفاعل مستمر وجدولة احترافية لبناء مجتمع حقيقي حول علامتك.',
+    pattern: ''
+  },
+  {
+    id: "seo",
+    colSpan: "col-span-1 lg:col-span-4",
+    bgClass: "bg-[#F4F8F9] border border-[#B3B7C1]/20",
+    titleClass: "text-[#070F1A]",
+    descClass: "text-[#475569]",
+    iconColor: "text-[#58A8B4]",
+    iconBg: "bg-[#58A8B4]/10 border border-[#58A8B4]/20",
+    arrowBg: "bg-[#58A8B4]/10 text-[#58A8B4]",
+    title: 'تحسين محركات (SEO)',
+    desc: 'تصدر نتائج البحث الأولى في جوجل لزيادة الزيارات العضوية.',
+    pattern: ''
+  },
+  {
+    id: "ecommerce",
+    colSpan: "col-span-1 md:col-span-2 lg:col-span-12",
+    bgClass: "bg-gradient-to-r from-[#58A8B4] to-[#438FB3]",
+    titleClass: "text-white",
+    descClass: "text-white/90",
+    iconColor: "text-white",
+    iconBg: "bg-white/20 border border-white/20",
+    arrowBg: "bg-white/20 text-white",
+    title: 'إدارة المتاجر الإلكترونية',
+    desc: 'تحسين شامل لتجربة المستخدم (UX)، تبسيط رحلة العميل، وزيادة معدلات التحويل وإغلاق الصفقات لمتجرك.',
+    pattern: `<svg class="absolute right-0 top-0 opacity-10 pointer-events-none" width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M 50 -50 A 150 150 0 0 0 50 250" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round"/></svg>`
+  }
 ];
 ---
-<section id="services" class="services" dir="rtl">
-  <div class="sec-hdr">
-    <span class="eyebrow">ما نقدمه</span>
-    <h2>نجمع قطع الأجنحة <span class="hl">لتكتمل هالتك</span></h2>
-    <p>خدمات تسويقية متكاملة، كل ما تحتاجه تحت سقف واحد بتباين مثالي ووضوح تام.</p>
-  </div>
+<section id="services" class="py-24 relative z-10 bg-white" dir="rtl">
+  <div class="container mx-auto px-4 max-w-[1200px]">
 
-  <div class="s-grid">
-    {services.map((s, i) => (
-      <article class="s-card reveal" style={`--d:${i*80}ms`}>
-        <svg class="s-arc" viewBox="0 0 44 44" aria-hidden="true">
-          <path d="M7 38 A20 20 0 0 1 37 38" fill="none" stroke="#1ABDA8" stroke-width="4" stroke-linecap="round"/>
-          <path d="M12 38 A17 17 0 0 1 37 38" fill="none" stroke="#0F6E7E" stroke-width="3" stroke-linecap="round"/>
-          <line x1="37" y1="17" x2="37" y2="38" stroke="#0F6E7E" stroke-width="3" stroke-linecap="round"/>
-          <ellipse cx="25" cy="40.5" rx="11" ry="2.5" fill="#1ABDA8" opacity="0.28"/>
-        </svg>
+    <div class="text-center mb-16 relative z-20 reveal">
+      <span class="inline-flex items-center gap-2 text-[#58A8B4] font-bold tracking-widest uppercase text-sm mb-3">
+        <Fragment set:html={haloIcon} />
+        منظومة متكاملة
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black text-[#070F1A] mb-4">خدمات <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#58A8B4] to-[#438FB3]">تصنع الفارق</span></h2>
+      <p class="text-[#475569] font-medium text-lg max-w-2xl mx-auto">نقدم حلولاً تسويقية 360 درجة، مدمجة بلمسة فنية واستراتيجيات مبنية على الأرقام.</p>
+    </div>
 
-        <div class="s-num">{s.n}</div>
-        <h3>{s.title}</h3>
-        <p>{s.desc}</p>
-        <a href="#contact" class="s-cta">{s.cta} &larr;</a>
-        <div class="s-shine" aria-hidden="true"></div>
-      </article>
-    ))}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 auto-rows-auto lg:auto-rows-[280px]">
+      {services.map((s, i) => (
+        <article class={`s-card group relative overflow-hidden p-8 md:p-10 flex flex-col justify-between rounded-[2rem] shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#58A8B4]/15 reveal ${s.colSpan} ${s.bgClass}`} style={`--d:${i * 100}ms`}>
+
+          {s.pattern && <div set:html={s.pattern} />}
+
+          <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+          <div class="relative z-10 flex justify-between items-start mb-8 lg:mb-0">
+            <div class={`p-4 rounded-2xl w-fit transform group-hover:scale-110 transition-transform duration-500 ${s.iconBg} ${s.iconColor}`}>
+              <Fragment set:html={haloIcon} />
+            </div>
+            <div class={`w-10 h-10 rounded-full flex items-center justify-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ${s.arrowBg}`}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+          <div class="relative z-10 mt-auto">
+            <h3 class={`text-xl md:text-2xl font-black mb-3 ${s.titleClass}`}>{s.title}</h3>
+            <p class={`text-base font-medium leading-relaxed max-w-sm ${s.descClass}`}>{s.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
   </div>
 </section>
 
 <style>
-.services { padding: 100px 5%; background: #F4F8F9;}
-.sec-hdr  { text-align: center; margin-bottom: 60px; }
-.eyebrow  { color: #1ABDA8; font-size: 0.85rem; font-weight: 800; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:12px; }
-h2        { font-size: clamp(2rem,4vw,3rem); font-weight:900; color:#070F1A; margin-bottom:16px; }
-.hl       { background:linear-gradient(135deg,#1ABDA8,#0F6E7E); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.sec-hdr p { color:#64748b; font-size:1.1rem; max-width:500px; margin:0 auto; font-weight: 500;}
-
-.s-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
-
-/* كروت موحدة بتباين مثالي */
-.s-card {
-  position: relative; overflow: hidden; background: #ffffff;
-  border: 1px solid rgba(26,189,168,0.15); border-radius: 20px;
-  padding: 32px 28px; display: flex; flex-direction: column; gap: 12px;
-  transition: transform 0.15s ease, border-color 0.25s, box-shadow 0.25s; will-change: transform;
-}
-.s-card:hover { border-color: #1ABDA8; box-shadow: 0 16px 40px rgba(26,189,168,0.12); z-index: 10; }
-.s-card:hover .s-shine { opacity: 1; }
-.s-card:hover .s-cta   { color: #0F6E7E; letter-spacing: .02em; }
-
-.s-shine { position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 15%, rgba(26,189,168,0.07) 0%, transparent 65%); opacity: 0; transition: opacity .35s; pointer-events: none; }
-.s-arc { width: 44px; height: 44px; margin-bottom: 8px;}
-.s-num { position: absolute; top: 20px; left: 24px; font-size: 12px; font-weight: 900; color: rgba(26,189,168,0.25); letter-spacing:.05em; }
-h3    { font-size: 1.25rem; font-weight:800; color:#070F1A; }
-p     { font-size: 0.95rem;  color:#475569; line-height:1.7; flex:1; font-weight: 500; }
-.s-cta { color: #1ABDA8; font-size:.95rem; font-weight:700; text-decoration:none; transition: color .2s, letter-spacing .2s; display: inline-flex; align-items: center; margin-top: 8px;}
-
-/* Reveal animation */
-.reveal { --d: 0ms; opacity: 0; transform: translateY(30px); transition: opacity .7s ease var(--d), transform .7s cubic-bezier(0.16,1,0.3,1) var(--d); }
-.reveal.in { opacity:1; transform:none; }
+  .s-card { will-change: transform; transform-style: preserve-3d; }
+  .reveal { --d: 0ms; opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease var(--d), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d); }
+  .reveal.in { opacity: 1; transform: none; }
 </style>
 
 <script is:inline>
-(function(){
-  // 1. Scroll Reveal
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
-    });
-  },{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  // نستخدم astro:page-load لضمان عمل السكريبتات مع ViewTransitions
+  document.addEventListener('astro:page-load', () => {
+    
+    // 1. تأثير الظهور عند النزول (Scroll Reveal)
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { 
+          e.target.classList.add('in'); 
+          obs.unobserve(e.target); 
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
 
-  // 2. Card Tilt 3D
-  document.querySelectorAll('.s-card').forEach(function(card){
-    card.addEventListener('mousemove',function(e){
-      var r=card.getBoundingClientRect();
-      var x=(e.clientX-r.left)/r.width-.5;
-      var y=(e.clientY-r.top)/r.height-.5;
-      card.style.transform='perspective(700px) rotateY('+(x*10)+'deg) rotateX('+(-y*10)+'deg) translateY(-6px)';
+    // 2. التمايل المغناطيسي للكروت (3D Tilt)
+    document.querySelectorAll('.s-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        // التمايل باتجاه الماوس
+        card.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-6px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
     });
-    card.addEventListener('mouseleave',function(){card.style.transform='';});
   });
-})();
 </script>
