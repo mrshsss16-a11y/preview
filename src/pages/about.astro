@@ -1,74 +1,149 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 
 import Navbar from '../components/Navbar.jsx';
-import AboutUsBento from '../components/AboutUsBento.jsx';
-import ContactUsBento from '../components/ContactUsBento.jsx';
 import Footer from '../components/Footer.jsx';
+import ContactUsBento from '../components/ContactUsBento.jsx';
 import SEO from '../components/SEO.astro';
-
-const title = "من نحن | وكالة أورا للتسويق";
-const description = "تعرف على قصة وكالة أورا، وكيف ندمج العبقرية الرقمية مع الفهم العميق للسلوك الإنساني لنهندس حضوراً رقمياً يليق بعلامتك.";
 ---
-
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEO title={title} description={description} />
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <SEO title="عن أورا | وكالة أورا للتسويق" description="تعرف على وكالة أورا، شركاء نجاحك في بناء هالتك الرقمية." />
+    <ViewTransitions />
 </head>
-<body class="bg-[#FDFDFD] font-['DIN_Next_LT_Arabic','Tajawal',sans-serif] text-[#1A1D20] antialiased overflow-x-hidden selection:bg-[#58A8B4] selection:text-white">
-
+<body class="font-['DIN_Next_LT_Arabic','Tajawal'] bg-[#F4F8F9] text-[#1e293b] antialiased selection:bg-[#58A8B4] selection:text-white overflow-x-hidden">
+    
     <Navbar client:load />
 
-    <main class="relative w-full">
-        
-        {/* Sub-Hero Section للصفحة الداخلية */}
-        <section class="relative pt-40 pb-20 overflow-hidden flex flex-col items-center text-center px-4">
-            {/* Geometric SVG Background للاتساق البصري */}
-            <div class="absolute inset-0 z-0 pointer-events-none opacity-40">
-                <svg class="w-full h-full object-cover" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                    <defs>
-                        <pattern id="grid-about" width="60" height="60" patternUnits="userSpaceOnUse">
-                            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#B3B7C1" stroke-width="0.5" opacity="0.3"/>
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#grid-about)" />
-                    <circle cx="50%" cy="100%" r="200" fill="#58A8B4" opacity="0.05" />
-                </svg>
+    <main class="w-full">
+        <section class="relative bg-[#070F1A] pt-40 pb-32 overflow-hidden rounded-b-[2.5rem] md:rounded-b-[4rem] z-10">
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#58A8B4]/10 blur-[100px]"></div>
+                <div class="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] rounded-full bg-[#438FB3]/10 blur-[80px]"></div>
             </div>
-
-            <div class="relative z-10 max-w-3xl mx-auto">
-                <div class="inline-flex items-center gap-2 bg-[#58A8B4]/10 border border-[#58A8B4]/20 text-[#438FB3] px-5 py-2 rounded-full font-bold text-sm mb-6">
+            
+            <div class="container mx-auto px-4 max-w-[1000px] relative z-10 text-center reveal">
+                <span class="inline-flex items-center gap-2 text-[#58A8B4] font-bold tracking-widest uppercase text-sm mb-6">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     قصتنا
-                </div>
-                <h1 class="text-4xl md:text-6xl font-black text-[#1A1D20] mb-6">
-                    من قلب مكة المكرمة،<br/> <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#58A8B4] to-[#438FB3]">نصنع التأثير العالمي.</span>
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+                    نحن لا نطلق حملات مؤقتة،<br />
+                    نحن نصنع <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#58A8B4] to-[#438FB3]">هالة رقمية</span> مستدامة
                 </h1>
-                <p class="text-lg text-[#B3B7C1] font-medium leading-relaxed">
-                    نحن لا نبحث عن مجرد تقديم خدمة، بل نسعى لأن نكون الشريك الاستراتيجي الذي يحمل هم علامتك التجارية ويصعد بها إلى قمة المنافسة الرقمية.
+                <p class="text-[#B3B7C1] text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                    وكالة تسويق رقمية انطلقت من مكة المكرمة، لتكون القوة الخفية التي تدفع العلامات التجارية نحو الصدارة، بدمج الإبداع الفني مع لغة الأرقام.
                 </p>
             </div>
         </section>
 
-        {/* Component: About Us Bento */}
-        <section class="container mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-            <AboutUsBento client:load />
-        </section>
+        <section class="py-24 relative z-0">
+            <div class="container mx-auto px-4 max-w-[1200px]">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                    
+                    <div class="md:col-span-7 bg-white rounded-[2rem] p-10 md:p-12 border border-[#B3B7C1]/20 shadow-xl shadow-[#070F1A]/5 reveal transition-transform hover:-translate-y-2" style="--d:100ms">
+                        <div class="w-16 h-16 rounded-2xl bg-[#58A8B4]/10 border border-[#58A8B4]/20 flex items-center justify-center text-[#58A8B4] mb-8">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <h2 class="text-3xl font-black text-[#070F1A] mb-4">رؤيتنا</h2>
+                        <p class="text-[#475569] text-lg leading-relaxed font-medium">
+                            أن نكون المعيار الذهبي للوكالات الرقمية في المملكة، والوجهة الأولى لكل علامة تجارية تطمح لبناء إرث رقمي مستدام يسيطر على السوق ولا يُمحى من ذاكرة العملاء.
+                        </p>
+                    </div>
 
-        {/* Component: Contact Us (Call to Action) */}
-        <section id="contact" class="container mx-auto px-4 sm:px-6 lg:px-8 mt-32 mb-20 relative z-20">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-black text-[#1A1D20]">هل أنت مستعد لبناء <span class="text-[#58A8B4]">هالتك</span>؟</h2>
+                    <div class="md:col-span-5 bg-[#070F1A] rounded-[2rem] p-10 md:p-12 border border-white/5 shadow-2xl reveal transition-transform hover:-translate-y-2" style="--d:200ms">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-[#58A8B4]/10 to-transparent pointer-events-none rounded-[2rem]"></div>
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-[#58A8B4] mb-8">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <h2 class="text-3xl font-black text-white mb-4">مهمتنا</h2>
+                            <p class="text-[#B3B7C1] text-lg leading-relaxed">
+                                تحويل التحديات التسويقية إلى فرص نمو حقيقية، عبر حلول متكاملة (360 درجة) تجمع بين الإبداع البصري والتحليل الدقيق للبيانات.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <ContactUsBento client:load />
         </section>
 
+        <section class="py-24 bg-white relative">
+            <div class="container mx-auto px-4 max-w-[1200px]">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl font-black text-[#070F1A] mb-4">قيم <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#58A8B4] to-[#438FB3]">نعتز بها</span></h2>
+                    <p class="text-[#B3B7C1] font-medium text-lg">المبادئ التي تحكم عملنا وعلاقتنا مع شركاء النجاح</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-[#F4F8F9] rounded-[2rem] p-10 border border-[#B3B7C1]/20 reveal hover:border-[#58A8B4] transition-colors" style="--d:100ms">
+                        <div class="w-12 h-12 mb-6 text-[#438FB3]">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#070F1A] mb-3">الشفافية التامة</h3>
+                        <p class="text-[#475569] leading-relaxed">نشاركك الأرقام، الإحصائيات، والتقارير بكل وضوح. لا توجد وعود وهمية، بل أهداف قابلة للقياس.</p>
+                    </div>
+
+                    <div class="bg-[#070F1A] rounded-[2rem] p-10 border border-white/5 reveal hover:border-[#58A8B4]/50 transition-colors" style="--d:200ms">
+                        <div class="w-12 h-12 mb-6 text-[#58A8B4]">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">الاستهداف الدقيق</h3>
+                        <p class="text-[#B3B7C1] leading-relaxed">لا نهدر ميزانيتك. كل ريال يُنفق يتم توجيهه بدقة للجمهور الذي يبحث عن خدماتك بالفعل.</p>
+                    </div>
+
+                    <div class="bg-[#F4F8F9] rounded-[2rem] p-10 border border-[#B3B7C1]/20 reveal hover:border-[#58A8B4] transition-colors" style="--d:300ms">
+                        <div class="w-12 h-12 mb-6 text-[#438FB3]">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#070F1A] mb-3">الجودة الفنية</h3>
+                        <p class="text-[#475569] leading-relaxed">نؤمن أن الانطباع الأول يُصنع بالعين. لذلك، تصاميمنا ومحتوانا يخضع لأعلى معايير الجودة العالمية.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#F4F8F9] relative z-20">
+            <div class="container mx-auto px-4 max-w-[1200px]">
+                <ContactUsBento client:load />
+            </div>
+        </section>
     </main>
 
     <Footer client:load />
 
+    <script is:inline>
+        document.addEventListener('astro:page-load', () => {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.reveal').forEach((el) => {
+                obs.observe(el);
+            });
+        });
+    </script>
+
+    <style>
+        .reveal {
+            --d: 0ms;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease var(--d), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d);
+        }
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
 </body>
 </html>
