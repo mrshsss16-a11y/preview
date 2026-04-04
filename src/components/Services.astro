@@ -1,0 +1,41 @@
+---
+const services = [
+  { id: 1, title: 'تصميم الهوية البصرية', desc: 'هالتك البصرية هي أول ما يراه عميلك — وآخر ما ينساه. نبني لغة بصرية متكاملة تحكي قصتك.', delay: '0s' },
+  { id: 2, title: 'تحسين محركات البحث', desc: 'موقعك الخفي فرصة لمنافسيك. نحن نضعك في الصفحة الأولى لجوجل بكلمات مفتاحية تبيع.', delay: '0.15s' },
+  { id: 3, title: 'الحملات الإعلانية', desc: 'إدارة ميزانيتك بذكاء عبر منصات Google و Meta لتحقيق أعلى عائد استثمار (ROAS).', delay: '0.3s' },
+];
+---
+<section class="py-24 bg-[var(--c-light)] text-[var(--c-dark)] relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-20 reveal">
+      <span class="text-[var(--c-teal)] font-bold text-sm tracking-wider uppercase mb-2 block">قدراتنا</span>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6">منظومة متكاملة لاكتمال هالتك</h2>
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto">نقدم حلولاً تسويقية متكاملة مصممة خصيصاً للشركات السعودية الرائدة.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="tilt-card relative bg-white p-10 rounded-[2rem] border border-gray-100 shadow-xl flex flex-col items-start reveal" data-delay={service.delay}>
+          <div class="absolute -top-10 -right-10 w-40 h-40 opacity-5 pointer-events-none overflow-hidden">
+            <svg viewBox="0 0 100 100" class="w-full h-full transform -rotate-45">
+              <circle cx="50" cy="50" r="45" stroke="var(--c-teal)" stroke-width="10" fill="none" stroke-dasharray="80 60" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#1ABDA8]/20 to-[#0F6E7E]/10 flex items-center justify-center mb-8 border border-[#1ABDA8]/20">
+             <div class="w-8 h-8 relative">
+               <svg viewBox="0 0 100 100" class="w-full h-full">
+                 <path d="M20,80 a40,40 0 1,1 60,0" fill="none" stroke="var(--c-teal)" stroke-width="12" stroke-linecap="round"/>
+                 <circle cx="50" cy="50" r="10" fill="var(--c-blue)"/>
+               </svg>
+             </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-[#070F1A]">{service.title}</h3>
+          <p class="text-gray-600 leading-relaxed mb-8 flex-grow font-medium">{service.desc}</p>
+          <a href="/services" class="inline-flex items-center text-[#0F6E7E] font-bold hover:text-[#1ABDA8] transition-colors group decoration-none">
+            اكتشف المزيد
+            <svg class="w-4 h-4 mr-2 transform rotate-180 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

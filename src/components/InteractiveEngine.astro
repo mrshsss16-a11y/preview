@@ -1,0 +1,72 @@
+---
+---
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = `revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards ${entry.target.dataset.delay || '0s'}`;
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    if (isTouchDevice) return;
+
+    const hero = document.querySelector('.hero-spotlight');
+    if (hero) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        hero.style.setProperty('--x', `${x}px`);
+        hero.style.setProperty('--y', `${y}px`);
+      });
+    }
+
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const moveX = Math.max(-8, Math.min(8, x * 0.3));
+        const moveY = Math.max(-8, Math.min(8, y * 0.3));
+        btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = `translate(0px, 0px)`;
+      });
+    });
+
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  .reveal { opacity: 0; }
+  @keyframes revealUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .magnetic-btn { transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform; }
+  .tilt-card { transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform; }
+  .tilt-card:hover { transition: transform 0.1s linear; z-index: 10; }
+</style>
