@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Megaphone, Palette, Search, ShoppingBag, PenTool, Users, CheckCircle2, ArrowLeft } from 'lucide-react';

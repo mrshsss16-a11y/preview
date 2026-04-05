@@ -1,0 +1,124 @@
+---
+// سحب المفاتيح ووضعها كمتغيرات آمنة
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+---
+<div class="bg-[#070F1A]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl w-full max-w-2xl mx-auto" dir="rtl">
+  <div id="status-box" class="hidden mb-6 p-4 rounded-xl font-bold text-center text-white border"></div>
+
+  <form id="aura-form" class="space-y-6" data-url={supabaseUrl} data-key={supabaseKey}>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-sm font-bold text-gray-300 mb-2">الاسم <span class="text-red-500">*</span></label>
+        <input type="text" id="aura-name" placeholder="أحمد محمد" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#1ABDA8]" />
+      </div>
+      <div>
+        <label class="block text-sm font-bold text-gray-300 mb-2">الإيميل <span class="text-red-500">*</span></label>
+        <input type="email" id="aura-email" placeholder="ahmed@example.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#1ABDA8]" />
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-sm font-bold text-gray-300 mb-2">رقم الجوال</label>
+        <input type="tel" id="aura-phone" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-left" dir="ltr" placeholder="+966 5..." />
+      </div>
+      <div>
+        <label class="block text-sm font-bold text-gray-300 mb-2">الخدمة المطلوبة</label>
+        <select id="aura-service" class="w-full bg-[#0d1624] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#1ABDA8]">
+          <option value="غير محدد">اختر الخدمة...</option>
+          <option value="تصميم هوية">تصميم هوية</option>
+          <option value="تطوير موقع">تطوير موقع</option>
+          <option value="تسويق">تسويق</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <label class="block text-sm font-bold text-gray-300 mb-2">حدثنا عن مشروعك <span class="text-red-500">*</span></label>
+      <textarea id="aura-message" rows="4" placeholder="تفاصيل المشروع..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#1ABDA8]"></textarea>
+    </div>
+    
+    <button type="button" id="submit-btn" class="w-full bg-gradient-to-r from-[#1ABDA8] to-[#0F6E7E] p-4 rounded-xl text-white font-bold text-lg transition-all hover:scale-[1.02]">
+      أرسل الطلب الآن
+    </button>
+  </form>
+</div>
+
+<script is:inline>
+  // دالة تشغيل الفورم التي تقهر كل مشاكل Astro
+  function initAuraForm() {
+    const form = document.getElementById('aura-form');
+    const btn = document.getElementById('submit-btn');
+    const statusBox = document.getElementById('status-box');
+
+    // منع تكرار التشغيل
+    if (!form || !btn || form.dataset.ready === "true") return;
+    form.dataset.ready = "true"; // ختم التفعيل
+
+    btn.addEventListener('click', async () => {
+      
+      // 1. سحب البيانات
+      const name = document.getElementById('aura-name').value;
+      const email = document.getElementById('aura-email').value;
+      const message = document.getElementById('aura-message').value;
+      const phone = document.getElementById('aura-phone').value || 'لم يدخل';
+      const service = document.getElementById('aura-service').value || 'غير محدد';
+      
+      // 2. التحقق الإجباري (بدلاً من المتصفح)
+      if(!name || !email || !message) {
+         alert("⚠️ يرجى تعبئة الحقول المطلوبة: (الاسم، الإيميل، وتفاصيل المشروع)");
+         return;
+      }
+
+      // 3. التحقق من المفاتيح
+      const url = form.getAttribute('data-url');
+      const key = form.getAttribute('data-key');
+
+      if (!url || !key) {
+        statusBox.style.display = 'block';
+        statusBox.className = 'mb-6 p-4 rounded-xl font-bold text-center text-white border bg-red-900/50 border-red-500';
+        statusBox.innerText = '❌ خطأ: مفاتيح قاعدة البيانات مفقودة!';
+        return;
+      }
+
+      // 4. تغيير شكل الزر
+      btn.innerText = 'جاري الإرسال... 🚀';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      // 5. الإرسال لقاعدة البيانات
+      try {
+        const res = await fetch(`${url}/rest/v1/contacts`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': key,
+            'Authorization': `Bearer ${key}`,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ name, email, phone, service, message })
+        });
+
+        if (!res.ok) throw new Error('فشل الإرسال');
+
+        // 6. النجاح المبهر!
+        form.style.display = 'none';
+        statusBox.style.display = 'block';
+        statusBox.className = 'mb-6 p-4 rounded-xl font-bold text-center text-white border bg-green-900/50 border-green-500';
+        statusBox.innerText = '🎉 تم استلام طلبك بنجاح! سيتم التواصل معك قريباً.';
+
+      } catch (err) {
+        // 7. في حال وجود خطأ في الاتصال
+        statusBox.style.display = 'block';
+        statusBox.className = 'mb-6 p-4 rounded-xl font-bold text-center text-white border bg-red-900/50 border-red-500';
+        statusBox.innerText = '❌ حدث خطأ في الاتصال، يرجى المحاولة مرة أخرى.';
+        btn.innerText = 'أرسل الطلب الآن';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      }
+    });
+  }
+
+  // تشغيل الدالة بقوة في جميع حالات تنقلات Astro
+  document.addEventListener('DOMContentLoaded', initAuraForm);
+  document.addEventListener('astro:page-load', initAuraForm);
+</script>
