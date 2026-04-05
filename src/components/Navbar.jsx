@@ -44,7 +44,7 @@ export default function Navbar({ theme = 'dark' }) {
         <a href="/" className="relative z-10 block group">
           <img
             src="https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp"
-            alt="Aura Logo"
+            alt="Aura Logo" fetchpriority="high" decoding="sync"
             className={`h-8 md:h-10 w-auto opacity-90 group-hover:opacity-100 transition-all duration-300 ${logoStyle}`}
           />
         </a>
