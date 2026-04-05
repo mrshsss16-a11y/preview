@@ -4,6 +4,7 @@ import LoadingScreen from '../components/LoadingScreen.astro';
 import Effects from '../components/Effects.astro';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
+import FloatingCTA from '../components/FloatingCTA.astro';
 
 interface Props { 
   title: string; 
@@ -21,7 +22,7 @@ const {
 <html lang="ar" dir="rtl" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -57,6 +58,7 @@ const {
     <Navbar client:load theme={navTheme} />
     <slot />
     <Footer client:load />
+    <FloatingCTA />
     <Effects />
   </body>
 </html>

@@ -1,0 +1,68 @@
+---
+---
+<a href="#contact" id="float-cta" class="float-cta shadow-[0_8px_32px_rgba(26,189,168,0.4)]" dir="rtl">
+  ابنِ هالتك الآن &larr;
+</a>
+
+<style>
+  .float-cta {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 360px;
+    padding: 15px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #1ABDA8, #0F6E7E);
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    display: none;
+    z-index: 50;
+    text-decoration: none;
+  }
+  @media (max-width: 768px) {
+    .float-cta {
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .float-cta.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('float-cta');
+    if (!btn) return;
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const contactSection = document.getElementById('contact');
+      let hideAtContact = false;
+      
+      if (contactSection) {
+        const rect = contactSection.getBoundingClientRect();
+        hideAtContact = rect.top < window.innerHeight;
+      }
+
+      // إظهار الزر بعد النزول 200 بكسل وإخفاؤه عند الوصول لقسم التواصل
+      if (scrollY > 200 && !hideAtContact) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    btn.addEventListener('click', () => {
+      if (navigator.vibrate) navigator.vibrate(10); // Haptic Feedback
+    });
+  });
+</script>
