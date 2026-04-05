@@ -57,7 +57,9 @@ const {
   <body>
     <LoadingScreen />
     <Navbar client:load theme={navTheme} />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer client:load />
     <FloatingCTA />
     <Effects />
