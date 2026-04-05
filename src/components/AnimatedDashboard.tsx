@@ -13,7 +13,8 @@ export default function AnimatedDashboard() {
   }, []);
 
   return (
-    <div ref={ref} className="relative bg-[#0D1F2D] border border-[#1ABDA8]/20 rounded-2xl p-6 shadow-2xl max-w-sm mx-auto mt-12 overflow-hidden reveal in" dir="rtl">
+    // إزالة overflow-hidden من هنا لكي تظهر الشارة السفلية بالكامل
+    <div ref={ref} className="relative bg-[#0D1F2D] border border-[#1ABDA8]/20 rounded-2xl p-6 shadow-2xl max-w-sm mx-auto mt-12 reveal in" dir="rtl">
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-white font-bold text-lg">أداء الحملات</h3>
         <span className="bg-[#1ABDA8]/10 text-[#1ABDA8] text-xs font-black px-2 py-1 rounded-md border border-[#1ABDA8]/30">مباشر</span>
@@ -42,7 +43,7 @@ export default function AnimatedDashboard() {
         </div>
       </div>
 
-      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#070F1A] border border-[#1ABDA8]/40 text-[#1ABDA8] text-[10px] font-black px-3 py-1 rounded-full whitespace-nowrap shadow-[0_0_10px_rgba(26,189,168,0.2)]">
+      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#070F1A] border border-[#1ABDA8]/40 text-[#1ABDA8] text-[11px] md:text-xs font-black px-4 py-1.5 rounded-full whitespace-nowrap shadow-[0_0_15px_rgba(26,189,168,0.3)] z-10">
         نتائج حقيقية لعملاء حقيقيين
       </div>
     </div>
