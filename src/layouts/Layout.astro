@@ -5,14 +5,12 @@ import Effects from '../components/Effects.astro';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 
-// 1. أضفنا خاصية description هنا
 interface Props { 
   title: string; 
   description?: string; 
   navTheme?: 'dark' | 'light'; 
 }
 
-// 2. وضعنا وصف افتراضي قوي جداً لـ SEO
 const { 
   title, 
   description = "وكالة آورا للتسويق الرقمي في مكة المكرمة. نصنع هالتك الفارقة عبر خدمات الـ SEO، تصميم الهوية البصرية، وإدارة الحملات الإعلانية لتحقيق نتائج حقيقية وعائد استثمار مضاعف.", 
@@ -35,14 +33,22 @@ const {
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" media="print" onload="this.media='all'">
+    
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap">
+    </noscript>
+
     <link rel="preload" as="image" href="https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp">
 
     <ViewTransitions />
     <script src="../scripts/reveal.ts"></script>
     <style is:global>
       :root { --c-teal: #1ABDA8; --c-blue: #0F6E7E; --c-dark: #070F1A; --c-light: #F8FAFB; }
-      body { font-family: 'Tajawal', sans-serif; background-color: var(--c-light); color: var(--c-dark); overflow-x: hidden; }
+      /* الخط الافتراضي للنظام يظهر فوراً، وبمجرد تحميل تجوال يتم التبديل بنعومة بفضل swap */
+      body { font-family: 'Tajawal', system-ui, -apple-system, sans-serif; background-color: var(--c-light); color: var(--c-dark); overflow-x: hidden; }
       ::view-transition-old(halo-motif), ::view-transition-new(halo-motif) { animation-duration: 0.6s; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
     </style>
   </head>

@@ -1,7 +1,12 @@
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import react from '@astrojs/react';
 
+// https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind()],
+  integrations: [tailwind(), react()],
+  build: {
+    // هذه الخاصية السحرية تضمن وضع أي ملف CSS أقل من 20KB داخل الـ HTML مباشرة
+    inlineStylesheets: 'always' 
+  }
 });
