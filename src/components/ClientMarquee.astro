@@ -32,12 +32,12 @@ const clientLogos = [
   <div class="marquee-track flex w-max">
     <div class="flex items-center animate-marquee gap-12 px-6">
       {clientLogos.map(logo => (
-        <img src={logo} alt="Client Partner" class="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100" />
+        <img src={logo} alt="Client Partner" class="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"40\" viewBox=\"0 0 120 40\"><text x=\"50%\" y=\"50%\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"%231ABDA8\" text-anchor=\"middle\" dominant-baseline=\"middle\">AURA PARTNER</text></svg>'; this.classList.remove('grayscale');" />
       ))}
     </div>
     <div class="flex items-center animate-marquee gap-12 px-6" aria-hidden="true">
       {clientLogos.map(logo => (
-        <img src={logo} alt="Client Partner" class="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100" />
+        <img src={logo} alt="Client Partner" class="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"40\" viewBox=\"0 0 120 40\"><text x=\"50%\" y=\"50%\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"%231ABDA8\" text-anchor=\"middle\" dominant-baseline=\"middle\">AURA PARTNER</text></svg>'; this.classList.remove('grayscale');" />
       ))}
     </div>
   </div>

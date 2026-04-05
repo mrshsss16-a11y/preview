@@ -1,0 +1,44 @@
+---
+---
+<div id="aura-loader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#070F1A] transition-opacity duration-300" dir="ltr">
+  <div class="relative w-24 h-24 mb-6 flex items-center justify-center">
+    <svg class="w-full h-full halo-anim" viewBox="0 0 100 100">
+      <path d="M 50 10 A 40 40 0 1 1 10 50" fill="none" stroke="#1ABDA8" stroke-width="6" stroke-linecap="round" stroke-dasharray="200" stroke-dashoffset="200" />
+    </svg>
+  </div>
+  <h2 class="text-white text-2xl font-bold font-['Tajawal'] tracking-widest opacity-0 text-anim mb-8">آورا للتسويق</h2>
+  <div class="w-48 h-1.5 bg-gray-800 rounded-full overflow-hidden">
+    <div id="aura-progress" class="h-full bg-[#1ABDA8] w-0 transition-all duration-200 ease-out"></div>
+  </div>
+</div>
+
+<style>
+  .halo-anim path { animation: drawHalo 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .text-anim { animation: fadeInText 0.4s ease forwards 0.3s; }
+  @keyframes drawHalo { to { stroke-dashoffset: 0; } }
+  @keyframes fadeInText { to { opacity: 1; } }
+  body.is-loading { overflow: hidden; height: 100vh; }
+</style>
+
+<script is:inline>
+  document.body.classList.add('is-loading');
+  let prog = 0;
+  const progBar = document.getElementById('aura-progress');
+  // محاكاة تحميل واقعية
+  const interval = setInterval(() => { 
+    prog += Math.random() * 20; 
+    if(prog > 90) prog = 90; 
+    if(progBar) progBar.style.width = prog + '%'; 
+  }, 50);
+
+  window.addEventListener('load', () => {
+    clearInterval(interval);
+    if(progBar) progBar.style.width = '100%';
+    setTimeout(() => {
+      const loader = document.getElementById('aura-loader');
+      if(loader) loader.style.opacity = '0';
+      document.body.classList.remove('is-loading');
+      setTimeout(() => { if(loader) loader.style.display = 'none'; }, 300);
+    }, 200);
+  });
+</script>

@@ -1,4 +1,6 @@
 ---
+import LoadingScreen from "../components/LoadingScreen.astro";
+---
 import { ViewTransitions } from 'astro:transitions';
 import Effects from '../components/Effects.astro';
 import Navbar from '../components/Navbar.jsx';
@@ -22,8 +24,10 @@ const { title } = Astro.props;
         animation-duration: 0.6s; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
       }
     </style>
+  <script src="../scripts/reveal.ts"></script>
   </head>
   <body>
+    <LoadingScreen />
     <Navbar client:load />
     <slot />
     <Footer client:load />
