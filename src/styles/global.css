@@ -95,3 +95,7 @@ section#contact,
   opacity: 1;
   transform: translateY(0);
 }
+
+/* === Scroll Reveal Logic === */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease var(--d, 0s), transform 0.6s cubic-bezier(0.16,1,0.3,1) var(--d, 0s); will-change: opacity, transform; }
+.reveal.in { opacity: 1; transform: none; }
