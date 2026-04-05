@@ -3,13 +3,13 @@ const clientLogos = [
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D9%88%D8%A7%D8%B1%D9%82%D8%A9%20(1).webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%AD%D8%AF%D8%A7%D8%A6%D9%82%20%D8%A7%D9%84%D9%81%D8%B1%D8%A7%D8%AA.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D9%88%D8%B2%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D8%A9.webp",
-  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D9%86%D8%A7%D8%AF%D9%8I%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%82%D9%8I.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D9%86%D8%A7%D8%AF%D9%8A%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%82%D9%8A.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D9%85%D8%AD%D9%85%D8%AF%20%D8%B7%D9%87%20%D8%A7%D9%84%D8%B3%D9%82%D8%A7%D9%81.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%B9%D9%85%D8%B1%D8%A7%D9%86.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%B3%D9%82%D9%86%D8%AA%D8%B4%D8%B1.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%B1%D9%88%D8%A7%D8%A1%20%D8%A7%D9%84%D8%B0%D9%87%D8%A8%D9%8A%D8%A9.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%AF%D8%B1%D8%A8.webp",
-  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%Dج%D8%A7%D9%85%D8%B9%D8%A9%20%D8%A7%D9%85%20%D8%A7%D9%84%D9%82%D8%B1%D9%89.webp",
+  "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%AC%D8%A7%D9%85%D8%B9%D8%A9%20%D8%A7%D9%85%20%D8%A7%D9%84%D9%82%D8%B1%D9%89.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%A7%D9%84%D9%87%D9%8A%D8%A6%D8%A9%20%D8%A7%D9%84%D9%85%D9%84%D9%83%D9%8A%D8%A9.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%A7%D9%84%D8%AC%D9%85%D8%B9%D9%8A%D8%A9%20%D9%84%D9%84%D8%AA%D8%B1%D8%A8%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/%D8%A7%D9%88%D8%B1%D8%A7%20%D8%A7%D9%84%D8%A8%D8%AF%D8%B1%20%D9%84%D9%84%D8%AD%D8%AC%D8%A7%D9%85%D8%A9.webp",
@@ -24,6 +24,9 @@ const clientLogos = [
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/1000030179.webp",
   "https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/1000033762.webp"
 ];
+
+// صورة احتياطية (Fallback SVG) كمتغير لتجنب أخطاء بناء الجملة (Syntax Errors)
+const fallbackSVG = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'><text x='50%' y='50%' font-family='sans-serif' font-size='12' font-weight='bold' fill='%231ABDA8' text-anchor='middle' dominant-baseline='middle'>AURA PARTNER</text></svg>";
 ---
 <section class="bg-white py-12 overflow-hidden relative border-y border-gray-100 z-30" dir="ltr">
   <div class="text-center mb-6">
@@ -32,12 +35,22 @@ const clientLogos = [
   <div class="marquee-track flex w-max">
     <div class="flex items-center animate-marquee gap-12 px-6">
       {clientLogos.map(logo => (
-        <img src={logo} alt="Client Partner" class="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"40\" viewBox=\"0 0 120 40\"><text x=\"50%\" y=\"50%\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"%231ABDA8\" text-anchor=\"middle\" dominant-baseline=\"middle\">AURA PARTNER</text></svg>'; this.classList.remove('grayscale');" />
+        <img 
+          src={logo} 
+          alt="Client Partner" 
+          class="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100" 
+          onerror={`this.onerror=null; this.src='${fallbackSVG}'; this.classList.remove('grayscale');`} 
+        />
       ))}
     </div>
     <div class="flex items-center animate-marquee gap-12 px-6" aria-hidden="true">
       {clientLogos.map(logo => (
-        <img src={logo} alt="Client Partner" class="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"40\" viewBox=\"0 0 120 40\"><text x=\"50%\" y=\"50%\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"%231ABDA8\" text-anchor=\"middle\" dominant-baseline=\"middle\">AURA PARTNER</text></svg>'; this.classList.remove('grayscale');" />
+        <img 
+          src={logo} 
+          alt="Client Partner" 
+          class="h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100" 
+          onerror={`this.onerror=null; this.src='${fallbackSVG}'; this.classList.remove('grayscale');`} 
+        />
       ))}
     </div>
   </div>
