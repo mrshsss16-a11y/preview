@@ -1,0 +1,61 @@
+---
+const storyMilestones = [
+  {
+    year: "الشرارة",
+    title: "من قلب العاصمة المقدسة",
+    content: "لاحظنا أن العديد من العلامات التجارية الرائعة تفتقر إلى 'الصوت' الذي يمثلها جودتها الحقيقية. لم نكن نريد تقديم خدمات تسويق تقليدية، بل أردنا بناء هويات رقمية تترك أثراً.",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z" // Lightning bolt
+  },
+  {
+    year: "الفلسفة",
+    title: "ميلاد مفهوم 'الهالة'",
+    content: "أدركنا أن التسويق ليس مجرد أرقام، بل هو 'هالة' تحيط بالعلامة التجارية. قمنا بجمع أفضل العقول في كتابة المحتوى، تحسين محركات البحث (SEO)، وبناء الهويات لنصنع منظومة متكاملة لا تُقهر.",
+    icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" // Idea/Bulb
+  },
+  {
+    year: "اليوم",
+    title: "إرث رقمي مستدام",
+    content: "أكثر من 24 شريك نجاح وثقوا بنا، من جهات حكومية إلى كيانات تجارية كبرى. نحن لا نطلق حملات مؤقتة تنتهي بانتهاء الميزانية، نحن نصنع إرثاً رقمياً ينمو ويتسع كل يوم.",
+    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" // World/Impact
+  }
+];
+---
+<section class="py-24 bg-[#070F1A] relative overflow-hidden rounded-[2.5rem] my-12" dir="rtl">
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1ABDA8]/5 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#0F6E7E]/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 max-w-4xl relative z-10">
+    
+    <div class="text-center mb-20 reveal">
+      <span class="text-[#1ABDA8] font-bold text-sm tracking-wider uppercase mb-3 block">القصة</span>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-6">كيف بدأت الهالة؟</h2>
+      <p class="text-[#94A3B8] text-lg max-w-2xl mx-auto leading-relaxed">
+        رحلتنا لم تكن مجرد بناء وكالة، بل كانت سعياً مستمراً لإعادة تعريف كيف يجب أن تظهر العلامات التجارية في العالم الرقمي.
+      </p>
+    </div>
+
+    <div class="relative before:absolute before:inset-y-0 before:right-8 md:before:right-1/2 before:w-[2px] before:bg-gradient-to-b before:from-[#1ABDA8]/0 before:via-[#1ABDA8]/50 before:to-[#0F6E7E]/0">
+      
+      {storyMilestones.map((milestone, index) => (
+        <div class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24 group reveal" style={`--d: ${index * 150}ms;`}>
+          
+          <div class="absolute right-8 md:right-1/2 translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-[#0D1B2A] border-2 border-[#1ABDA8] shadow-[0_0_15px_rgba(26,189,168,0.4)] z-10 group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(26,189,168,0.7)] transition-all duration-300">
+            <svg class="w-5 h-5 text-[#1ABDA8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={milestone.icon}></path>
+            </svg>
+          </div>
+
+          <div class={`w-full md:w-[45%] pl-16 pr-20 md:px-0 ${index % 2 === 0 ? 'md:text-left md:pr-16 md:mr-auto' : 'md:text-right md:pl-16 md:ml-auto'}`}>
+            <span class="inline-block text-[#0F6E7E] font-black text-2xl mb-2 tracking-wider">{milestone.year}</span>
+            <h3 class="text-2xl font-bold text-white mb-4 leading-tight">{milestone.title}</h3>
+            <p class="text-[#94A3B8] text-base leading-relaxed border-r-2 border-[#1ABDA8]/20 pr-4 group-hover:border-[#1ABDA8] transition-colors duration-300">
+              {milestone.content}
+            </p>
+          </div>
+          
+        </div>
+      ))}
+      
+    </div>
+  </div>
+</section>

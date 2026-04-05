@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SEOHead from '../components/SEOHead.astro';
-import TeamSection from '../components/TeamSection.astro';
+import StorySection from '../components/StorySection.astro';
 import ContactUsBento from '../components/ContactUsBento.jsx';
 ---
 <Layout title="من نحن | وكالة آورا للتسويق الرقمي — مكة المكرمة">
   <SEOHead 
     title="من نحن | وكالة آورا للتسويق الرقمي — مكة المكرمة" 
-    description="نحن لا نطلق حملات مؤقتة — نحن نصنع هالة رقمية مستدامة. وكالة آورا للتسويق انطلقت من مكة المكرمة لتبني هالات علامات تجارية تدوم. تعرّف علينا." 
+    description="نحن لا نطلق حملات مؤقتة — نحن نصنع هالة رقمية مستدامة. تعرّف على قصة وكالة آورا للتسويق التي انطلقت من مكة المكرمة لتبني هالات علامات تجارية تدوم." 
   />
   
   <main class="w-full bg-[var(--c-light)]">
@@ -26,10 +26,10 @@ import ContactUsBento from '../components/ContactUsBento.jsx';
     </section>
 
     <div class="px-4 max-w-7xl mx-auto">
-      <TeamSection />
+      <StorySection />
     </div>
 
-    <section class="py-24 relative z-20 overflow-hidden">
+    <section class="py-24 relative z-20 overflow-x-hidden">
       <div class="container mx-auto px-4 max-w-[1200px]">
         <ContactUsBento client:load />
       </div>
