@@ -1,0 +1,68 @@
+---
+const coreValues = [
+  { title: "الشفافية المطلقة", desc: "أرقامنا لا تكذب، وتقاريرنا واضحة. نحن شركاء في نجاحك ولنا هدف واحد." },
+  { title: "الإبداع الوظيفي", desc: "التصميم الجميل وحده لا يكفي، يجب أن يبيع ويقنع. نحن نجمع بين الفن وعلم النفس." },
+  { title: "النمو المستدام", desc: "لا نبحث عن 'ترند' عابر، بل نبني أصولاً رقمية تبقى قيمتها وتتضاعف مع الزمن." },
+  { title: "الابتكار التقني", desc: "نستخدم أحدث أدوات الذكاء الاصطناعي وتحليل البيانات لنسبق منافسيك بخطوة." }
+];
+---
+
+<section class="py-20 relative overflow-hidden" dir="rtl">
+  
+  <div class="container mx-auto px-4 max-w-6xl relative z-10">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      
+      <article class="relative bg-gradient-to-br from-[#070F1A] to-[#0D1B2A] border border-[var(--c-teal)]/20 rounded-[2rem] p-10 md:p-12 overflow-hidden group reveal shadow-[0_10px_30px_rgba(7,15,26,0.1)] hover:border-[var(--c-teal)]/50 transition-all duration-500">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-[var(--c-teal)]/10 blur-[50px] group-hover:bg-[var(--c-teal)]/20 transition-all duration-500"></div>
+        <svg class="absolute -bottom-4 left-6 w-24 h-24 text-[var(--c-teal)]/5 transform -rotate-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.8L18.2 20H5.8L12 5.8z"/></svg>
+        
+        <div class="relative z-10">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-[var(--c-teal)]/10 flex items-center justify-center text-[var(--c-teal)]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            </div>
+            <h3 class="text-3xl font-black text-white">رؤيتنا</h3>
+          </div>
+          <p class="text-[#94A3B8] text-lg leading-relaxed font-medium">
+            أن نكون المحرك الرقمي الأول للعلامات التجارية الطموحة في المملكة، وأن يرتبط اسم "آورا" ببناء الكيانات الرقمية التي لا تُقهر في سوق شديد التنافسية.
+          </p>
+        </div>
+      </article>
+
+      <article class="relative bg-gradient-to-bl from-[#070F1A] to-[#0D1B2A] border border-[var(--c-teal)]/20 rounded-[2rem] p-10 md:p-12 overflow-hidden group reveal shadow-[0_10px_30px_rgba(7,15,26,0.1)] hover:border-[var(--c-teal)]/50 transition-all duration-500" style="--d: 150ms;">
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#0F6E7E]/10 blur-[50px] group-hover:bg-[#0F6E7E]/20 transition-all duration-500"></div>
+        <svg class="absolute -top-4 right-6 w-24 h-24 text-[var(--c-teal)]/5 transform rotate-12" fill="currentColor" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16zM12 22.27L5 18.23V9.77L12 5.73l7 4.04v8.46l-7 4.04z"/></svg>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-[var(--c-teal)]/10 flex items-center justify-center text-[var(--c-teal)]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h3 class="text-3xl font-black text-white">رسالتنا</h3>
+          </div>
+          <p class="text-[#94A3B8] text-lg leading-relaxed font-medium">
+            تمكين الأعمال من اكتشاف صوتها الفريد، وتضخيم هالتها الرقمية من خلال استراتيجيات تسويق مبنية على البيانات، وتصاميم تخطف الأنظار، ومحتوى يصنع الولاء.
+          </p>
+        </div>
+      </article>
+      
+    </div>
+
+    <div class="text-center mb-10 reveal">
+      <span class="text-[var(--c-teal)] font-bold text-sm tracking-wider uppercase mb-2 block">الحمض النووي لـ آورا</span>
+      <h2 class="text-3xl md:text-4xl font-black text-[#070F1A]">قيمنا الجوهرية</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {coreValues.map((value, index) => (
+        <div class="bg-white border border-[#B3B7C1]/30 rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reveal" style={`--d: ${index * 100}ms;`}>
+          <div class="w-10 h-1 bg-gradient-to-r from-[var(--c-teal)] to-[var(--c-blue)] mb-6 rounded-full"></div>
+          <h4 class="text-[#070F1A] font-bold text-xl mb-3">{value.title}</h4>
+          <p class="text-[#475569] text-sm leading-relaxed font-medium">{value.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
