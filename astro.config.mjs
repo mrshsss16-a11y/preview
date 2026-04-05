@@ -6,7 +6,10 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [tailwind(), react()],
   build: {
-    // هذه الخاصية السحرية تضمن وضع أي ملف CSS أقل من 20KB داخل الـ HTML مباشرة
     inlineStylesheets: 'always' 
+  },
+  image: {
+    // إخبار Astro بأن هذا النطاق آمن، اسحب منه الصور وخزنها مؤقتاً عندنا
+    domains: ['pub-8dda25e2267049d98f8e98a0237e7096.r2.dev']
   }
 });
