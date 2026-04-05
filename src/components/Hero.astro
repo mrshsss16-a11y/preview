@@ -1,24 +1,24 @@
 ---
-import AnimatedDashboard from "./AnimatedDashboard.tsx";
+import AnimatedDashboard from './AnimatedDashboard.tsx';
 ---
-import AnimatedDashboard from "./AnimatedDashboard.tsx";
-<section class="hero-spotlight relative w-full min-h-[90vh] bg-[#070F1A] flex flex-col items-center justify-center overflow-hidden pb-40" style="--x: 50%; --y: 50%;">
+<section class="hero-spotlight relative w-full min-h-[95vh] bg-[#070F1A] flex flex-col items-center justify-center overflow-hidden pb-32" style="--x: 50%; --y: 50%;">
   
   <div class="pointer-events-none absolute inset-0 mix-blend-screen transition-opacity duration-300" style="background: radial-gradient(circle 500px at var(--x) var(--y), rgba(26, 189, 168, 0.12), transparent 70%);"></div>
   
-  <div class="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto pt-20">
-    <div class="mb-10 w-48 md:w-64 reveal" style="view-transition-name: halo-motif;">
+  <div class="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto pt-24">
+    
+    <div class="mb-10 w-48 md:w-64 reveal">
       <img src="https://pub-8dda25e2267049d98f8e98a0237e7096.r2.dev/cropped-%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A3%D9%88%D8%B1%D8%A7-02-2-1.webp" alt="Aura Logo" class="w-full h-auto drop-shadow-[0_0_15px_rgba(26,189,168,0.3)]" />
     </div>
 
-    <h1 class="text-white text-5xl md:text-7xl font-black mb-6 leading-tight reveal" data-delay="0.1s">
+    <h1 class="text-white text-5xl md:text-7xl font-black mb-6 leading-tight reveal" style="--d: 100ms;">
       وكالة آورا للتسويق الرقمي
     </h1>
-    <p class="text-[#1ABDA8] text-2xl md:text-3xl font-bold mb-12 reveal" data-delay="0.2s">
+    <p class="text-[#1ABDA8] text-2xl md:text-3xl font-bold mb-12 reveal" style="--d: 200ms;">
       هالتك الفارقة تبدأ هنا.
     </p>
 
-    <div class="reveal" data-delay="0.3s">
+    <div class="reveal" style="--d: 300ms;">
       <a href="#contact" class="magnetic-btn group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white bg-[#0F6E7E] rounded-full overflow-hidden shadow-[0_8px_30px_rgba(15,110,126,0.4)] transition-all duration-300 decoration-none">
         <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-[#1ABDA8] to-[#0F6E7E] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="relative z-10 flex items-center gap-3">
@@ -27,5 +27,10 @@ import AnimatedDashboard from "./AnimatedDashboard.tsx";
         </span>
       </a>
     </div>
+
+    <div class="mt-20 w-full reveal" style="--d: 400ms;">
+      <AnimatedDashboard client:visible />
+    </div>
+
   </div>
 </section>
