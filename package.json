@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "astro dev --host --port 4321",
     "build": "astro build",
-    "preview": "astro preview --host --port 4321"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
+    "@astrojs/cloudflare": "12",
     "@astrojs/react": "^5.0.2",
     "@astrojs/tailwind": "^5.1.5",
     "@portabletext/react": "^6.0.3",
@@ -35,6 +38,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.19"
+    "@tailwindcss/typography": "^0.5.19",
+    "wrangler": "^4.80.0"
   }
 }
