@@ -1,0 +1,39 @@
+---
+const socials = [
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/aurateam3",
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>`
+  },
+  {
+    name: "X (Twitter)",
+    url: "https://x.com/aurateam3",
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>`
+  },
+  {
+    name: "TikTok",
+    url: "https://www.tiktok.com/@aurateam3",
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>`
+  },
+  {
+    name: "Email",
+    url: "mailto:info@aurateam3.com",
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>`
+  }
+];
+---
+
+<div class="flex items-center justify-center gap-4 py-6" dir="ltr">
+  {socials.map((social) => (
+    <a 
+      href={social.url} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      aria-label={social.name}
+      class="group relative flex items-center justify-center w-12 h-12 rounded-full bg-[#070F1A] border border-white/10 text-gray-400 hover:text-[#1ABDA8] hover:border-[#1ABDA8]/50 transition-all duration-300 shadow-lg"
+    >
+      <span class="relative z-10" set:html={social.icon} />
+      <div class="absolute inset-0 rounded-full bg-[#1ABDA8]/0 group-hover:bg-[#1ABDA8]/10 blur-md transition-all duration-300 z-0"></div>
+    </a>
+  ))}
+</div>

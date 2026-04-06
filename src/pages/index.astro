@@ -21,6 +21,7 @@ try {
     client: p.data.client,
     gradient: p.data.gradient,
     result: p.data.result,
+    video: p.data.video || null // سحبنا رابط الفيديو من الـ CMS هنا!
   }));
 } catch (e) {
   console.error("لا توجد أعمال لعرضها");
@@ -29,7 +30,7 @@ try {
 <Layout title="وكالة تسويق رقمي في مكة المكرمة | آورا للتسويق">
   <SEOHead 
     title="وكالة تسويق رقمي في مكة المكرمة | آورا للتسويق" 
-    description="آورا للتسويق — وكالة رقمية متكاملة من مكة المكرمة. نبني هالتك الفارقة بـ SEO احترافي، هوية بصرية مميزة، وحملات إعلانية قابلة للقياس. ابنِ هالتك اليوم." 
+    description="آورا للتسويق — وكالة رقمية متكاملة من مكة المكرمة. نبني هالتك الفارقة بـ SEO احترافي، هوية بصرية مميزة، وحملات إعلانية قابلة للقياس. ابنِ هالتك اليوم."
   />
   
   <Hero />
@@ -43,7 +44,8 @@ try {
         <span class="text-[var(--c-teal)] font-bold text-sm tracking-wider uppercase mb-2 block">أعمالنا</span>
         <h2 class="text-4xl md:text-5xl font-extrabold text-[#070F1A]">هالات صنعناها</h2>
       </div>
-      {mappedProjects.length > 0 ? (
+      {mappedProjects.length > 0 ?
+      (
          <FeaturedPortfolio projects={mappedProjects} />
       ) : (
          <p class="text-center text-gray-500 font-medium">جاري إضافة الأعمال...</p>

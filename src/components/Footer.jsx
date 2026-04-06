@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 export default function Footer() {
   const [activePartner, setActivePartner] = useState(0);
 
-  // بيانات تفاعلية لشركاء النجاح تحاكي لوحة الهيرو
+  // بيانات تفاعلية لشركاء النجاح
   const partners = [
     { name: 'وزارة الثقافة', type: 'حملات إعلانية وهوية', roi: '+340%', duration: 'مستمر', impact: '95%', growth: '88%' },
     { name: 'جامعة أم القرى', type: 'تطوير المنصات الرقمية', roi: '+210%', duration: '١٢ شهر', impact: '85%', growth: '92%' },
@@ -20,6 +20,14 @@ export default function Footer() {
     { name: 'خدماتنا', path: '/services' },
     { name: 'أعمالنا', path: '/portfolio' },
     { name: 'المدونة', path: '/blog' }
+  ];
+
+  // شبكة تواصل آورا الجديدة المضيئة
+  const socials = [
+    { name: "Instagram", url: "https://www.instagram.com/aurateam3", icon: <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> },
+    { name: "X", url: "https://x.com/aurateam3", icon: <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg> },
+    { name: "TikTok", url: "https://www.tiktok.com/@aurateam3", icon: <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg> },
+    { name: "Email", url: "mailto:info@aurateam3.com", icon: <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> }
   ];
 
   return (
@@ -134,9 +142,22 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="flex gap-6 mb-8">
-            <a href="mailto:info@aura-mkt.com" aria-label="أرسل بريد إلكتروني لآورا" className="text-gray-300 hover:text-[#1ABDA8] transition-colors"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
-            <a href="tel:+966500000000" aria-label="اتصل بنا عبر الهاتف" className="text-gray-300 hover:text-[#1ABDA8] transition-colors"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></a>
+          {/* شبكة أيقونات آورا المضيئة الجديدة */}
+          <div className="flex items-center justify-center gap-4 mb-8" dir="ltr">
+            {socials.map((social, index) => (
+              <a 
+                key={index}
+                href={social.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-[#070F1A] border border-white/10 text-gray-400 hover:text-[#1ABDA8] hover:border-[#1ABDA8]/50 transition-all duration-300 shadow-lg"
+              >
+                <span className="relative z-10">{social.icon}</span>
+                {/* التوهج الخلفي عند التمرير */}
+                <div className="absolute inset-0 rounded-full bg-[#1ABDA8]/0 group-hover:bg-[#1ABDA8]/15 blur-md transition-all duration-300 z-0"></div>
+              </a>
+            ))}
           </div>
 
           <p className="text-gray-400 text-xs font-medium">© {new Date().getFullYear()} وكالة آورا للتسويق. صُنع بشغف في مكة المكرمة.</p>
